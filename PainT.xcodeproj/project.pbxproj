@@ -13,6 +13,7 @@
 		D007C2732BDB64F0005F2A29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D007C2722BDB64F0005F2A29 /* Assets.xcassets */; };
 		D007C2762BDB64F0005F2A29 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D007C2752BDB64F0005F2A29 /* Preview Assets.xcassets */; };
 		D02FB36B2BDEA000009B4875 /* homeSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FB36A2BDEA000009B4875 /* homeSwiftUIView.swift */; };
+		D02FB36E2BDEBAFC009B4875 /* painRecordSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FB36D2BDEBAFC009B4875 /* painRecordSwiftUIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		D007C2722BDB64F0005F2A29 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D007C2752BDB64F0005F2A29 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D02FB36A2BDEA000009B4875 /* homeSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeSwiftUIView.swift; sourceTree = "<group>"; };
+		D02FB36D2BDEBAFC009B4875 /* painRecordSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = painRecordSwiftUIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 		D007C26B2BDB64EE005F2A29 /* PainT */ = {
 			isa = PBXGroup;
 			children = (
+				D02FB36C2BDEBAE7009B4875 /* PainRecord */,
 				D02FB3692BDE9F69009B4875 /* Home */,
 				D007C26C2BDB64EE005F2A29 /* PainTApp.swift */,
 				D007C26E2BDB64EE005F2A29 /* ContentView.swift */,
@@ -79,6 +82,14 @@
 				D02FB36A2BDEA000009B4875 /* homeSwiftUIView.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		D02FB36C2BDEBAE7009B4875 /* PainRecord */ = {
+			isa = PBXGroup;
+			children = (
+				D02FB36D2BDEBAFC009B4875 /* painRecordSwiftUIView.swift */,
+			);
+			path = PainRecord;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,6 +165,7 @@
 				D007C26F2BDB64EE005F2A29 /* ContentView.swift in Sources */,
 				D007C2712BDB64EE005F2A29 /* Item.swift in Sources */,
 				D007C26D2BDB64EE005F2A29 /* PainTApp.swift in Sources */,
+				D02FB36E2BDEBAFC009B4875 /* painRecordSwiftUIView.swift in Sources */,
 				D02FB36B2BDEA000009B4875 /* homeSwiftUIView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
