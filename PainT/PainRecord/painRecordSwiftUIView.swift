@@ -10,6 +10,8 @@ import SwiftUI
 struct painRecordSwiftUIView: View {
     var body: some View {
         Text("painRecordSwiftUIView")
+            .navigationTitle("통증 기록")
+//            .navigationBarTitleDisplayMode(.large)
     }
 }
 
