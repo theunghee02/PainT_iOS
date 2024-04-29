@@ -25,7 +25,7 @@ struct PainTApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            tabSwiftUIView()
         }
         .modelContainer(sharedModelContainer)
     }
