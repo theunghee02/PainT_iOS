@@ -15,6 +15,8 @@ struct homeSwiftUIView: View {
                     .font(.system(size: 18))
                     .fontWeight(/*@START_MENU_TOKEN@*/.semibold/*@END_MENU_TOKEN@*/)
 //                HStack {
+                
+                    // Pain Record
                     VStack {
                         Text("통증 기록")
                             .font(.system(size: 18))
@@ -30,6 +32,8 @@ struct homeSwiftUIView: View {
                     .background(Color(red: 0xD9 / 255, green: 0xD9 / 255, blue: 0xD9 / 255))
                     .cornerRadius(10)
                     .padding(.vertical, 20)
+                    
+                    // Disease Prediction
                     VStack {
                         Text("질환 예측")
                             .font(.system(size: 18))
