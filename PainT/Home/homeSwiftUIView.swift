@@ -11,10 +11,10 @@ struct homeSwiftUIView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Text("수정님, 또 허리가 아프지는 않으세요?")
+                Text("수정님, 허리가 아프지 않으세요?")
                     .font(.system(size: 18))
                     .fontWeight(/*@START_MENU_TOKEN@*/.semibold/*@END_MENU_TOKEN@*/)
-                HStack {
+//                HStack {
                     VStack {
                         Text("통증 기록")
                             .font(.system(size: 18))
@@ -26,9 +26,10 @@ struct homeSwiftUIView: View {
                             .padding([.leading, .bottom, .trailing], 10.0)
                         Image("clipBoard")
                     } // VStack
-                    .frame(width: 140, height: 160)
+                    .frame(width: 170, height: 200)
                     .background(Color(red: 0xD9 / 255, green: 0xD9 / 255, blue: 0xD9 / 255))
                     .cornerRadius(10)
+                    .padding(.vertical, 20)
                     VStack {
                         Text("질환 예측")
                             .font(.system(size: 18))
@@ -40,10 +41,10 @@ struct homeSwiftUIView: View {
                             .padding([.leading, .bottom, .trailing], 10.0)
                         Image("wand")
                     } // VStack
-                    .frame(width: 140, height: 160)
+                    .frame(width: 170, height: 200)
                     .background(Color(red: 0xD9 / 255, green: 0xD9 / 255, blue: 0xD9 / 255))
                     .cornerRadius(10)
-                } // HStack
+//                } // HStack
             } // VStack
         }
     }
