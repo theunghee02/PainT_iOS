@@ -20,11 +20,12 @@ struct tabSwiftUIView: View {
                 .tabItem {
                     Image("painStat-default")
                 }
+            // myPage
             myPageSwiftUIView()
                 .tabItem {
                     Image("mypage-default")
                 }
-        }
+        } // TabView
     }
 }
 
