@@ -22,6 +22,8 @@ struct loginSwiftUIView: View {
     @State private var password: String = ""
     @State private var showAlert = false;
     @State private var showAlertMsg = "";
+    
+    @State private var shouldNavigate = false
 
     @State private var accessToken = ""
     @State private var message = ""
@@ -49,7 +51,7 @@ struct loginSwiftUIView: View {
                                             .stroke(Color.gray, lineWidth: 1) // 외곽선 추가
                             )
 
-
+                    
                     Button("Login"){
                         login()
                         AF.request("http://34.22.95.16/api/v1/user/login", method: .post, parameters: ["username": username, "password": password], encoding: JSONEncoding.default).responseDecodable(of: Response.self) { response in
@@ -57,6 +59,7 @@ struct loginSwiftUIView: View {
                             case .success(let value):
                                 if value.code == 2000{
                                     accessToken = value.result.accessToken
+                                    shouldNavigate = true;
                                 } else {
                                     showAlertMsg = "틀렸어요!"
                                     showAlert=true;
@@ -80,7 +83,15 @@ struct loginSwiftUIView: View {
                                         dismissButton: .default(Text("확인"))
                                 )
                             }
+                        
 
+                    NavigationLink(
+                         destination: tabSwiftUIView(),
+                         isActive: $shouldNavigate) {
+                              Text("")
+                                   .hidden()
+                         }
+                    
                     Text("Access Token: \(accessToken)")
 
                     NavigationLink(destination: findPasswordSwiftUIView()) {

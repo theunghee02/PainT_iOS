@@ -26,6 +26,7 @@ struct tabSwiftUIView: View {
                     Image("mypage-default")
                 }
         } // TabView
+        .navigationBarBackButtonHidden()
     }
 }
 
