@@ -18,6 +18,7 @@
 		D02FB3732BDF451F009B4875 /* painStatSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FB3722BDF451F009B4875 /* painStatSwiftUIView.swift */; };
 		D02FB3762BDF4555009B4875 /* myPageSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FB3752BDF4555009B4875 /* myPageSwiftUIView.swift */; };
 		D02FB3792BE00B91009B4875 /* DiseasePredictionSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FB3782BE00B91009B4875 /* DiseasePredictionSwiftUIView.swift */; };
+		D02FB3852BE26B12009B4875 /* loginSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FB3842BE26B12009B4875 /* loginSwiftUIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		D02FB3722BDF451F009B4875 /* painStatSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = painStatSwiftUIView.swift; sourceTree = "<group>"; };
 		D02FB3752BDF4555009B4875 /* myPageSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myPageSwiftUIView.swift; sourceTree = "<group>"; };
 		D02FB3782BE00B91009B4875 /* DiseasePredictionSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseasePredictionSwiftUIView.swift; sourceTree = "<group>"; };
+		D02FB3842BE26B12009B4875 /* loginSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginSwiftUIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 		D007C26B2BDB64EE005F2A29 /* PainT */ = {
 			isa = PBXGroup;
 			children = (
+				D02FB3832BE26B06009B4875 /* Login */,
 				D02FB3772BE00B5D009B4875 /* DiseasePrediction */,
 				D02FB3742BDF4546009B4875 /* MyPage */,
 				D02FB3712BDF450B009B4875 /* PainStat */,
@@ -126,6 +129,14 @@
 				D02FB3782BE00B91009B4875 /* DiseasePredictionSwiftUIView.swift */,
 			);
 			path = DiseasePrediction;
+			sourceTree = "<group>";
+		};
+		D02FB3832BE26B06009B4875 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				D02FB3842BE26B12009B4875 /* loginSwiftUIView.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,6 +209,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D02FB3852BE26B12009B4875 /* loginSwiftUIView.swift in Sources */,
 				D02FB3732BDF451F009B4875 /* painStatSwiftUIView.swift in Sources */,
 				D007C26F2BDB64EE005F2A29 /* ContentView.swift in Sources */,
 				D007C2712BDB64EE005F2A29 /* Item.swift in Sources */,
