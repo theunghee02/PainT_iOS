@@ -23,6 +23,10 @@
 		D02FB3762BDF4555009B4875 /* myPageSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FB3752BDF4555009B4875 /* myPageSwiftUIView.swift */; };
 		D02FB3792BE00B91009B4875 /* DiseasePredictionSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FB3782BE00B91009B4875 /* DiseasePredictionSwiftUIView.swift */; };
 		D02FB3852BE26B12009B4875 /* loginSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FB3842BE26B12009B4875 /* loginSwiftUIView.swift */; };
+		D02FB37B2BE01789009B4875 /* painRecordUnitySwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FB37A2BE01789009B4875 /* painRecordUnitySwiftUIView.swift */; };
+		D02FB37D2BE017B0009B4875 /* painRecordInfoSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FB37C2BE017B0009B4875 /* painRecordInfoSwiftUIView.swift */; };
+		D02FB37F2BE0A728009B4875 /* painRecordInfoFeelingSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FB37E2BE0A728009B4875 /* painRecordInfoFeelingSwiftUIView.swift */; };
+		D02FB3812BE0AF09009B4875 /* painRecordInfoDegreeSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FB3802BE0AF09009B4875 /* painRecordInfoDegreeSwiftUIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +46,10 @@
 		D02FB3752BDF4555009B4875 /* myPageSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myPageSwiftUIView.swift; sourceTree = "<group>"; };
 		D02FB3782BE00B91009B4875 /* DiseasePredictionSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseasePredictionSwiftUIView.swift; sourceTree = "<group>"; };
 		D02FB3842BE26B12009B4875 /* loginSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginSwiftUIView.swift; sourceTree = "<group>"; };
+		D02FB37A2BE01789009B4875 /* painRecordUnitySwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = painRecordUnitySwiftUIView.swift; sourceTree = "<group>"; };
+		D02FB37C2BE017B0009B4875 /* painRecordInfoSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = painRecordInfoSwiftUIView.swift; sourceTree = "<group>"; };
+		D02FB37E2BE0A728009B4875 /* painRecordInfoFeelingSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = painRecordInfoFeelingSwiftUIView.swift; sourceTree = "<group>"; };
+		D02FB3802BE0AF09009B4875 /* painRecordInfoDegreeSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = painRecordInfoDegreeSwiftUIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +121,10 @@
 			isa = PBXGroup;
 			children = (
 				D02FB36D2BDEBAFC009B4875 /* painRecordSwiftUIView.swift */,
+				D02FB37A2BE01789009B4875 /* painRecordUnitySwiftUIView.swift */,
+				D02FB37C2BE017B0009B4875 /* painRecordInfoSwiftUIView.swift */,
+				D02FB37E2BE0A728009B4875 /* painRecordInfoFeelingSwiftUIView.swift */,
+				D02FB3802BE0AF09009B4875 /* painRecordInfoDegreeSwiftUIView.swift */,
 			);
 			path = PainRecord;
 			sourceTree = "<group>";
@@ -229,16 +241,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				D02FB3852BE26B12009B4875 /* loginSwiftUIView.swift in Sources */,
+				D02FB37F2BE0A728009B4875 /* painRecordInfoFeelingSwiftUIView.swift in Sources */,
 				D02FB3732BDF451F009B4875 /* painStatSwiftUIView.swift in Sources */,
 				D007C26F2BDB64EE005F2A29 /* ContentView.swift in Sources */,
 				D007C2712BDB64EE005F2A29 /* Item.swift in Sources */,
 				D02FB3762BDF4555009B4875 /* myPageSwiftUIView.swift in Sources */,
+				D02FB37D2BE017B0009B4875 /* painRecordInfoSwiftUIView.swift in Sources */,
 				D007C26D2BDB64EE005F2A29 /* PainTApp.swift in Sources */,
 				D02FB3792BE00B91009B4875 /* DiseasePredictionSwiftUIView.swift in Sources */,
+				D02FB3812BE0AF09009B4875 /* painRecordInfoDegreeSwiftUIView.swift in Sources */,
 				D02FB36E2BDEBAFC009B4875 /* painRecordSwiftUIView.swift in Sources */,
 				081EB58D2BE275960097E960 /* findPasswordSwiftUIView.swift in Sources */,
 				D02FB3702BDF4427009B4875 /* tabSwiftUIView.swift in Sources */,
 				081EB58E2BE275960097E960 /* signUpSwiftUIView.swift in Sources */,
+				D02FB37B2BE01789009B4875 /* painRecordUnitySwiftUIView.swift in Sources */,
 				D02FB36B2BDEA000009B4875 /* homeSwiftUIView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
