@@ -54,7 +54,7 @@ struct loginSwiftUIView: View {
                     
                     Button("Login"){
                         login()
-                        AF.request("http://34.22.95.16/api/v1/user/login", method: .post, parameters: ["username": username, "password": password], encoding: JSONEncoding.default).responseDecodable(of: Response.self) { response in
+                        AF.request("http://chi.iu.com/api/v1/users/login", method: .post, parameters: ["username": username, "password": password], encoding: JSONEncoding.default).responseDecodable(of: Response.self) { response in
                             switch response.result {
                             case .success(let value):
                                 if value.code == 2000{
