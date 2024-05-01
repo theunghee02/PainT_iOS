@@ -19,6 +19,10 @@
 		D02FB3762BDF4555009B4875 /* myPageSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FB3752BDF4555009B4875 /* myPageSwiftUIView.swift */; };
 		D02FB3792BE00B91009B4875 /* DiseasePredictionSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FB3782BE00B91009B4875 /* DiseasePredictionSwiftUIView.swift */; };
 		D02FB3852BE26B12009B4875 /* loginSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FB3842BE26B12009B4875 /* loginSwiftUIView.swift */; };
+		D08E8B362BE2714500E38AD5 /* signUpSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08E8B342BE2714400E38AD5 /* signUpSwiftUIView.swift */; };
+		D08E8B372BE2714500E38AD5 /* findPasswordSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08E8B352BE2714500E38AD5 /* findPasswordSwiftUIView.swift */; };
+		D08E8B3A2BE2719500E38AD5 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = D08E8B392BE2719500E38AD5 /* Alamofire */; };
+		D08E8B3C2BE2719500E38AD5 /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = D08E8B3B2BE2719500E38AD5 /* AlamofireDynamic */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +39,8 @@
 		D02FB3752BDF4555009B4875 /* myPageSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myPageSwiftUIView.swift; sourceTree = "<group>"; };
 		D02FB3782BE00B91009B4875 /* DiseasePredictionSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseasePredictionSwiftUIView.swift; sourceTree = "<group>"; };
 		D02FB3842BE26B12009B4875 /* loginSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginSwiftUIView.swift; sourceTree = "<group>"; };
+		D08E8B342BE2714400E38AD5 /* signUpSwiftUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = signUpSwiftUIView.swift; sourceTree = "<group>"; };
+		D08E8B352BE2714500E38AD5 /* findPasswordSwiftUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = findPasswordSwiftUIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +48,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D08E8B3A2BE2719500E38AD5 /* Alamofire in Frameworks */,
+				D08E8B3C2BE2719500E38AD5 /* AlamofireDynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,6 +142,8 @@
 		D02FB3832BE26B06009B4875 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				D08E8B352BE2714500E38AD5 /* findPasswordSwiftUIView.swift */,
+				D08E8B342BE2714400E38AD5 /* signUpSwiftUIView.swift */,
 				D02FB3842BE26B12009B4875 /* loginSwiftUIView.swift */,
 			);
 			path = Login;
@@ -155,6 +165,10 @@
 			dependencies = (
 			);
 			name = PainT;
+			packageProductDependencies = (
+				D08E8B392BE2719500E38AD5 /* Alamofire */,
+				D08E8B3B2BE2719500E38AD5 /* AlamofireDynamic */,
+			);
 			productName = PainT;
 			productReference = D007C2692BDB64EE005F2A29 /* PainT.app */;
 			productType = "com.apple.product-type.application";
@@ -183,6 +197,9 @@
 				Base,
 			);
 			mainGroup = D007C2602BDB64EE005F2A29;
+			packageReferences = (
+				D08E8B382BE2719500E38AD5 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = D007C26A2BDB64EE005F2A29 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -215,9 +232,11 @@
 				D007C2712BDB64EE005F2A29 /* Item.swift in Sources */,
 				D02FB3762BDF4555009B4875 /* myPageSwiftUIView.swift in Sources */,
 				D007C26D2BDB64EE005F2A29 /* PainTApp.swift in Sources */,
+				D08E8B372BE2714500E38AD5 /* findPasswordSwiftUIView.swift in Sources */,
 				D02FB3792BE00B91009B4875 /* DiseasePredictionSwiftUIView.swift in Sources */,
 				D02FB36E2BDEBAFC009B4875 /* painRecordSwiftUIView.swift in Sources */,
 				D02FB3702BDF4427009B4875 /* tabSwiftUIView.swift in Sources */,
+				D08E8B362BE2714500E38AD5 /* signUpSwiftUIView.swift in Sources */,
 				D02FB36B2BDEA000009B4875 /* homeSwiftUIView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -355,6 +374,7 @@
 				DEVELOPMENT_TEAM = SB87AFXHM2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PainT/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -384,6 +404,7 @@
 				DEVELOPMENT_TEAM = SB87AFXHM2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PainT/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -424,6 +445,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D08E8B382BE2719500E38AD5 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D08E8B392BE2719500E38AD5 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D08E8B382BE2719500E38AD5 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		D08E8B3B2BE2719500E38AD5 /* AlamofireDynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D08E8B382BE2719500E38AD5 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = AlamofireDynamic;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D007C2612BDB64EE005F2A29 /* Project object */;
 }
