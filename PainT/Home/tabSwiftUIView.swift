@@ -9,24 +9,26 @@ import SwiftUI
 
 struct tabSwiftUIView: View {
     var body: some View {
-        TabView {
-            // home
-            homeSwiftUIView()
-                .tabItem {
-                    Image("homeGNB-default")
-                }
-            // painStat
-            painStatSwiftUIView()
-                .tabItem {
-                    Image("painStat-default")
-                }
-            // myPage
-            myPageSwiftUIView()
-                .tabItem {
-                    Image("mypage-default")
-                }
-        } // TabView
-        .navigationBarBackButtonHidden()
+        NavigationView {
+            TabView {
+                // home
+                homeSwiftUIView()
+                    .tabItem {
+                        Image("homeGNB-default")
+                    }
+                // painStat
+                painStatSwiftUIView()
+                    .tabItem {
+                        Image("painStat-default")
+                    }
+                // myPage
+                myPageSwiftUIView()
+                    .tabItem {
+                        Image("mypage-default")
+                    }
+            } // TabView
+            .navigationBarBackButtonHidden()
+        } // NavigationView
     }
 }
 
