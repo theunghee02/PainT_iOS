@@ -24,7 +24,7 @@ struct painRecordInfoFeelingSwiftUIView: View {
             feelingRow(feeling: "아팠다 안 아팠다 함")
             feelingRow(feeling: "죄는 듯한 느낌")
         }
-        HStack {
+        HStack(spacing: 0) {
             Text("이전")
                 .padding(.top, 20)
                 .padding(.horizontal, 70)
