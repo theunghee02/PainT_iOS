@@ -17,16 +17,22 @@ struct painRecordInfoTriggerSwiftUIView: View {
         TextField("직접 입력해주세요", text: $trigger)
             .padding(20)
             .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
-        HStack {
-            Text("이전")
-                .padding(.vertical, 20)
-                .padding(.horizontal, 60)
-                .background(Color(red: 0xD9 / 255, green: 0xD9 / 255, blue: 0xD9 / 255))
-//            Spacer(minLength: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/)
-            Text("다음")
-                .padding(.vertical, 20)
-                .padding(.horizontal, 80)
-                .background(Color("AccentColor"))
+        Spacer()
+        HStack(spacing: 0) {
+                NavigationLink(destination: painRecordUnitySwiftUIView()) {
+                    Text("이전")
+                        .foregroundColor(.white)
+                        .frame(minHeight: 50)
+                        .frame(width: UIScreen.main.bounds.width * 0.4)
+                        .background(Color(red: 0xD9 / 255, green: 0xD9 / 255, blue: 0xD9 / 255))
+                }
+                NavigationLink(destination: painRecordInfoFeelingSwiftUIView()) {
+                    Text("다음")
+                        .foregroundColor(.white)
+                        .frame(minHeight: 50)
+                        .frame(width: UIScreen.main.bounds.width * 0.6)
+                        .background(Color("AccentColor"))
+                }
         } // HStack
     }
 }
