@@ -24,17 +24,8 @@ struct painRecordInfoFeelingSwiftUIView: View {
             feelingRow(feeling: "아팠다 안 아팠다 함")
             feelingRow(feeling: "죄는 듯한 느낌")
         }
-        HStack(spacing: 0) {
-            Text("이전")
-                .padding(.top, 20)
-                .padding(.horizontal, 70)
-                .background(Color(red: 0xD9 / 255, green: 0xD9 / 255, blue: 0xD9 / 255))
-//            Spacer(minLength: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/)
-            Text("다음")
-                .padding(.top, 20)
-                .padding(.horizontal, 90)
-                .background(Color("AccentColor"))
-        } // HStack
+        Spacer()
+        bottomButtonSwiftUIView(nextDestination: AnyView(painRecordInfoDegreeSwiftUIView()))
     }
 }
 

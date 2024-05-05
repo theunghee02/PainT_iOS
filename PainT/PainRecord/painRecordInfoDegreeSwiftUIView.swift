@@ -33,6 +33,8 @@ struct painRecordInfoDegreeSwiftUIView: View {
                 degreeRow(idx: idx, degreeText: degreeTextList[idx])
             }
         } // HStack
+        Spacer()
+        bottomButtonSwiftUIView(nextDestination: AnyView(painRecordResultSwiftUIView()))
     }
     
     func degreeRow(idx: Int, degreeText: String) -> some View {

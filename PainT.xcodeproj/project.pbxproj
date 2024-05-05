@@ -17,6 +17,8 @@
 		D007C2732BDB64F0005F2A29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D007C2722BDB64F0005F2A29 /* Assets.xcassets */; };
 		D007C2762BDB64F0005F2A29 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D007C2752BDB64F0005F2A29 /* Preview Assets.xcassets */; };
 		D0273E6E2BE77F8D0052824A /* painRecordInfoTimeSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0273E6D2BE77F8D0052824A /* painRecordInfoTimeSwiftUIView.swift */; };
+		D0273E702BE787BC0052824A /* bottomButtonSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0273E6F2BE787BC0052824A /* bottomButtonSwiftUIView.swift */; };
+		D0273E722BE789A70052824A /* painRecordResultSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0273E712BE789A70052824A /* painRecordResultSwiftUIView.swift */; };
 		D02FB36B2BDEA000009B4875 /* homeSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FB36A2BDEA000009B4875 /* homeSwiftUIView.swift */; };
 		D02FB3702BDF4427009B4875 /* tabSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FB36F2BDF4426009B4875 /* tabSwiftUIView.swift */; };
 		D02FB3732BDF451F009B4875 /* painStatSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FB3722BDF451F009B4875 /* painStatSwiftUIView.swift */; };
@@ -40,6 +42,8 @@
 		D007C2722BDB64F0005F2A29 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D007C2752BDB64F0005F2A29 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D0273E6D2BE77F8D0052824A /* painRecordInfoTimeSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = painRecordInfoTimeSwiftUIView.swift; sourceTree = "<group>"; };
+		D0273E6F2BE787BC0052824A /* bottomButtonSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bottomButtonSwiftUIView.swift; sourceTree = "<group>"; };
+		D0273E712BE789A70052824A /* painRecordResultSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = painRecordResultSwiftUIView.swift; sourceTree = "<group>"; };
 		D02FB36A2BDEA000009B4875 /* homeSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeSwiftUIView.swift; sourceTree = "<group>"; };
 		D02FB36F2BDF4426009B4875 /* tabSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tabSwiftUIView.swift; sourceTree = "<group>"; };
 		D02FB3722BDF451F009B4875 /* painStatSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = painStatSwiftUIView.swift; sourceTree = "<group>"; };
@@ -125,6 +129,8 @@
 				D0273E6D2BE77F8D0052824A /* painRecordInfoTimeSwiftUIView.swift */,
 				D02FB37E2BE0A728009B4875 /* painRecordInfoFeelingSwiftUIView.swift */,
 				D02FB3802BE0AF09009B4875 /* painRecordInfoDegreeSwiftUIView.swift */,
+				D0273E712BE789A70052824A /* painRecordResultSwiftUIView.swift */,
+				D0273E6F2BE787BC0052824A /* bottomButtonSwiftUIView.swift */,
 			);
 			path = PainRecord;
 			sourceTree = "<group>";
@@ -240,6 +246,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0273E722BE789A70052824A /* painRecordResultSwiftUIView.swift in Sources */,
+				D0273E702BE787BC0052824A /* bottomButtonSwiftUIView.swift in Sources */,
 				D02FB3852BE26B12009B4875 /* loginSwiftUIView.swift in Sources */,
 				D02FB37F2BE0A728009B4875 /* painRecordInfoFeelingSwiftUIView.swift in Sources */,
 				D02FB3732BDF451F009B4875 /* painStatSwiftUIView.swift in Sources */,

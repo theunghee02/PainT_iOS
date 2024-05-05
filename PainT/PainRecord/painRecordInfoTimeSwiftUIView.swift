@@ -16,6 +16,8 @@ struct painRecordInfoTimeSwiftUIView: View {
         DatePicker("시간 선택", selection: $selectedTime, in: ...Date(), displayedComponents: .hourAndMinute)
             .datePickerStyle(CompactDatePickerStyle())
             .labelsHidden()
+        Spacer()
+        bottomButtonSwiftUIView(nextDestination: AnyView(painRecordInfoFeelingSwiftUIView()))
     }
 }
 
