@@ -27,6 +27,8 @@ struct painRecordInfoDegreeSwiftUIView: View {
     
     var body: some View {
         Text("통증의 강도는 어느 정도인가요?")
+            .fontWeight(.semibold)
+            .font(.system(size:20))
             .padding(20)
         HStack(spacing: 20) {
             ForEach((0...10).filter { $0 % 2 == 0 }, id: \.self) { idx in
@@ -48,7 +50,7 @@ struct painRecordInfoDegreeSwiftUIView: View {
                 .foregroundColor(.black)
                 
             Text("\(degreeText)")
-                .font(.system(size:12))
+                .font(.system(size:9))
                 .foregroundColor(selectedDegree == idx ? Color("AccentColor") : Color.gray)
         } // VStack
         .onTapGesture {

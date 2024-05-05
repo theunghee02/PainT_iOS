@@ -13,6 +13,8 @@ struct painRecordInfoTimeSwiftUIView: View {
     
     var body: some View {
         Text("통증 발생 시간은 어떻게 되나요?")
+            .fontWeight(.semibold)
+            .font(.system(size:20))
         DatePicker("시간 선택", selection: $selectedTime, in: ...Date(), displayedComponents: .hourAndMinute)
             .datePickerStyle(CompactDatePickerStyle())
             .labelsHidden()
