@@ -8,21 +8,24 @@
 import SwiftUI
 
 struct painRecordInfoFeelingSwiftUIView: View {
+    let feelingList = ["날카로운 느낌","누르는 듯한 느낌","칼로 벤 것처럼 아픔","둔한 느낌","타는 듯한 느낌","쑤시는 느낌","저린 느낌","다른 부위로 퍼지듯 아픔","아팠다 안 아팠다 함","죄는 듯한 느낌"]
+    
     var body: some View {
         Text("통증의 느낌은 어떠한가요?")
             .fontWeight(.semibold)
             .font(.system(size:20))
-        List {
-            feelingRow(feeling: "날카로운 느낌")
-            feelingRow(feeling: "누르는 듯한 느낌")
-            feelingRow(feeling: "칼로 벤 것처럼 아픔")
-            feelingRow(feeling: "둔한 느낌")
-            feelingRow(feeling: "타는 듯한 느낌")
-            feelingRow(feeling: "쑤시는 느낌")
-            feelingRow(feeling: "저린 느낌")
-            feelingRow(feeling: "다른 부위로 퍼지듯 아픔")
-            feelingRow(feeling: "아팠다 안 아팠다 함")
-            feelingRow(feeling: "죄는 듯한 느낌")
+            .padding(.bottom, 30)
+        VStack(spacing: 20) {
+            ForEach(0..<feelingList.count, id: \.self) { idx in
+                if idx % 2 == 0 {
+                    HStack(spacing: 20) {
+                        feelingRow(feeling: feelingList[idx])
+                        if idx + 1 < feelingList.count {
+                            feelingRow(feeling: feelingList[idx + 1])
+                        }
+                    }
+                }
+            }
         }
         Spacer()
         bottomButtonSwiftUIView(nextDestination: AnyView(painRecordInfoDegreeSwiftUIView()))
