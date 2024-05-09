@@ -1,5 +1,5 @@
 //
-//  painRecordInfoDegreeSwiftUIView.swift
+//  painRecordInfoIntensitySwiftUIView.swift
 //  PainT
 //
 //  Created by 최승희 on 4/30/24.
@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct painRecordInfoDegreeSwiftUIView: View {
+struct painRecordInfoIntensitySwiftUIView: View {
     
-    @State private var selectedDegree: Int?
+    @State private var selectedIntensity: Int?
     
-    let degreeTextList = [
+    let intensityTextList = [
         "통증 없음",
         "",
         "가벼운 통증",
@@ -32,33 +32,33 @@ struct painRecordInfoDegreeSwiftUIView: View {
             .padding(20)
         HStack(spacing: 20) {
             ForEach((0...10).filter { $0 % 2 == 0 }, id: \.self) { idx in
-                degreeRow(idx: idx, degreeText: degreeTextList[idx])
+                intensityRow(idx: idx, intensityText: intensityTextList[idx])
             }
         } // HStack
         Spacer()
         bottomButtonSwiftUIView(nextDestination: AnyView(painRecordResultSwiftUIView()))
     }
     
-    func degreeRow(idx: Int, degreeText: String) -> some View {
+    func intensityRow(idx: Int, intensityText: String) -> some View {
         VStack(spacing: 20) {
             Text("\(idx)")
                 .background(
                     Circle()
                         .frame(width: 50, height: 50)
-                        .foregroundColor(selectedDegree == idx ? Color("AccentColor") : Color.gray)
+                        .foregroundColor(selectedIntensity == idx ? Color("AccentColor") : Color.gray)
                 )
                 .foregroundColor(.black)
                 
-            Text("\(degreeText)")
+            Text("\(intensityText)")
                 .font(.system(size:9))
-                .foregroundColor(selectedDegree == idx ? Color("AccentColor") : Color.gray)
+                .foregroundColor(selectedIntensity == idx ? Color("AccentColor") : Color.gray)
         } // VStack
         .onTapGesture {
-            self.selectedDegree = idx
+            self.selectedIntensity = idx
         }
     }
 }
 
 #Preview {
-    painRecordInfoDegreeSwiftUIView()
+    painRecordInfoIntensitySwiftUIView()
 }

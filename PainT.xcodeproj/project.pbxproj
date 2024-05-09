@@ -27,7 +27,7 @@
 		D02FB37B2BE01789009B4875 /* painRecordUnitySwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FB37A2BE01789009B4875 /* painRecordUnitySwiftUIView.swift */; };
 		D02FB37D2BE017B0009B4875 /* painRecordInfoSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FB37C2BE017B0009B4875 /* painRecordInfoSwiftUIView.swift */; };
 		D02FB37F2BE0A728009B4875 /* painRecordInfoFeelingSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FB37E2BE0A728009B4875 /* painRecordInfoFeelingSwiftUIView.swift */; };
-		D02FB3812BE0AF09009B4875 /* painRecordInfoDegreeSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FB3802BE0AF09009B4875 /* painRecordInfoDegreeSwiftUIView.swift */; };
+		D02FB3812BE0AF09009B4875 /* painRecordInfoIntensitySwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FB3802BE0AF09009B4875 /* painRecordInfoIntensitySwiftUIView.swift */; };
 		D02FB3852BE26B12009B4875 /* loginSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FB3842BE26B12009B4875 /* loginSwiftUIView.swift */; };
 /* End PBXBuildFile section */
 
@@ -52,7 +52,7 @@
 		D02FB37A2BE01789009B4875 /* painRecordUnitySwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = painRecordUnitySwiftUIView.swift; sourceTree = "<group>"; };
 		D02FB37C2BE017B0009B4875 /* painRecordInfoSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = painRecordInfoSwiftUIView.swift; sourceTree = "<group>"; };
 		D02FB37E2BE0A728009B4875 /* painRecordInfoFeelingSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = painRecordInfoFeelingSwiftUIView.swift; sourceTree = "<group>"; };
-		D02FB3802BE0AF09009B4875 /* painRecordInfoDegreeSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = painRecordInfoDegreeSwiftUIView.swift; sourceTree = "<group>"; };
+		D02FB3802BE0AF09009B4875 /* painRecordInfoIntensitySwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = painRecordInfoIntensitySwiftUIView.swift; sourceTree = "<group>"; };
 		D02FB3842BE26B12009B4875 /* loginSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginSwiftUIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -128,7 +128,7 @@
 				D02FB37C2BE017B0009B4875 /* painRecordInfoSwiftUIView.swift */,
 				D0273E6D2BE77F8D0052824A /* painRecordInfoTimeSwiftUIView.swift */,
 				D02FB37E2BE0A728009B4875 /* painRecordInfoFeelingSwiftUIView.swift */,
-				D02FB3802BE0AF09009B4875 /* painRecordInfoDegreeSwiftUIView.swift */,
+				D02FB3802BE0AF09009B4875 /* painRecordInfoIntensitySwiftUIView.swift */,
 				D0273E712BE789A70052824A /* painRecordResultSwiftUIView.swift */,
 				D0273E6F2BE787BC0052824A /* bottomButtonSwiftUIView.swift */,
 			);
@@ -258,7 +258,7 @@
 				D02FB37D2BE017B0009B4875 /* painRecordInfoSwiftUIView.swift in Sources */,
 				D007C26D2BDB64EE005F2A29 /* PainTApp.swift in Sources */,
 				D02FB3792BE00B91009B4875 /* DiseasePredictionSwiftUIView.swift in Sources */,
-				D02FB3812BE0AF09009B4875 /* painRecordInfoDegreeSwiftUIView.swift in Sources */,
+				D02FB3812BE0AF09009B4875 /* painRecordInfoIntensitySwiftUIView.swift in Sources */,
 				081EB58D2BE275960097E960 /* findPasswordSwiftUIView.swift in Sources */,
 				D02FB3702BDF4427009B4875 /* tabSwiftUIView.swift in Sources */,
 				081EB58E2BE275960097E960 /* signUpSwiftUIView.swift in Sources */,

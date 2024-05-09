@@ -28,7 +28,7 @@ struct painRecordInfoFeelingSwiftUIView: View {
             }
         }
         Spacer()
-        bottomButtonSwiftUIView(nextDestination: AnyView(painRecordInfoDegreeSwiftUIView()))
+        bottomButtonSwiftUIView(nextDestination: AnyView(painRecordInfoIntensitySwiftUIView()))
     }
 }
 
