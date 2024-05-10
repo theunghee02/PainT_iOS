@@ -10,6 +10,14 @@ import SwiftUI
 struct painRecordUnitySwiftUIView: View {
     var body: some View {
         Text("painRecordUnitySwiftUIView")
+        Spacer()
+        NavigationLink(destination: painRecordInfoTriggerSwiftUIView()) {
+            Text("다음")
+                .frame(maxWidth: .infinity, minHeight: 50)
+                .background(Color("AccentColor"))
+                .foregroundColor(.white)
+        } // NavigationLink
+        .navigationTitle("통증 기록")
     }
 }
 

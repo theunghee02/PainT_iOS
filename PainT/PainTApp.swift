@@ -25,7 +25,7 @@ struct PainTApp: App {
 
     var body: some Scene {
         WindowGroup {
-            loginSwiftUIView() // 처음 시작 뷰
+            tabSwiftUIView() // 처음 시작 뷰
         }
         .modelContainer(sharedModelContainer)
     }
