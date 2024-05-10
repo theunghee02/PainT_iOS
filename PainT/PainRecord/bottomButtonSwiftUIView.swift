@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct bottomButtonSwiftUIView: View {
-    @Environment(\.presentationMode) var presentationMode // 현재 Modal View
+    // 현재 Modal View
+    @Environment(\.presentationMode) var presentationMode
+    
+    // 다음 화면
     let nextDestination: AnyView
     
     var body: some View {
@@ -18,14 +21,14 @@ struct bottomButtonSwiftUIView: View {
                 self.presentationMode.wrappedValue.dismiss()
             }) {
                 Text("이전")
-                    .foregroundColor(.white)
+                    .foregroundStyle(.white)
                     .frame(minHeight: 50)
                     .frame(width: UIScreen.main.bounds.width * 0.4)
-                    .background(Color(red: 0xD9 / 255, green: 0xD9 / 255, blue: 0xD9 / 255))
+                    .background(Color(hex: 0xD9D9D9))
             }
             NavigationLink(destination: nextDestination) {
                 Text("다음")
-                    .foregroundColor(.white)
+                    .foregroundStyle(.white)
                     .frame(minHeight: 50)
                     .frame(width: UIScreen.main.bounds.width * 0.6)
                     .background(Color("AccentColor"))
