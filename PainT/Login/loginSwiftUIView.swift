@@ -16,6 +16,7 @@ import Alamofire
 struct loginSwiftUIView: View {
     //@EnvironmentObject var variable: Variable
 
+    @State var stack: NavigationPath = NavigationPath()
 
     @State private var username: String = ""
     @State private var password: String = ""
@@ -31,8 +32,9 @@ struct loginSwiftUIView: View {
     var body: some View {
         
         NavigationView {
+            @State var stack: NavigationPath = NavigationPath()
             VStack(spacing: 10) {
-                Spacer()
+                Spacer(minLength: 40)
                 Image("appIcon")
                     .padding(50)
                 TextField("ID", text: $username)
@@ -52,7 +54,10 @@ struct loginSwiftUIView: View {
                 
                 
                 Button("로그인"){
-                    shouldNavigate = login()
+                    if(login()) {
+                        shouldNavigate = true
+                    }
+                    print("\(shouldNavigate)")
                 }
                 .buttonStyle(BasicButtonStyle())
                 .alert(isPresented: $showAlert) {
@@ -68,15 +73,47 @@ struct loginSwiftUIView: View {
                 }
                 .padding(10)
                 .font(.subheadline)
-                    
-                    
-                    // 소셜 로그인 버튼 추가 구현
-                NavigationLink(
-                    destination: tabSwiftUIView(),
-                    isActive: $shouldNavigate) {
-                        Text("")
-                            .hidden()
+                   
+                Spacer()
+                Text("or")
+                    .font(.caption)
+                    .foregroundColor(.gray)
+                
+                HStack {
+                    Spacer()
+                    NavigationLink(destination: webLoginSwiftUiView(type: "google")) {
+                        Image("google")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .scaledToFit()
+                            .frame(width: 80, height: 80)
                     }
+                    
+                    Spacer()
+                    
+                    NavigationLink(destination: webLoginSwiftUiView(type: "kakao")) {
+                        Image("kakao")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .scaledToFit()
+                            .frame(width: 75, height: 75)
+                    }
+                    
+                    Spacer()
+                    
+                    NavigationLink(destination: webLoginSwiftUiView(type: "apple")) {
+                        Image("apple")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .scaledToFit()
+                            .frame(width: 80, height: 80)
+                    }
+                    Spacer()
+                    
+                    
+                } // HStack
+                .padding()
+               
                     
                 Spacer()
                     
@@ -88,11 +125,11 @@ struct loginSwiftUIView: View {
                 
             } // VStack
             .padding()
+            .navigationDestination(isPresented: $shouldNavigate){
+                tabSwiftUIView()
+            }
         } // NavigationView
         .navigationBarBackButtonHidden()
-//        .navigationDestination(isPresented: $shouldNavigate){
-//            tabSwiftUIView()
-//        }
             
         
         
@@ -136,8 +173,10 @@ struct loginSwiftUIView: View {
         
     }// function
     
+    
 }
 
 #Preview {
     loginSwiftUIView()
 }
+
