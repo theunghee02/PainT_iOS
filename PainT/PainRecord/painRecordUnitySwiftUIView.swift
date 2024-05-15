@@ -4,12 +4,13 @@
 //
 //  Created by 최승희 on 4/30/24.
 //
+//  3D 신체 페이지
 
 import SwiftUI
 
 struct painRecordUnitySwiftUIView: View {
     var body: some View {
-        Text("painRecordUnitySwiftUIView")
+        unityWebview(urlToLoad: "https://www.naver.com")
         Spacer()
         NavigationLink(destination: painRecordInfoTriggerSwiftUIView()) {
             Text("다음")
