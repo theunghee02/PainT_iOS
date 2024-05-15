@@ -1,14 +1,15 @@
 //
-//  unityWebview.swift
+//  webview.swift
 //  PainT
 //
 //  Created by 최승희 on 5/11/24.
 //
+// 웹뷰 - 어디든 활용 가능
 
 import SwiftUI
 import WebKit
 
-struct unityWebview: UIViewRepresentable {
+struct webview: UIViewRepresentable {
     
     var urlToLoad: String
     
@@ -25,10 +26,10 @@ struct unityWebview: UIViewRepresentable {
     }
     
     // 업데이트 UIView
-    func updateUIView(_ uiView: WKWebView, context: UIViewRepresentableContext<unityWebview>) {
+    func updateUIView(_ uiView: WKWebView, context: UIViewRepresentableContext<webview>) {
     }
 }
 
 #Preview {
-    unityWebview(urlToLoad: "https://www.naver.com")
+    webview(urlToLoad: "https://www.naver.com")
 }
