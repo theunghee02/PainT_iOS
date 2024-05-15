@@ -15,24 +15,16 @@ struct DiseasePredictionSwiftUIView: View {
         Text("예측 질환 Top 5")
             .fontWeight(.semibold)
             .font(.system(size:20))
-            .padding(.bottom, 35)
+            .padding(.bottom, 30)
         Text("\(username)님의 최근 통증 기록을 기반으로 예측한 질환입니다.")
         List {
-            Section(header: Text("Top 1")) {
-                Text("\(diseases[0])")
-            }
-            Section(header: Text("Top 2")) {
-                Text("\(diseases[1])")
-            }
-            Section(header: Text("Top 3")) {
-                Text("\(diseases[2])")
-            }
-            Section(header: Text("Top 4")) {
-                Text("\(diseases[3])")
-            }
-            Section(header: Text("Top 5")) {
-                Text("\(diseases[4])")
-            }
+            ForEach(0..<5) { idx in
+                Section(header: Text("Top \(idx+1)")) {
+                    NavigationLink(destination: webview(urlToLoad: "https://search.naver.com/search.naver?ie=UTF-8&sm=whl_hty&query=\(diseases[idx])")) {
+                        Text("\(diseases[idx])")
+                    } // NavigationLink
+                } // Section
+            } // ForEach
         } // List
         .listStyle(.inset)
     }
