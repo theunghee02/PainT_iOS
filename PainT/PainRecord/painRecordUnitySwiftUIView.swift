@@ -10,7 +10,7 @@ import SwiftUI
 
 struct painRecordUnitySwiftUIView: View {
     var body: some View {
-        unityWebview(urlToLoad: "https://www.naver.com")
+        webview(urlToLoad: "https://www.naver.com")
         Spacer()
         NavigationLink(destination: painRecordInfoTriggerSwiftUIView()) {
             Text("다음")
