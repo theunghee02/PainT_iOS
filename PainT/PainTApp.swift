@@ -7,7 +7,6 @@
 
 import SwiftUI
 import SwiftData
-import GoogleSignInSwift
 
 @main
 struct PainTApp: App {

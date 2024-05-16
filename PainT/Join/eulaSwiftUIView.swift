@@ -53,21 +53,22 @@ struct EulaComponent: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            ScrollView(.horizontal, showsIndicators: false){
+            ScrollView(.vertical, showsIndicators: false){
                 Text(text)
-                    .padding()
                     .frame(alignment: .leading)
+                    .padding()
+                    .multilineTextAlignment(.leading)
             }
             .background(Color(.systemGray5).cornerRadius(10))
             .padding(.vertical,10)
             .frame(maxWidth: .infinity, maxHeight: 300)
-
+            
             Toggle(isOn: $isChecked) {
                 Text("동의합니다.")
             }
             .toggleStyle(checkboxStyle())
         }
-        .frame(width: .infinity)
+        
     }
 }
 

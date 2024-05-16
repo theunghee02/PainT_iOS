@@ -27,7 +27,7 @@ struct signUpSwiftUIView: View {
     @State private var gender: Bool = false
     
     var body: some View {
-        NavigationView {
+
             ScrollView {
                 VStack(alignment: .leading){
                     NameFieldMapComponent(fieldDest: "아이디", fieldName: "ID", fieldValue: $username, needButton: true)
@@ -102,8 +102,7 @@ struct signUpSwiftUIView: View {
             } // ScrollView
             .navigationTitle("회원 가입")
             .padding()
-        } // NavigationView
-        .navigationBarBackButtonHidden()
+            
     }
 }
 

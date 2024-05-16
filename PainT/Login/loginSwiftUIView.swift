@@ -16,7 +16,6 @@ import Alamofire
 struct loginSwiftUIView: View {
     //@EnvironmentObject var variable: Variable
 
-    @State var stack: NavigationPath = NavigationPath()
 
     @State private var username: String = ""
     @State private var password: String = ""
@@ -32,7 +31,7 @@ struct loginSwiftUIView: View {
     var body: some View {
         
         NavigationView {
-            @State var stack: NavigationPath = NavigationPath()
+            
             VStack(spacing: 10) {
                 Spacer(minLength: 40)
                 Image("appIcon")
@@ -125,11 +124,13 @@ struct loginSwiftUIView: View {
                 
             } // VStack
             .padding()
+            .toolbar(.hidden)
             .navigationDestination(isPresented: $shouldNavigate){
                 tabSwiftUIView()
             }
         } // NavigationView
-        .navigationBarBackButtonHidden()
+        .navigationBarBackButtonHidden(true)
+        
             
         
         
@@ -172,6 +173,7 @@ struct loginSwiftUIView: View {
         return false
         
     }// function
+
     
     
 }
