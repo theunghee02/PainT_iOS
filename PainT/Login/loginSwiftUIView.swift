@@ -77,10 +77,14 @@ struct loginSwiftUIView: View {
                 Text("or")
                     .font(.caption)
                     .foregroundColor(.gray)
-                
+                if(shouldNavigate) {
+                    NavigationLink(destination: tabSwiftUIView(), isActive: $shouldNavigate) {
+                        tabSwiftUIView()
+                    }
+                }
                 HStack {
                     Spacer()
-                    NavigationLink(destination: webLoginSwiftUiView(type: "google")) {
+                    NavigationLink(destination: webLoginSwiftUiView(isPresented: $shouldNavigate ,accessToken: $accessToken, type: "google")) {
                         Image("google")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
@@ -90,7 +94,7 @@ struct loginSwiftUIView: View {
                     
                     Spacer()
                     
-                    NavigationLink(destination: webLoginSwiftUiView(type: "kakao")) {
+                    NavigationLink(destination: webLoginSwiftUiView(isPresented: $shouldNavigate ,accessToken: $accessToken, type: "kakao")) {
                         Image("kakao")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
@@ -100,7 +104,7 @@ struct loginSwiftUIView: View {
                     
                     Spacer()
                     
-                    NavigationLink(destination: webLoginSwiftUiView(type: "apple")) {
+                    NavigationLink(destination: webLoginSwiftUiView(isPresented: $shouldNavigate ,accessToken: $accessToken, type: "apple")) {
                         Image("apple")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
