@@ -15,6 +15,9 @@ struct myPageSwiftUIView: View {
             VStack {
                 List {
                     Button("로그아웃") {
+                        let svc = UserDefaultsService()
+                        svc.deleteAccessToken()
+                        svc.deleteRefreshToken()
                         logoutNavigate = true;
                     }
                     .foregroundColor(.black)
@@ -28,7 +31,7 @@ struct myPageSwiftUIView: View {
             }
             
         } // NavigationView
-            
+        .navigationBarBackButtonHidden()
     }
 }
 
