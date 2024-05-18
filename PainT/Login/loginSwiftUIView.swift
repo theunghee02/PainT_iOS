@@ -30,8 +30,7 @@ struct loginSwiftUIView: View {
 
     var body: some View {
         
-        NavigationView {
-            
+        NavigationStack {
             VStack(spacing: 10) {
                 Spacer(minLength: 40)
                 Image("appIcon")
@@ -132,7 +131,7 @@ struct loginSwiftUIView: View {
             .navigationDestination(isPresented: $shouldNavigate){
                 tabSwiftUIView()
             }
-        } // NavigationView
+        } // NavigationStack
         .navigationBarBackButtonHidden(true)
         
             

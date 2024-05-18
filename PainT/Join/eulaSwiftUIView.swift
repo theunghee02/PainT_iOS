@@ -14,36 +14,32 @@ struct eulaSwiftUIView: View {
     @State private var isAgreed4 = false
     
     var body: some View {
-        NavigationView {
-            ScrollView {
-                VStack {
-                    EulaComponent(isChecked: $isAgreed1, text: eula1)
-                    EulaComponent(isChecked: $isAgreed2, text: eula1)
-                    EulaComponent(isChecked: $isAgreed3, text: eula1)
-                    EulaComponent(isChecked: $isAgreed4, text: eula1)
-                    
-                    Spacer(minLength: 30)
-                    
-                    NavigationLink(destination: signUpSwiftUIView(isAgreed4: isAgreed4)) {
-                        Text("다음")
-                    }
-                    .buttonStyle(NoColorButtonStyle())
-                    .background(isAgreed1 && isAgreed2 && isAgreed3 ? Color.accentColor.cornerRadius(10) : Color(.systemGray5).cornerRadius(10))
-                    .disabled(!isAgreed1)
+        ScrollView {
+            VStack {
+                EulaComponent(isChecked: $isAgreed1, text: eula1)
+                EulaComponent(isChecked: $isAgreed2, text: eula1)
+                EulaComponent(isChecked: $isAgreed3, text: eula1)
+                EulaComponent(isChecked: $isAgreed4, text: eula1)
+                
+                Spacer(minLength: 30)
+                
+                NavigationLink(destination: signUpSwiftUIView(isAgreed4: isAgreed4)) {
+                    Text("다음")
                 }
-            
-            } // ScrollView
-            .navigationTitle("약관 동의")
-            .padding()
-            
-        } // NavigationView
-        .navigationBarBackButtonHidden()
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Image("appIcon")
+                .buttonStyle(NoColorButtonStyle())
+                .background(isAgreed1 && isAgreed2 && isAgreed3 ? Color.accentColor.cornerRadius(10) : Color(.systemGray5).cornerRadius(10))
+                .disabled(!isAgreed1)
             }
-        }
-        
+            
+        } // ScrollView
+        .navigationTitle("약관 동의")
+        .padding()
+        //        .navigationBarBackButtonHidden()
+        //        .toolbar {
+        //            ToolbarItem(placement: .navigationBarLeading) {
+        //                Image("appIcon")
+        //            }
+        //        }
     }
 }
 
