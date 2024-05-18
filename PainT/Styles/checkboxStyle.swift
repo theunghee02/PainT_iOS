@@ -12,16 +12,19 @@ struct checkboxStyle: ToggleStyle {
 
     func makeBody(configuration: Self.Configuration) -> some View {
 
-        return HStack(alignment: .top) {
-            Image(systemName: configuration.isOn ? "checkmark.square" : "square")
-                .resizable()
-                .frame(width: 24, height: 24)
-                .foregroundColor(configuration.isOn ? .accentColor : .gray)
-                .font(.system(size: 20, weight: .regular, design: .default))
-                configuration.label
-        }
-        .frame(width: .infinity,alignment: .leading)
-        .onTapGesture { configuration.isOn.toggle() }
+        return GeometryReader { proxy in
+            HStack(alignment: .top) {
+                Image(systemName: configuration.isOn ? "checkmark.square" : "square")
+                    .resizable()
+                    .frame(width: 24, height: 24)
+                    .foregroundColor(configuration.isOn ? .accentColor : .gray)
+                    .font(.system(size: 20, weight: .regular, design: .default))
+                    configuration.label
+            } // HStack
+            .frame(width: proxy.size.width, alignment: .leading)
+            .onTapGesture { configuration.isOn.toggle() }
+          } // GeometryReader
+        
 
     }
 }
