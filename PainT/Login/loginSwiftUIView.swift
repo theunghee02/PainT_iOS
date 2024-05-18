@@ -8,7 +8,6 @@
 
 import SwiftUI
 import Alamofire
-import Foundation
 
 
 // LoginView에 복사함 (나중에 메인이 이페이지가 아닐때 조작 계획중)
@@ -30,142 +29,160 @@ struct loginSwiftUIView: View {
 
 
     var body: some View {
-        ZStack {
-            NavigationView {
-                VStack(spacing: 10) {
-                    Spacer()
-                    Image("appIcon")
-                        .padding(50)
-                    TextField("ID", text: $username)
-                            .padding()
-                            .cornerRadius(10)
-                            .background(
-                                    RoundedRectangle(cornerRadius: 5)
-                                            .stroke(Color.gray, lineWidth: 1) // 외곽선 추가
-                            )
-                    SecureField("PW", text: $password)
-                            .padding()
-                            .cornerRadius(10)
-                            .background(
-                                    RoundedRectangle(cornerRadius: 5)
-                                            .stroke(Color.gray, lineWidth: 1) // 외곽선 추가
-                            )
-
-                    
-                    Button("Login"){
-                        login()
-                        AF.request("http://34.22.95.16/api/v1/user/login", method: .post, parameters: ["username": username, "password": password], encoding: JSONEncoding.default).responseDecodable(of: Response.self) { response in
-                            switch response.result {
-                            case .success(let value):
-                                if value.code == 2000{
-                                    accessToken = value.result.accessToken
-                                    shouldNavigate = true;
-                                } else {
-                                    showAlertMsg = "틀렸어요!"
-                                    showAlert=true;
-                                }
-                            case .failure(let error):
-                                print("Error: \(error)")
-                                return
-                            }
-                        }
+        
+        NavigationView {
+            
+            VStack(spacing: 10) {
+                Spacer(minLength: 40)
+                Image("appIcon")
+                    .padding(50)
+                TextField("ID", text: $username)
+                    .padding()
+                    .cornerRadius(10)
+                    .background(
+                        RoundedRectangle(cornerRadius: 5)
+                            .stroke(Color.gray, lineWidth: 1) // 외곽선 추가
+                    )
+                SecureField("PW", text: $password)
+                    .padding()
+                    .cornerRadius(10)
+                    .background(
+                        RoundedRectangle(cornerRadius: 5)
+                            .stroke(Color.gray, lineWidth: 1) // 외곽선 추가
+                    )
+                
+                
+                Button("로그인"){
+                    if(login()) {
+                        shouldNavigate = true
                     }
-                            .foregroundColor(.white)
-                            .frame(maxWidth: .infinity)
-                            .frame(height:40)
-                            .padding(10)
-                            .background(Color.black)
-                            .cornerRadius(10)
-                            .alert(isPresented: $showAlert) {
-                                Alert(
-                                        title: Text("알림"),
-                                        message: Text(showAlertMsg),
-                                        dismissButton: .default(Text("확인"))
-                                )
-                            }
-                        
-
-                    NavigationLink(
-                         destination: tabSwiftUIView(),
-                         isActive: $shouldNavigate) {
-                              Text("")
-                                   .hidden()
-                         }
-                    
-                    Text("Access Token: \(accessToken)")
-
-                    NavigationLink(destination: findPasswordSwiftUIView()) {
-                        Text("비밀번호를 잊으셨나요?")
-                    }
-                            .padding(1)
-                            .font(.subheadline)
-
-
-                    // 소셜 로그인 버튼 추가 구현
-
-
-                    Spacer()
-
-                    NavigationLink(destination: signUpSwiftUIView()) {
-                        Text("회원가입")
-                    }
-                            .buttonStyle(CustomButtonStyle())
+                    print("\(shouldNavigate)")
                 }
-                        .padding()
+                .buttonStyle(BasicButtonStyle())
+                .alert(isPresented: $showAlert) {
+                    Alert(
+                        title: Text("알림"),
+                        message: Text(showAlertMsg),
+                        dismissButton: .default(Text("확인"))
+                    )
+                } // alert
+                    
+                NavigationLink(destination: findPasswordSwiftUIView()) {
+                    Text("비밀번호를 잊으셨나요?")
+                }
+                .padding(10)
+                .font(.subheadline)
+                   
+                Spacer()
+                Text("or")
+                    .font(.caption)
+                    .foregroundColor(.gray)
+                if(shouldNavigate) {
+                    NavigationLink(destination: tabSwiftUIView(), isActive: $shouldNavigate) {
+                        tabSwiftUIView()
+                    }
+                }
+                HStack {
+                    Spacer()
+                    NavigationLink(destination: webLoginSwiftUiView(isPresented: $shouldNavigate ,accessToken: $accessToken, type: "google")) {
+                        Image("google")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .scaledToFit()
+                            .frame(width: 80, height: 80)
+                    }
+                    
+                    Spacer()
+                    
+                    NavigationLink(destination: webLoginSwiftUiView(isPresented: $shouldNavigate ,accessToken: $accessToken, type: "kakao")) {
+                        Image("kakao")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .scaledToFit()
+                            .frame(width: 75, height: 75)
+                    }
+                    
+                    Spacer()
+                    
+                    NavigationLink(destination: webLoginSwiftUiView(isPresented: $shouldNavigate ,accessToken: $accessToken, type: "apple")) {
+                        Image("apple")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .scaledToFit()
+                            .frame(width: 80, height: 80)
+                    }
+                    Spacer()
+                    
+                    
+                } // HStack
+                .padding()
+               
+                    
+                Spacer()
+                    
+                NavigationLink(destination: eulaSwiftUIView()) {
+                    Text("회원가입")
+                }
+                .buttonStyle(BasicButtonStyle())
+                
+                
+            } // VStack
+            .padding()
+            .toolbar(.hidden)
+            .navigationDestination(isPresented: $shouldNavigate){
+                tabSwiftUIView()
             }
-        }
+        } // NavigationView
+        .navigationBarBackButtonHidden(true)
+        
+            
+        
+        
     }
-    private func login() {
+    private func login() -> Bool {
         if password.isEmpty || username.isEmpty {
             // alert!
             showAlertMsg = "아이디, 비밀번호를 확인해주세요."
             showAlert = true;
             showAlert = false;
         }
-    }
+        else {
+            let parameters = ["username":username,"password":password]
+            
+            // 저장소 서비스 생성
+            let userDefaults = UserDefaultsService()
+            
+            let userService :UserService = UserService(apiPath: "/api/v1/users/login")
+            userService.loginRequest(parameters:parameters)
+            { result in
+                switch result {
+                case .success(let value):
+                    print(value.0?.message as Any)
+                    if(value.0?.code == 2000) {
+                        userDefaults.saveAccessToken(token: (value.0?.result.grantType)!+" "+(value.0?.result.accessToken)!)
+                        userDefaults.saveRefreshToken(token: value.1 ?? "non")
+                        shouldNavigate = true
+                    } else {
+                        showAlertMsg = value.0!.message
+                        showAlert = true
+                    }
+                case .failure(let error):
+                    print("Error fetching data: \(error)")
+                }
+            }// loginRequest
+        }
+        if(shouldNavigate){
+            return true
+        }
+        return false
+        
+    }// function
 
-    private func forgotPassword() {
-
-    }
-
-    private func signUp() {
-
-    }
+    
+    
 }
-
-//?????
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ContentView(document: .constant(expuiDocument()))
-//    }
-//}
-
-
-struct CustomButtonStyle: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-                .foregroundColor(.white)
-                .frame(maxWidth: .infinity)
-                .frame(height:40)
-                .padding(10)
-                .background(Color.black)
-                .cornerRadius(10)
-    }
-}
-
 
 #Preview {
     loginSwiftUIView()
 }
 
-struct Response: Codable {
-    let isSuccess: Bool
-    let code: Int
-    let message: String
-    let result: Result
-}
-
-struct Result: Codable {
-    let accessToken: String
-    let grantType: String
-}

@@ -10,6 +10,7 @@ import SwiftData
 
 @main
 struct PainTApp: App {
+    
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Item.self,
@@ -25,8 +26,24 @@ struct PainTApp: App {
 
     var body: some Scene {
         WindowGroup {
-            tabSwiftUIView() // 처음 시작 뷰
+            let userDefaults = UserDefaultsService()
+            if(userDefaults.getAccessToken() != nil) {
+                tabSwiftUIView()
+            } else {
+                loginSwiftUIView() // 처음 시작 뷰
+            }
         }
         .modelContainer(sharedModelContainer)
+    }
+}
+
+extension UINavigationController: ObservableObject, UIGestureRecognizerDelegate {
+    override open func viewDidLoad() {
+        super.viewDidLoad()
+        interactivePopGestureRecognizer?.delegate = self
+    }
+
+    public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return viewControllers.count > 1
     }
 }

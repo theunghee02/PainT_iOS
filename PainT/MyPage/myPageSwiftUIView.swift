@@ -8,8 +8,30 @@
 import SwiftUI
 
 struct myPageSwiftUIView: View {
+    @State var logoutNavigate : Bool = false
+    
     var body: some View {
-        Text("myPageSwiftUIView")
+        NavigationStack {
+            VStack {
+                List {
+                    Button("로그아웃") {
+                        let svc = UserDefaultsService()
+                        svc.deleteAccessToken()
+                        svc.deleteRefreshToken()
+                        logoutNavigate = true;
+                    }
+                    .foregroundColor(.black)
+                    
+                }
+            }
+            .navigationTitle("마이페이지")
+            .navigationDestination(isPresented: $logoutNavigate) {
+                loginSwiftUIView()
+                    .toolbar(.hidden, for: .tabBar)
+            }
+            
+        } // NavigationView
+        .navigationBarBackButtonHidden()
     }
 }
 
