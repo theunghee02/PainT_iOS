@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct tabSwiftUIView: View {
+    @State var stack = NavigationPath()
+    
     @State private var selectedTab = 0
     
     var body: some View {
@@ -26,14 +28,14 @@ struct tabSwiftUIView: View {
                     }
                     .tag(1)
                 // myPage
-                myPageSwiftUIView()
+                myPageSwiftUIView(stack: $stack)
                     .tabItem {
                         Label("마이페이지", image: selectedTab == 2 ? "mypage-colored" : "mypage-default")
                     }
                     .tag(2)
             } // TabView
-            .navigationBarBackButtonHidden()
         } // NavigationView
+        
     }
 }
 

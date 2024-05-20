@@ -54,7 +54,7 @@ struct homeSwiftUIView: View {
             }
         } // VStack
         .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
+            ToolbarItem(placement: .navigation) {
                 Image("appIcon")
             }
         }
