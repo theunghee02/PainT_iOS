@@ -14,9 +14,10 @@ import Alamofire
 
 @available(iOS 17.0, *)
 struct loginSwiftUIView: View {
-    //@EnvironmentObject var variable: Variable
-
-
+    @EnvironmentObject  private  var  appRootManager : AppRootManager
+    
+    
+    @State var stack:NavigationPath = NavigationPath()
     @State private var username: String = ""
     @State private var password: String = ""
     @State private var showAlert = false;
@@ -26,13 +27,16 @@ struct loginSwiftUIView: View {
 
     @State private var accessToken = ""
     @State private var message = ""
+    
+    
 
 
     var body: some View {
         
-        NavigationView {
+        NavigationStack {
             
             VStack(spacing: 10) {
+            
                 Spacer(minLength: 40)
                 Image("appIcon")
                     .padding(50)
@@ -54,7 +58,11 @@ struct loginSwiftUIView: View {
                 
                 Button("로그인"){
                     if(login()) {
-                        shouldNavigate = true
+                        username = ""
+                        password = ""
+                        withAnimation(.spring()) {
+                            appRootManager.currentRoot = .home
+                        }
                     }
                     print("\(shouldNavigate)")
                 }
@@ -77,14 +85,10 @@ struct loginSwiftUIView: View {
                 Text("or")
                     .font(.caption)
                     .foregroundColor(.gray)
-                if(shouldNavigate) {
-                    NavigationLink(destination: tabSwiftUIView(), isActive: $shouldNavigate) {
-                        tabSwiftUIView()
-                    }
-                }
+                
                 HStack {
                     Spacer()
-                    NavigationLink(destination: webLoginSwiftUiView(isPresented: $shouldNavigate ,accessToken: $accessToken, type: "google")) {
+                    NavigationLink(destination: webLoginSwiftUiView(isPresented: $shouldNavigate , type: "google")) {
                         Image("google")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
@@ -94,7 +98,7 @@ struct loginSwiftUIView: View {
                     
                     Spacer()
                     
-                    NavigationLink(destination: webLoginSwiftUiView(isPresented: $shouldNavigate ,accessToken: $accessToken, type: "kakao")) {
+                    NavigationLink(destination: webLoginSwiftUiView(isPresented: $shouldNavigate , type: "kakao")) {
                         Image("kakao")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
@@ -104,7 +108,7 @@ struct loginSwiftUIView: View {
                     
                     Spacer()
                     
-                    NavigationLink(destination: webLoginSwiftUiView(isPresented: $shouldNavigate ,accessToken: $accessToken, type: "apple")) {
+                    NavigationLink(destination: webLoginSwiftUiView(isPresented: $shouldNavigate , type: "apple")) {
                         Image("apple")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
@@ -120,7 +124,7 @@ struct loginSwiftUIView: View {
                     
                 Spacer()
                     
-                NavigationLink(destination: eulaSwiftUIView()) {
+                NavigationLink(destination: eulaSwiftUIView(stack: $stack)) {
                     Text("회원가입")
                 }
                 .buttonStyle(BasicButtonStyle())
@@ -128,12 +132,10 @@ struct loginSwiftUIView: View {
                 
             } // VStack
             .padding()
-            .toolbar(.hidden)
-            .navigationDestination(isPresented: $shouldNavigate){
-                tabSwiftUIView()
-            }
-        } // NavigationView
+            .toolbar(.hidden, for: .navigationBar)
+        } // NavigationStack
         .navigationBarBackButtonHidden(true)
+        .toolbar(.hidden,for:.tabBar)
         
             
         
