@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct eulaSwiftUIView: View {
+    @Binding var stack : NavigationPath
+    
     @State private var isAgreed1 = false
     @State private var isAgreed2 = false
     @State private var isAgreed3 = false
     @State private var isAgreed4 = false
     
     var body: some View {
-        NavigationView {
+        NavigationStack(path: $stack) {
             ScrollView {
                 VStack {
                     EulaComponent(isChecked: $isAgreed1, text: eula1)
@@ -72,6 +74,3 @@ struct EulaComponent: View {
     }
 }
 
-#Preview {
-    eulaSwiftUIView()
-}
