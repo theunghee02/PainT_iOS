@@ -4,6 +4,19 @@
 //
 //  Created by Shin Yeong Gwak on 5/1/24.
 //
+/**
+ Button("중복 검사") {
+     let param = ["username":]
+     if(event == "id-dup") {
+         NoAuthService("/api/v1/users/id-dup")
+             .voidRequest(parameters: , completion: <#T##(Result<Response, any Error>) -> Void#>)
+     } else if(event == "e-dup") {
+         
+     }
+ }
+ .font(.subheadline)
+ .buttonStyle(MiniButtonStyle())
+ **/
 
 import SwiftUI
 
@@ -26,11 +39,51 @@ struct signUpSwiftUIView: View {
     
     @State private var gender: Bool = false
     
+    @State private var idNonDup = false
+    @State private var eNonDup = false
+    
+    @State private var showAlert = false
+    
     var body: some View {
-
+        NavigationStack{
             ScrollView {
                 VStack(alignment: .leading){
-                    NameFieldMapComponent(fieldDest: "아이디", fieldName: "ID", fieldValue: $username, needButton: true)
+                    HStack {
+                        NameFieldMapComponent(fieldDest: "아이디", fieldName: "ID", fieldValue: $username)
+                        VStack {
+                            Text(" ")
+                                .font(.headline)
+                            Button("중복 검사") {
+                                let body = ["username":username]
+                                let svc = NoAuthService(apiPath: "/api/v1/users/id-dup")
+                                svc.postRequest(parameters: body)
+                                { result in switch result {
+                                case .success(let value):
+                                    if(value.code == 2000) {
+                                        idNonDup = true
+                                    } else {
+                                        showAlert = true
+                                    }
+                                case .failure(let error):
+                                    print("Error : \(error)")
+                                }
+                                    
+                                }
+                            }
+                            .font(.subheadline)
+                            .buttonStyle(MiniButtonStyle())
+                            .alert(isPresented: $showAlert) {
+                                Alert(title: Text("알림"),message: Text("중복이 있습니다."),
+                                      dismissButton: .default(Text("확인") ) )
+                            }
+                        }
+                    }
+                    if(idNonDup) {
+                        Text("아이디를 사용할 수 있습니다")
+                            .font(.subheadline)
+                            .foregroundStyle(Color.accentColor)
+                    }
+                    
                     PasswordFieldMapComponent(fieldDest: "비밀번호", fieldName: "PW", fieldValue: $password)
                     PasswordFieldMapComponent(fieldDest: "비밀번호 확인", fieldName: "PW", fieldValue: $passwordcheck)
                     
@@ -46,8 +99,38 @@ struct signUpSwiftUIView: View {
                     
                     Spacer(minLength: 50)
                     
-                    NameFieldMapComponent(fieldDest: "이름", fieldName: "Name", fieldValue: $realName, needButton: false)
-                    NameFieldMapComponent(fieldDest: "이메일", fieldName: "Email", fieldValue: $email, needButton: true)
+                    NameFieldMapComponent(fieldDest: "이름", fieldName: "Name", fieldValue: $realName)
+                    HStack {
+                        NameFieldMapComponent(fieldDest: "이메일", fieldName: "Email", fieldValue: $email)
+                        VStack {
+                            Text(" ")
+                                .font(.headline)
+                            Button("중복 검사") {
+                                let body = ["email":email]
+                                let svc = NoAuthService(apiPath: "/api/v1/users/email-dup")
+                                svc.postRequest(parameters: body)
+                                { result in switch result {
+                                case .success(let value):
+                                    if(value.code == 2000) {
+                                        eNonDup = true
+                                    } else {
+                                        showAlert = true
+                                    }
+                                case .failure(let error):
+                                    print("Error : \(error)")
+                                }
+                                    
+                                }
+                            }
+                            .font(.subheadline)
+                            .buttonStyle(MiniButtonStyle())
+                        }
+                    }
+                    if(idNonDup) {
+                        Text("이메일을 사용할 수 있습니다")
+                            .font(.subheadline)
+                            .foregroundStyle(Color.accentColor)
+                    }
                     
                     HStack {
                         Text("성별")
@@ -56,7 +139,7 @@ struct signUpSwiftUIView: View {
                     }
                     
                     DatePicker("생년월일", selection: $birthday, displayedComponents: .date)
-                                    .datePickerStyle(CompactDatePickerStyle())
+                        .datePickerStyle(CompactDatePickerStyle())
                     
                     Spacer(minLength: 50)
                     Button("제출"){
@@ -67,10 +150,10 @@ struct signUpSwiftUIView: View {
                                           "gender":gender,
                                           "birthday":birthday,
                                           "agreeMarketing":isAgreed4
-                                         ]
+                        ]
                         
                         let userService = UserService(apiPath: "/api/v1/users/signup")
-                        userService.voidRequest(parameters: parameters) 
+                        userService.voidRequest(parameters: parameters)
                         { result in
                             switch result {
                             case .success(let value):
@@ -84,25 +167,28 @@ struct signUpSwiftUIView: View {
                                 print("Error fetching data: \(error)")
                             }
                         }// Request
-            
+                        
                     }
                     .buttonStyle(BasicButtonStyle())
                     .disabled(canSubmit)
                     
-                    
-                    NavigationLink(
-                        destination: mailVerifySwiftUIView(),
-                        isActive: $shouldNavigate) {
-                            Text("")
-                                .hidden()
-                        }
+//                    NavigationLink(
+//                        destination: mailVerifySwiftUIView(stack: $stack),
+//                        isActive: $shouldNavigate ) {
+//                            Text("")
+//                                .hidden()
+//                        }
                     
                 } // VStack
                 
             } // ScrollView
             .navigationTitle("회원 가입")
             .padding()
-            
+        } // NavigationStack
+        .navigationDestination(isPresented: $shouldNavigate) {
+            mailVerifySwiftUIView(stack: $stack)
+        }
+        
     }
 }
 
@@ -116,12 +202,10 @@ struct NameFieldMapComponent : View {
     var fieldDest : String
     var fieldName : String
     @Binding var fieldValue : String
-    var needButton : Bool
     
     var body: some View {
         return VStack(alignment: .leading) {
             Text(fieldDest)
-            HStack {
                 TextField(fieldName, text: $fieldValue)
                     .padding()
                     .cornerRadius(10)
@@ -129,15 +213,6 @@ struct NameFieldMapComponent : View {
                         RoundedRectangle(cornerRadius: 5)
                             .stroke(Color.gray, lineWidth: 1) // 외곽선 추가
                     )
-                if(needButton) {
-                    Button("중복 검사") {
-                        
-                    }
-                    .font(.subheadline)
-                    .buttonStyle(MiniButtonStyle())
-                }
-            } // HStack
-            
         }
         .padding(.vertical,10)
          // VStack
