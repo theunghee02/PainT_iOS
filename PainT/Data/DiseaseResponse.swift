@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Diseases: Codable, Identifiable {
+struct DiseaseResponse: Codable, Identifiable {
     var id: UUID = UUID()
     
     let predicted_1: String
