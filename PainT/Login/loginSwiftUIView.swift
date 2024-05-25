@@ -24,6 +24,9 @@ struct loginSwiftUIView: View {
     @State private var showAlertMsg = "";
     
     @State private var shouldNavigate = false
+    @State private var googleClicked = false
+    @State private var kakaoClicked = false
+    @State private var appleClicked = false
 
     @State private var accessToken = ""
     @State private var message = ""
@@ -88,33 +91,54 @@ struct loginSwiftUIView: View {
                 
                 HStack {
                     Spacer()
-                    NavigationLink(destination: webLoginSwiftUiView(isPresented: $shouldNavigate , type: "google")) {
-                        Image("google")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .scaledToFit()
-                            .frame(width: 80, height: 80)
-                    }
+                    Button {
+                            googleClicked = true
+                          } label: {
+                              Image("google")
+                                  .resizable()
+                                  .aspectRatio(contentMode: .fit)
+                                  .scaledToFit()
+                                  .frame(width: 80, height: 80)
+                          }
+                    .sheet(isPresented: $googleClicked, onDismiss: {
+                        print("Dismiss")
+                    }, content: {                    webLoginSwiftUiView(isPresented: $googleClicked, success: $shouldNavigate, type: "google")
+                        
+                      })
                     
                     Spacer()
                     
-                    NavigationLink(destination: webLoginSwiftUiView(isPresented: $shouldNavigate , type: "kakao")) {
-                        Image("kakao")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .scaledToFit()
-                            .frame(width: 75, height: 75)
-                    }
+                    Button {
+                            appleClicked = true
+                          } label: {
+                              Image("apple")
+                                  .resizable()
+                                  .aspectRatio(contentMode: .fit)
+                                  .scaledToFit()
+                                  .frame(width: 80, height: 80)
+                          }
+                    .sheet(isPresented: $appleClicked, onDismiss: {
+                        print("Dismiss")
+                    }, content: {                    webLoginSwiftUiView(isPresented: $appleClicked, success: $shouldNavigate, type: "apple")
+                        
+                      })
                     
                     Spacer()
                     
-                    NavigationLink(destination: webLoginSwiftUiView(isPresented: $shouldNavigate , type: "apple")) {
-                        Image("apple")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .scaledToFit()
-                            .frame(width: 80, height: 80)
-                    }
+                    Button {
+                            kakaoClicked = true
+                          } label: {
+                              Image("kakao")
+                                  .resizable()
+                                  .aspectRatio(contentMode: .fit)
+                                  .scaledToFit()
+                                  .frame(width: 80, height: 80)
+                          }
+                    .sheet(isPresented: $kakaoClicked, onDismiss: {
+                        print("Dismiss")
+                    }, content: {                    webLoginSwiftUiView(isPresented: $kakaoClicked, success: $shouldNavigate, type: "kakao")
+                        
+                      })
                     Spacer()
                     
                     
@@ -133,6 +157,9 @@ struct loginSwiftUIView: View {
             } // VStack
             .padding()
             .toolbar(.hidden, for: .navigationBar)
+            .onChange(of: shouldNavigate) {
+                appRootManager.currentRoot = .home
+            }
         } // NavigationStack
         .navigationBarBackButtonHidden(true)
         .toolbar(.hidden,for:.tabBar)
