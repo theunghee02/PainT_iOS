@@ -21,6 +21,7 @@
 import SwiftUI
 
 struct signUpSwiftUIView: View {
+    @EnvironmentObject  private  var  appRootManager : AppRootManager
     
     @State var stack: NavigationPath = NavigationPath()
     @State private var shouldNavigate = false
@@ -180,14 +181,14 @@ struct signUpSwiftUIView: View {
 //                        }
                     
                 } // VStack
+                .onChange(of: shouldNavigate) {
+                    appRootManager.currentRoot = .home
+                }
                 
             } // ScrollView
             .navigationTitle("회원 가입")
             .padding()
         } // NavigationStack
-        .navigationDestination(isPresented: $shouldNavigate) {
-            mailVerifySwiftUIView(stack: $stack)
-        }
         
     }
 }
