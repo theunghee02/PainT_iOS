@@ -11,6 +11,9 @@ import SwiftData
 @main
 struct PainTApp: App {
     
+    @StateObject  private  var appRootManager =  AppRootManager ()
+    
+    
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Item.self,
@@ -26,12 +29,19 @@ struct PainTApp: App {
 
     var body: some Scene {
         WindowGroup {
-            let userDefaults = UserDefaultsService()
-            if(userDefaults.getAccessToken() != nil) {
-                tabSwiftUIView()
-            } else {
-                loginSwiftUIView() // 처음 시작 뷰
+            Group {
+                switch appRootManager.currentRoot {
+                case .splash:
+                    splashSwiftUIView()
+                    
+                case .authentication:
+                    loginSwiftUIView()
+                    
+                case .home:
+                    tabSwiftUIView()
+                }
             }
+            .environmentObject(appRootManager)
         }
         .modelContainer(sharedModelContainer)
     }
@@ -40,10 +50,22 @@ struct PainTApp: App {
 extension UINavigationController: ObservableObject, UIGestureRecognizerDelegate {
     override open func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.isHidden = true
         interactivePopGestureRecognizer?.delegate = self
     }
 
     public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         return viewControllers.count > 1
+    }
+}
+
+final class AppRootManager: ObservableObject {
+    
+    @Published var currentRoot: eAppRoots = .splash
+    
+    enum eAppRoots {
+        case splash
+        case authentication
+        case home
     }
 }

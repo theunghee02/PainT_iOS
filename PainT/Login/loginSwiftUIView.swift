@@ -14,25 +14,32 @@ import Alamofire
 
 @available(iOS 17.0, *)
 struct loginSwiftUIView: View {
-    //@EnvironmentObject var variable: Variable
-
-
+    @EnvironmentObject  private  var  appRootManager : AppRootManager
+    
+    
+    @State var stack:NavigationPath = NavigationPath()
     @State private var username: String = ""
     @State private var password: String = ""
     @State private var showAlert = false;
     @State private var showAlertMsg = "";
     
     @State private var shouldNavigate = false
+    @State private var googleClicked = false
+    @State private var kakaoClicked = false
+    @State private var appleClicked = false
 
     @State private var accessToken = ""
     @State private var message = ""
+    
+    
 
 
     var body: some View {
         
-        NavigationView {
+        NavigationStack {
             
             VStack(spacing: 10) {
+            
                 Spacer(minLength: 40)
                 Image("appIcon")
                     .padding(50)
@@ -54,7 +61,11 @@ struct loginSwiftUIView: View {
                 
                 Button("로그인"){
                     if(login()) {
-                        shouldNavigate = true
+                        username = ""
+                        password = ""
+                        withAnimation(.spring()) {
+                            appRootManager.currentRoot = .home
+                        }
                     }
                     print("\(shouldNavigate)")
                 }
@@ -77,40 +88,57 @@ struct loginSwiftUIView: View {
                 Text("or")
                     .font(.caption)
                     .foregroundColor(.gray)
-                if(shouldNavigate) {
-                    NavigationLink(destination: tabSwiftUIView(), isActive: $shouldNavigate) {
-                        tabSwiftUIView()
-                    }
-                }
+                
                 HStack {
                     Spacer()
-                    NavigationLink(destination: webLoginSwiftUiView(isPresented: $shouldNavigate ,accessToken: $accessToken, type: "google")) {
-                        Image("google")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .scaledToFit()
-                            .frame(width: 80, height: 80)
-                    }
+                    Button {
+                            googleClicked = true
+                          } label: {
+                              Image("google")
+                                  .resizable()
+                                  .aspectRatio(contentMode: .fit)
+                                  .scaledToFit()
+                                  .frame(width: 80, height: 80)
+                          }
+                    .sheet(isPresented: $googleClicked, onDismiss: {
+                        print("Dismiss")
+                    }, content: {                    webLoginSwiftUiView(isPresented: $googleClicked, success: $shouldNavigate, type: "google")
+                        
+                      })
                     
                     Spacer()
                     
-                    NavigationLink(destination: webLoginSwiftUiView(isPresented: $shouldNavigate ,accessToken: $accessToken, type: "kakao")) {
-                        Image("kakao")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .scaledToFit()
-                            .frame(width: 75, height: 75)
-                    }
+                    Button {
+                            appleClicked = true
+                          } label: {
+                              Image("apple")
+                                  .resizable()
+                                  .aspectRatio(contentMode: .fit)
+                                  .scaledToFit()
+                                  .frame(width: 80, height: 80)
+                          }
+                    .sheet(isPresented: $appleClicked, onDismiss: {
+                        print("Dismiss")
+                    }, content: {                    webLoginSwiftUiView(isPresented: $appleClicked, success: $shouldNavigate, type: "apple")
+                        
+                      })
                     
                     Spacer()
                     
-                    NavigationLink(destination: webLoginSwiftUiView(isPresented: $shouldNavigate ,accessToken: $accessToken, type: "apple")) {
-                        Image("apple")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .scaledToFit()
-                            .frame(width: 80, height: 80)
-                    }
+                    Button {
+                            kakaoClicked = true
+                          } label: {
+                              Image("kakao")
+                                  .resizable()
+                                  .aspectRatio(contentMode: .fit)
+                                  .scaledToFit()
+                                  .frame(width: 80, height: 80)
+                          }
+                    .sheet(isPresented: $kakaoClicked, onDismiss: {
+                        print("Dismiss")
+                    }, content: {                    webLoginSwiftUiView(isPresented: $kakaoClicked, success: $shouldNavigate, type: "kakao")
+                        
+                      })
                     Spacer()
                     
                     
@@ -120,7 +148,7 @@ struct loginSwiftUIView: View {
                     
                 Spacer()
                     
-                NavigationLink(destination: eulaSwiftUIView()) {
+                NavigationLink(destination: eulaSwiftUIView(stack: $stack)) {
                     Text("회원가입")
                 }
                 .buttonStyle(BasicButtonStyle())
@@ -128,12 +156,13 @@ struct loginSwiftUIView: View {
                 
             } // VStack
             .padding()
-            .toolbar(.hidden)
-            .navigationDestination(isPresented: $shouldNavigate){
-                tabSwiftUIView()
+            .toolbar(.hidden, for: .navigationBar)
+            .onChange(of: shouldNavigate) {
+                appRootManager.currentRoot = .home
             }
-        } // NavigationView
+        } // NavigationStack
         .navigationBarBackButtonHidden(true)
+        .toolbar(.hidden,for:.tabBar)
         
             
         

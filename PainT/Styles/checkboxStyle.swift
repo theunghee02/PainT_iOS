@@ -20,7 +20,7 @@ struct checkboxStyle: ToggleStyle {
                 .font(.system(size: 20, weight: .regular, design: .default))
                 configuration.label
         }
-        .frame(width: .infinity,alignment: .leading)
+        .frame(width: .none ,alignment: .leading)
         .onTapGesture { configuration.isOn.toggle() }
 
     }
