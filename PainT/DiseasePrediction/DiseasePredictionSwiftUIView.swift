@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct DiseasePredictionSwiftUIView: View {
-    @StateObject private var networkManager = NetworkManager()
     @State var username: String = "user123"
     var diseases: [String] = ["척추 추간판 탈출증", "척추관 협착증", "요추 추간판 탈출증", "허리 굽힘증", "허리 디스크"]
     
@@ -19,15 +18,12 @@ struct DiseasePredictionSwiftUIView: View {
                 .font(.system(size:20))
                 .padding(.bottom, 30)
             Text("\(username)님의 최근 통증 기록을 기반으로 예측한 질환입니다.")
-            var idx: Int = 0
-            List(networkManager.diseases, id: \.self) { disease in
-    //            ForEach(0..<5) { idx in
-                    Section(header: Text("Top \(idx+1)")) {
-                        NavigationLink(destination: webview(urlToLoad: "https://search.naver.com/search.naver?ie=UTF-8&sm=whl_hty&query=\(disease)")) {
-                            Text("\(disease)")
-                        } // NavigationLink
-                    } // Section
-    //            } // ForEach
+            List((0..<5), id: \.self) { idx in
+                Section(header: Text("Top \(idx+1)")) {
+                    NavigationLink(destination: webview(urlToLoad: "https://search.naver.com/search.naver?ie=UTF-8&sm=whl_hty&query=\(diseases[idx])")) {
+                        Text("\(diseases[idx])")
+                    } // NavigationLink
+                } // Section
             } // List
         } // VStack
         .onAppear() {
@@ -39,7 +35,7 @@ struct DiseasePredictionSwiftUIView: View {
 
 func postDisease(){
     let authService = AuthService(apiPath: "/api/v1/ai/predict")
-    authService.postRequest() { response in
+    authService.postRequest(resultType: DiseaseResult.self) { response in
         print("----------------")
         print(response)
         switch response {
