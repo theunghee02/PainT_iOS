@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		081EB58D2BE275960097E960 /* findPasswordSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081EB58B2BE275960097E960 /* findPasswordSwiftUIView.swift */; };
-		081EB58E2BE275960097E960 /* signUpSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081EB58C2BE275960097E960 /* signUpSwiftUIView.swift */; };
 		081EB5922BE276970097E960 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 081EB5912BE276970097E960 /* Alamofire */; };
 		D006759F2BF5136A003A3B89 /* webview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D006759D2BF5136A003A3B89 /* webview.swift */; };
 		D007C26D2BDB64EE005F2A29 /* PainTApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D007C26C2BDB64EE005F2A29 /* PainTApp.swift */; };
@@ -29,7 +28,21 @@
 		D02FB37F2BE0A728009B4875 /* painRecordInfoFeelingSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FB37E2BE0A728009B4875 /* painRecordInfoFeelingSwiftUIView.swift */; };
 		D02FB3812BE0AF09009B4875 /* painRecordInfoIntensitySwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FB3802BE0AF09009B4875 /* painRecordInfoIntensitySwiftUIView.swift */; };
 		D02FB3852BE26B12009B4875 /* loginSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FB3842BE26B12009B4875 /* loginSwiftUIView.swift */; };
+		D03C36C52BF627320028E759 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C36C32BF627320028E759 /* UserDefaults.swift */; };
+		D03C36CB2BF627470028E759 /* eulaSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C36C62BF627470028E759 /* eulaSwiftUIView.swift */; };
+		D03C36CC2BF627470028E759 /* EulaText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C36C72BF627470028E759 /* EulaText.swift */; };
+		D03C36CD2BF627470028E759 /* mailVerifySwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C36C82BF627470028E759 /* mailVerifySwiftUIView.swift */; };
+		D03C36CE2BF627470028E759 /* signUpSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C36C92BF627470028E759 /* signUpSwiftUIView.swift */; };
+		D03C36D02BF6275D0028E759 /* webLoginSwiftUiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C36CF2BF6275D0028E759 /* webLoginSwiftUiView.swift */; };
+		D03C36D32BF627770028E759 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C36D12BF627760028E759 /* UserService.swift */; };
+		D03C36D72BF6277B0028E759 /* buttonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C36D42BF6277B0028E759 /* buttonStyles.swift */; };
+		D03C36D82BF6277B0028E759 /* checkboxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C36D52BF6277B0028E759 /* checkboxStyle.swift */; };
+		D06875FD2C05B8040088E186 /* splashSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06875FB2C05B8040088E186 /* splashSwiftUIView.swift */; };
+		D06876012C05B8290088E186 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06875FE2C05B8290088E186 /* AuthService.swift */; };
+		D06876022C05B8290088E186 /* NoAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06875FF2C05B8290088E186 /* NoAuthService.swift */; };
 		D07EC5DC2BED0F98006E74DE /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07EC5DB2BED0F98006E74DE /* ColorExtension.swift */; };
+		D0B9867C2C0629DA0040FF37 /* GenericResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B9867B2C0629DA0040FF37 /* GenericResponse.swift */; };
+		D0CE7A752BFF2A7D00E3B025 /* DiseaseResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CE7A742BFF2A7D00E3B025 /* DiseaseResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -47,7 +60,6 @@
 
 /* Begin PBXFileReference section */
 		081EB58B2BE275960097E960 /* findPasswordSwiftUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = findPasswordSwiftUIView.swift; sourceTree = "<group>"; };
-		081EB58C2BE275960097E960 /* signUpSwiftUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = signUpSwiftUIView.swift; sourceTree = "<group>"; };
 		081EB58F2BE276350097E960 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D006759D2BF5136A003A3B89 /* webview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = webview.swift; sourceTree = "<group>"; };
 		D007C2692BDB64EE005F2A29 /* PainT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PainT.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,7 +81,21 @@
 		D02FB37E2BE0A728009B4875 /* painRecordInfoFeelingSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = painRecordInfoFeelingSwiftUIView.swift; sourceTree = "<group>"; };
 		D02FB3802BE0AF09009B4875 /* painRecordInfoIntensitySwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = painRecordInfoIntensitySwiftUIView.swift; sourceTree = "<group>"; };
 		D02FB3842BE26B12009B4875 /* loginSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginSwiftUIView.swift; sourceTree = "<group>"; };
+		D03C36C32BF627320028E759 /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		D03C36C62BF627470028E759 /* eulaSwiftUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = eulaSwiftUIView.swift; sourceTree = "<group>"; };
+		D03C36C72BF627470028E759 /* EulaText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EulaText.swift; sourceTree = "<group>"; };
+		D03C36C82BF627470028E759 /* mailVerifySwiftUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mailVerifySwiftUIView.swift; sourceTree = "<group>"; };
+		D03C36C92BF627470028E759 /* signUpSwiftUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = signUpSwiftUIView.swift; sourceTree = "<group>"; };
+		D03C36CF2BF6275D0028E759 /* webLoginSwiftUiView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = webLoginSwiftUiView.swift; sourceTree = "<group>"; };
+		D03C36D12BF627760028E759 /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		D03C36D42BF6277B0028E759 /* buttonStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = buttonStyles.swift; sourceTree = "<group>"; };
+		D03C36D52BF6277B0028E759 /* checkboxStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = checkboxStyle.swift; sourceTree = "<group>"; };
+		D06875FB2C05B8040088E186 /* splashSwiftUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = splashSwiftUIView.swift; sourceTree = "<group>"; };
+		D06875FE2C05B8290088E186 /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		D06875FF2C05B8290088E186 /* NoAuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoAuthService.swift; sourceTree = "<group>"; };
 		D07EC5DB2BED0F98006E74DE /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		D0B9867B2C0629DA0040FF37 /* GenericResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
+		D0CE7A742BFF2A7D00E3B025 /* DiseaseResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +137,11 @@
 		D007C26B2BDB64EE005F2A29 /* PainT */ = {
 			isa = PBXGroup;
 			children = (
+				D06875FC2C05B8040088E186 /* Splash */,
+				D03C36D62BF6277B0028E759 /* Styles */,
+				D03C36D22BF627760028E759 /* Request */,
+				D03C36CA2BF627470028E759 /* Join */,
+				D03C36C42BF627320028E759 /* Data */,
 				D006759E2BF5136A003A3B89 /* Components */,
 				D07EC5DA2BED0F65006E74DE /* Extension */,
 				081EB58F2BE276350097E960 /* Info.plist */,
@@ -188,10 +219,58 @@
 			isa = PBXGroup;
 			children = (
 				081EB58B2BE275960097E960 /* findPasswordSwiftUIView.swift */,
-				081EB58C2BE275960097E960 /* signUpSwiftUIView.swift */,
+				D03C36CF2BF6275D0028E759 /* webLoginSwiftUiView.swift */,
 				D02FB3842BE26B12009B4875 /* loginSwiftUIView.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		D03C36C42BF627320028E759 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				D03C36C32BF627320028E759 /* UserDefaults.swift */,
+				D0CE7A742BFF2A7D00E3B025 /* DiseaseResult.swift */,
+				D0B9867B2C0629DA0040FF37 /* GenericResponse.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		D03C36CA2BF627470028E759 /* Join */ = {
+			isa = PBXGroup;
+			children = (
+				D03C36C62BF627470028E759 /* eulaSwiftUIView.swift */,
+				D03C36C72BF627470028E759 /* EulaText.swift */,
+				D03C36C82BF627470028E759 /* mailVerifySwiftUIView.swift */,
+				D03C36C92BF627470028E759 /* signUpSwiftUIView.swift */,
+			);
+			path = Join;
+			sourceTree = "<group>";
+		};
+		D03C36D22BF627760028E759 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				D03C36D12BF627760028E759 /* UserService.swift */,
+				D06875FE2C05B8290088E186 /* AuthService.swift */,
+				D06875FF2C05B8290088E186 /* NoAuthService.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		D03C36D62BF6277B0028E759 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				D03C36D42BF6277B0028E759 /* buttonStyles.swift */,
+				D03C36D52BF6277B0028E759 /* checkboxStyle.swift */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
+		D06875FC2C05B8040088E186 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				D06875FB2C05B8040088E186 /* splashSwiftUIView.swift */,
+			);
+			path = Splash;
 			sourceTree = "<group>";
 		};
 		D07EC5DA2BED0F65006E74DE /* Extension */ = {
@@ -284,20 +363,33 @@
 				D02FB3852BE26B12009B4875 /* loginSwiftUIView.swift in Sources */,
 				D02FB37F2BE0A728009B4875 /* painRecordInfoFeelingSwiftUIView.swift in Sources */,
 				D02FB3732BDF451F009B4875 /* painStatSwiftUIView.swift in Sources */,
+				D03C36C52BF627320028E759 /* UserDefaults.swift in Sources */,
+				D03C36D32BF627770028E759 /* UserService.swift in Sources */,
 				D007C26F2BDB64EE005F2A29 /* ContentView.swift in Sources */,
+				D06876022C05B8290088E186 /* NoAuthService.swift in Sources */,
+				D03C36CE2BF627470028E759 /* signUpSwiftUIView.swift in Sources */,
 				D007C2712BDB64EE005F2A29 /* Item.swift in Sources */,
+				D03C36CC2BF627470028E759 /* EulaText.swift in Sources */,
 				D02FB3762BDF4555009B4875 /* myPageSwiftUIView.swift in Sources */,
 				D0273E6E2BE77F8D0052824A /* painRecordInfoTimeSwiftUIView.swift in Sources */,
 				D02FB37D2BE017B0009B4875 /* painRecordInfoSwiftUIView.swift in Sources */,
+				D06876012C05B8290088E186 /* AuthService.swift in Sources */,
+				D03C36CD2BF627470028E759 /* mailVerifySwiftUIView.swift in Sources */,
 				D007C26D2BDB64EE005F2A29 /* PainTApp.swift in Sources */,
+				D03C36D02BF6275D0028E759 /* webLoginSwiftUiView.swift in Sources */,
+				D0B9867C2C0629DA0040FF37 /* GenericResponse.swift in Sources */,
 				D02FB3792BE00B91009B4875 /* DiseasePredictionSwiftUIView.swift in Sources */,
 				D02FB3812BE0AF09009B4875 /* painRecordInfoIntensitySwiftUIView.swift in Sources */,
+				D03C36D72BF6277B0028E759 /* buttonStyles.swift in Sources */,
 				D006759F2BF5136A003A3B89 /* webview.swift in Sources */,
+				D06875FD2C05B8040088E186 /* splashSwiftUIView.swift in Sources */,
+				D03C36CB2BF627470028E759 /* eulaSwiftUIView.swift in Sources */,
 				081EB58D2BE275960097E960 /* findPasswordSwiftUIView.swift in Sources */,
+				D0CE7A752BFF2A7D00E3B025 /* DiseaseResult.swift in Sources */,
 				D02FB3702BDF4427009B4875 /* tabSwiftUIView.swift in Sources */,
-				081EB58E2BE275960097E960 /* signUpSwiftUIView.swift in Sources */,
 				D02FB37B2BE01789009B4875 /* painRecordUnitySwiftUIView.swift in Sources */,
 				D02FB36B2BDEA000009B4875 /* homeSwiftUIView.swift in Sources */,
+				D03C36D82BF6277B0028E759 /* checkboxStyle.swift in Sources */,
 				D07EC5DC2BED0F98006E74DE /* ColorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
