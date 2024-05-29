@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct mailVerifySwiftUIView: View {
+    @EnvironmentObject  private  var  appRootManager : AppRootManager
+    
+    @State private var isLoading = false
+    
     @Binding var stack : NavigationPath
     @State var code : String = ""
     
@@ -18,45 +22,46 @@ struct mailVerifySwiftUIView: View {
     var body: some View {
         //path: $stack
         NavigationStack() {
-            VStack {
-                Spacer()
-                
-                Image("appIcon")
-            
-                Text("\n감사합니다.")
-                    .font(.largeTitle)
-                Text("\n귀하의 이메일로 발송된 인증번호를\n 아래에 기입해주세요. (6자리)")
-                    .multilineTextAlignment(.center)
-                
-                NameFieldMapComponent(fieldDest: "여기에 입력", fieldName: "인증번호", fieldValue: $code)
-                Button("확인"){
-                    if(alertBadInput()) {
-                        showAlert = true
+            if(!isLoading) {
+                VStack {
+                    Spacer()
+                    
+                    Image("appIcon")
+                    
+                    Text("\n감사합니다.")
+                        .font(.largeTitle)
+                    Text("\n귀하의 이메일로 발송된 인증번호를\n 아래에 기입해주세요. (6자리)")
+                        .multilineTextAlignment(.center)
+                    
+                    NameFieldMapComponent(fieldDest: "여기에 입력", fieldName: "인증번호", fieldValue: $code)
+                    Button("확인"){
+                        if(alertBadInput()) {
+                            showAlert = true
+                        }
+                        isLoading = true
+                        verify()
+                        isLoading = false
                     }
-                    verify()
-                }
-                .buttonStyle(BasicButtonStyle())
-                .alert(isPresented: $showAlert) {
-                    Alert(
-                        title: Text("알림"),
-                        message: Text(showAlertMsg),
-                        dismissButton: .default(Text("확인"))
-                    )
-                } // alert
-                
-                NavigationLink(destination: tabSwiftUIView()) {
-                    Text("")
-                        .hidden()
-                    if(shouldNavigate) {
-                        tabSwiftUIView()
-                    }
-                }
+                    .buttonStyle(BasicButtonStyle())
+                    .alert(isPresented: $showAlert) {
+                        Alert(
+                            title: Text("알림"),
+                            message: Text(showAlertMsg),
+                            dismissButton: .default(Text("확인"))
+                        )
+                    } // alert
+                    
+                    Spacer()
+                    Spacer()
+                } // VStack
+                .padding()
+                //.navigationDestination(isPresented: shouldNavigate) {
+                    //stack.removeLast(stack.count)
+                //}
+            } else {
+                LoadingView()
+            }
             
-            
-                Spacer()
-                Spacer()
-            } // VStack
-            .padding()
             
         } // NavigationStack
     }

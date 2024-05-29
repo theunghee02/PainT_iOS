@@ -35,6 +35,7 @@ struct tabSwiftUIView: View {
                     .tag(2)
             } // TabView
         } // NavigationView
+        .toolbar(.visible, for:.navigationBar)
         
     }
 }

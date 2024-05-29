@@ -26,7 +26,7 @@ struct eulaSwiftUIView: View {
                     
                     Spacer(minLength: 30)
                     
-                    NavigationLink(destination: signUpSwiftUIView(isAgreed4: isAgreed4)) {
+                    NavigationLink(destination: signUpSwiftUIView(stack:$stack , isAgreed4: isAgreed4)) {
                         Text("다음")
                     }
                     .buttonStyle(NoColorButtonStyle())

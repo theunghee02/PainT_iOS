@@ -16,6 +16,8 @@ import Alamofire
 struct loginSwiftUIView: View {
     @EnvironmentObject  private  var  appRootManager : AppRootManager
     
+    @State private var isLoading = false
+    
     
     @State var stack:NavigationPath = NavigationPath()
     @State private var username: String = ""
@@ -37,39 +39,122 @@ struct loginSwiftUIView: View {
     var body: some View {
         
         NavigationStack {
-            
-            VStack(spacing: 10) {
-            
-                Spacer(minLength: 40)
-                Image("appIcon")
-                    .padding(50)
-                TextField("ID", text: $username)
-                    .padding()
-                    .cornerRadius(10)
-                    .background(
-                        RoundedRectangle(cornerRadius: 5)
-                            .stroke(Color.gray, lineWidth: 1) // 외곽선 추가
-                    )
-                SecureField("PW", text: $password)
-                    .padding()
-                    .cornerRadius(10)
-                    .background(
-                        RoundedRectangle(cornerRadius: 5)
-                            .stroke(Color.gray, lineWidth: 1) // 외곽선 추가
-                    )
+            if(!isLoading) {
                 
-                
-                Button("로그인"){
-                    if(login()) {
-                        username = ""
-                        password = ""
-                        withAnimation(.spring()) {
-                            appRootManager.currentRoot = .home
+                VStack(spacing: 10) {
+                    
+                    Spacer(minLength: 40)
+                    Image("appIcon")
+                        .padding(50)
+                    TextField("ID", text: $username)
+                        .padding()
+                        .cornerRadius(10)
+                        .background(
+                            RoundedRectangle(cornerRadius: 5)
+                                .stroke(Color.gray, lineWidth: 1) // 외곽선 추가
+                        )
+                    SecureField("PW", text: $password)
+                        .padding()
+                        .cornerRadius(10)
+                        .background(
+                            RoundedRectangle(cornerRadius: 5)
+                                .stroke(Color.gray, lineWidth: 1) // 외곽선 추가
+                        )
+                    
+                    
+                    Button("로그인"){
+                        if(login()) {
+                            username = ""
+                            password = ""
+                            withAnimation(.spring()) {
+                                appRootManager.currentRoot = .home
+                            }
                         }
                     }
-                    print("\(shouldNavigate)")
+                    .buttonStyle(BasicButtonStyle())
+                    
+                    NavigationLink(destination: findPasswordSwiftUIView()) {
+                        Text("비밀번호를 잊으셨나요?")
+                    }
+                    .padding(10)
+                    .font(.subheadline)
+                    
+                    Spacer()
+                    Text("or")
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                    
+                    HStack {
+                        Spacer()
+                        Button {
+                            googleClicked = true
+                        } label: {
+                            Image("google")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .scaledToFit()
+                                .frame(width: 80, height: 80)
+                        }
+                        .sheet(isPresented: $googleClicked, onDismiss: {
+                            print("Dismiss")
+                        }, content: {                    webLoginSwiftUiView(isPresented: $googleClicked, success: $shouldNavigate, type: "google")
+                            
+                        })
+                        
+                        Spacer()
+                        
+                        Button {
+                            appleClicked = true
+                        } label: {
+                            Image("apple")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .scaledToFit()
+                                .frame(width: 80, height: 80)
+                        }
+                        .sheet(isPresented: $appleClicked, onDismiss: {
+                            print("Dismiss")
+                        }, content: {                    webLoginSwiftUiView(isPresented: $appleClicked, success: $shouldNavigate, type: "apple")
+                            
+                        })
+                        
+                        Spacer()
+                        
+                        Button {
+                            kakaoClicked = true
+                        } label: {
+                            Image("kakao")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .scaledToFit()
+                                .frame(width: 80, height: 80)
+                        }
+                        .sheet(isPresented: $kakaoClicked, onDismiss: {
+                            print("Dismiss")
+                        }, content: {                    webLoginSwiftUiView(isPresented: $kakaoClicked, success: $shouldNavigate, type: "kakao")
+                            
+                        })
+                        Spacer()
+                        
+                        
+                    } // HStack
+                    .padding()
+                    
+                    
+                    Spacer()
+                    
+                    NavigationLink(destination: eulaSwiftUIView(stack: $stack)) {
+                        Text("회원가입")
+                    }
+                    .buttonStyle(BasicButtonStyle())
+                    
+                    
+                } // VStack
+                .padding()
+                //.toolbar(.hidden, for: .navigationBar)
+                .onChange(of: shouldNavigate) {
+                    appRootManager.currentRoot = .home
                 }
-                .buttonStyle(BasicButtonStyle())
                 .alert(isPresented: $showAlert) {
                     Alert(
                         title: Text("알림"),
@@ -77,92 +162,12 @@ struct loginSwiftUIView: View {
                         dismissButton: .default(Text("확인"))
                     )
                 } // alert
-                    
-                NavigationLink(destination: findPasswordSwiftUIView()) {
-                    Text("비밀번호를 잊으셨나요?")
-                }
-                .padding(10)
-                .font(.subheadline)
-                   
-                Spacer()
-                Text("or")
-                    .font(.caption)
-                    .foregroundColor(.gray)
-                
-                HStack {
-                    Spacer()
-                    Button {
-                            googleClicked = true
-                          } label: {
-                              Image("google")
-                                  .resizable()
-                                  .aspectRatio(contentMode: .fit)
-                                  .scaledToFit()
-                                  .frame(width: 80, height: 80)
-                          }
-                    .sheet(isPresented: $googleClicked, onDismiss: {
-                        print("Dismiss")
-                    }, content: {                    webLoginSwiftUiView(isPresented: $googleClicked, success: $shouldNavigate, type: "google")
-                        
-                      })
-                    
-                    Spacer()
-                    
-                    Button {
-                            appleClicked = true
-                          } label: {
-                              Image("apple")
-                                  .resizable()
-                                  .aspectRatio(contentMode: .fit)
-                                  .scaledToFit()
-                                  .frame(width: 80, height: 80)
-                          }
-                    .sheet(isPresented: $appleClicked, onDismiss: {
-                        print("Dismiss")
-                    }, content: {                    webLoginSwiftUiView(isPresented: $appleClicked, success: $shouldNavigate, type: "apple")
-                        
-                      })
-                    
-                    Spacer()
-                    
-                    Button {
-                            kakaoClicked = true
-                          } label: {
-                              Image("kakao")
-                                  .resizable()
-                                  .aspectRatio(contentMode: .fit)
-                                  .scaledToFit()
-                                  .frame(width: 80, height: 80)
-                          }
-                    .sheet(isPresented: $kakaoClicked, onDismiss: {
-                        print("Dismiss")
-                    }, content: {                    webLoginSwiftUiView(isPresented: $kakaoClicked, success: $shouldNavigate, type: "kakao")
-                        
-                      })
-                    Spacer()
-                    
-                    
-                } // HStack
-                .padding()
-               
-                    
-                Spacer()
-                    
-                NavigationLink(destination: eulaSwiftUIView(stack: $stack)) {
-                    Text("회원가입")
-                }
-                .buttonStyle(BasicButtonStyle())
-                
-                
-            } // VStack
-            .padding()
-            .toolbar(.hidden, for: .navigationBar)
-            .onChange(of: shouldNavigate) {
-                appRootManager.currentRoot = .home
+            } else {
+                LoadingView()
             }
         } // NavigationStack
         .navigationBarBackButtonHidden(true)
-        .toolbar(.hidden,for:.tabBar)
+        //.toolbar(.hidden,for:.tabBar)
         
             
         
@@ -171,11 +176,13 @@ struct loginSwiftUIView: View {
     private func login() -> Bool {
         if password.isEmpty || username.isEmpty {
             // alert!
-            showAlertMsg = "아이디, 비밀번호를 확인해주세요."
-            showAlert = true;
-            showAlert = false;
+            self.showAlertMsg = "아이디, 비밀번호를 확인해주세요."
+            self.showAlert = true;
+            
         }
         else {
+            isLoading = true
+            
             let parameters = ["username":username,"password":password]
             
             // 저장소 서비스 생성
@@ -201,8 +208,10 @@ struct loginSwiftUIView: View {
             }// loginRequest
         }
         if(shouldNavigate){
+            isLoading = false
             return true
         }
+        isLoading = false
         return false
         
     }// function
