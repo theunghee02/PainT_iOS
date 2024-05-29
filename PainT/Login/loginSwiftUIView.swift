@@ -195,7 +195,7 @@ struct loginSwiftUIView: View {
                 case .success(let value):
                     print(value.0?.message as Any)
                     if(value.0?.code == 2000) {
-                        userDefaults.saveAccessToken(token: (value.0?.result.grantType)!+" "+(value.0?.result.accessToken)!)
+                        userDefaults.saveAccessToken(token: (value.0?.result.accessToken)!)
                         userDefaults.saveRefreshToken(token: value.1 ?? "non")
                         shouldNavigate = true
                     } else {
