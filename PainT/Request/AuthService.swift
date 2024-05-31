@@ -132,6 +132,7 @@ class AuthService {
     
     // post - 파라미터 X
     public func postRequest<T: Decodable>(resultType: T.Type, completion: @escaping (Result<GenericResponse<T>, Error>) -> Void) {
+        
         let headers: HTTPHeaders = [.authorization(bearerToken: tkSvc.getAccessToken()!)]
 
         AF.request(hostUrl+apiPath, method: .post, headers: headers)
@@ -152,10 +153,9 @@ class AuthService {
                         if let accessToken = response.response?.allHeaderFields["Authorization"] as? String {
                             self.tkSvc.saveAccessToken(token: accessToken)
                         }
-                        
+                        self.postRequest(resultType: resultType, completion: completion)
                         //재귀 호출하면 문제 해결
                     } else {
-                        self.postRequest(resultType: resultType, completion: completion)
                         completion(.success(value))
                     }
                 } catch {
