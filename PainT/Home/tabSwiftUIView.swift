@@ -28,7 +28,7 @@ struct tabSwiftUIView: View {
                     }
                     .tag(1)
                 // myPage
-                myPageSwiftUIView(stack: $stack)
+                myPageSwiftUIView()
                     .tabItem {
                         Label("마이페이지", image: selectedTab == 2 ? "mypage-colored" : "mypage-default")
                     }
