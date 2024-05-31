@@ -78,11 +78,21 @@ struct painRecordResultSwiftUIView: View {
                 .padding(20)
                 
                 // 하위 항목
-                HStack(spacing: 5) {
+                HStack {
                     // 3D 신체
-                    Rectangle()
-                        .frame(width: 150, height: 300)
-                        .foregroundStyle(.white)
+                    AsyncImage(url: URL(string: "http://chi-iu.com/unity/images/665980dcf405aa78f07608e2"),
+                               scale: 8) { phase in
+                        if let image = phase.image {
+                            image // 사진 띄우기
+                        } else {
+                            let image = Image("body-default")
+                            image
+                        }
+                    }
+                        .frame(width: 150.0, height: 300.0)
+                        .padding(.leading, 10)
+                        .padding(.bottom, 15)
+//                        .background(Color(.white))
                     
                     // 트리거 및 느낌
                     VStack(alignment: .trailing, spacing: 20) {
@@ -125,7 +135,7 @@ struct painRecordResultSwiftUIView: View {
             } // HStack
         } // VStack
         .background(Color(hex: 0x252525))
-    }
+    } // body
     
     // Result Row
     func resultRow(text: String) -> some View {
@@ -137,7 +147,7 @@ struct painRecordResultSwiftUIView: View {
             .background(Color(hex: 0x0E0E0E, alpha: 0.5))
             .cornerRadius(26)
     }
-}
+} // painRecordResultSwiftUIView
 
 #Preview {
     painRecordResultSwiftUIView()
