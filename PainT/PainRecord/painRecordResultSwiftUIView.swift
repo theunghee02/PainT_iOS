@@ -37,6 +37,9 @@ struct painRecordResultSwiftUIView: View {
     var feelings : [String] = ["날카로운 느낌",
                                "누르는 듯한 느낌"]
     
+    var imageID : String = "665980dcf405aa78f07608e2" // 정상
+//    var imageID : String = "665980dcf405aa78f076082" // 비정상
+    
     var body: some View {
         VStack {
             Spacer()
@@ -80,13 +83,13 @@ struct painRecordResultSwiftUIView: View {
                 // 하위 항목
                 HStack {
                     // 3D 신체
-                    AsyncImage(url: URL(string: "http://chi-iu.com/unity/images/665980dcf405aa78f07608e2"),
+                    AsyncImage(url: URL(string: "http://chi-iu.com/unity/images/\(imageID)"),
                                scale: 8) { phase in
                         if let image = phase.image {
                             image // 사진 띄우기
                         } else {
                             let image = Image("body-default")
-                            image
+                            image.resizable()
                         }
                     }
                         .frame(width: 150.0, height: 300.0)
