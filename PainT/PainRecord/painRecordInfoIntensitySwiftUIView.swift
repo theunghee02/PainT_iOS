@@ -9,8 +9,13 @@
 import SwiftUI
 
 struct painRecordInfoIntensitySwiftUIView: View {
+    @State var location: String
+    @State var trigger: String
+    @State var selectedTime: Date
+    @State var selectedFeelings: [String]
+    
     // 선택한 Intensity
-    @State private var selectedIntensity: Int?
+    @State var selectedIntensity: Int?
     
     // Intensity dictionary
     let intensities = [0 : "통증 없음",
@@ -29,6 +34,7 @@ struct painRecordInfoIntensitySwiftUIView: View {
         
         // Intensity
         HStack(spacing: 0) {
+            
             ForEach((0...10).filter { $0 % 2 == 0 }, id: \.self) { idx in
                 if let intensityText = intensities[idx] {
                     intensityRow(idx: idx, intensityText: intensityText)
@@ -39,11 +45,13 @@ struct painRecordInfoIntensitySwiftUIView: View {
         Spacer()
         
         // 하단 버튼
-        bottomButtonSwiftUIView(nextDestination: AnyView(painRecordResultSwiftUIView()))
+        bottomButtonSwiftUIView(nextDestination: AnyView(painRecordResultSwiftUIView(location:$location,trigger:$trigger,selectedTime: $selectedTime,selectedFeelings:$selectedFeelings,selectedIntensity:selectedIntensity?,intensityText: intensities[selectedIntensity!]!)))
     }
     
-    // Intensity 컴포넌트
-    func intensityRow(idx: Int, intensityText: String) -> some View {
+}
+// Intensity 컴포넌트
+func intensityRow(idx: Int, intensityText: String) -> any View {
+    var body: some View {
         VStack(spacing: 10) {
             // 원형 Intensity
             Text("\(idx)")
@@ -65,8 +73,4 @@ struct painRecordInfoIntensitySwiftUIView: View {
             self.selectedIntensity = idx
         }
     }
-}
-
-#Preview {
-    painRecordInfoIntensitySwiftUIView()
 }

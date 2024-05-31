@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct painRecordInfoTimeSwiftUIView: View {
+    @State var location: String
+    @State var trigger: String
     
-    @State private var selectedTime = Date()
+    @State var selectedTime = Date()
     
     var body: some View {
         Text("통증 발생 시간은 어떻게 되나요?")
@@ -19,10 +21,6 @@ struct painRecordInfoTimeSwiftUIView: View {
             .datePickerStyle(CompactDatePickerStyle())
             .labelsHidden()
         Spacer()
-        bottomButtonSwiftUIView(nextDestination: AnyView(painRecordInfoFeelingSwiftUIView()))
+        bottomButtonSwiftUIView(nextDestination: AnyView(painRecordInfoFeelingSwiftUIView(location:location,trigger:trigger, selectedTime:selectedTime)))
     }
-}
-
-#Preview {
-    painRecordInfoTimeSwiftUIView()
 }
