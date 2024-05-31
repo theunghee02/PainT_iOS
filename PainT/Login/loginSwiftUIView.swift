@@ -19,7 +19,7 @@ struct loginSwiftUIView: View {
     @State private var isLoading = false
     
     
-    @State var stack:NavigationPath = NavigationPath()
+    @State var stack : [StackView<Any>] = []
     @State private var username: String = ""
     @State private var password: String = ""
     @State private var showAlert = false;
@@ -38,8 +38,8 @@ struct loginSwiftUIView: View {
 
     var body: some View {
         
-        NavigationStack {
-            if(!isLoading) {
+        NavigationStack(path: $stack) {
+            
                 
                 VStack(spacing: 10) {
                     
@@ -63,13 +63,16 @@ struct loginSwiftUIView: View {
                     
                     
                     Button("로그인"){
+                        isLoading = true
                         if(login()) {
                             username = ""
                             password = ""
                             withAnimation(.spring()) {
+                                isLoading = false
                                 appRootManager.currentRoot = .home
                             }
                         }
+
                     }
                     .buttonStyle(BasicButtonStyle())
                     
@@ -143,16 +146,30 @@ struct loginSwiftUIView: View {
                     
                     Spacer()
                     
-                    NavigationLink(destination: eulaSwiftUIView(stack: $stack)) {
-                        Text("회원가입")
+                    Button("회원가입") {
+                        stack.append(StackView(type:.eula,content:""))
                     }
                     .buttonStyle(BasicButtonStyle())
                     
                     
                 } // VStack
                 .padding()
+                .navigationDestination(for: StackView<Any>.self) { stackView in
+                    switch stack.last?.type {
+                    case .mail:
+                        mailVerifySwiftUIView(stack:$stack)
+                    case .eula:
+                        eulaSwiftUIView(stack:$stack)
+                    case .sign:
+                        signUpSwiftUIView(stack: $stack,isAgreed4: stack.last?.content as! Bool)
+                    case .none:
+                        self
+                    }
+                }
                 //.toolbar(.hidden, for: .navigationBar)
                 .onChange(of: shouldNavigate) {
+                    username = ""
+                    password = ""
                     appRootManager.currentRoot = .home
                 }
                 .alert(isPresented: $showAlert) {
@@ -162,11 +179,15 @@ struct loginSwiftUIView: View {
                         dismissButton: .default(Text("확인"))
                     )
                 } // alert
-            } else {
-                LoadingView()
-            }
+            
         } // NavigationStack
         .navigationBarBackButtonHidden(true)
+        .overlayIf(isLoading, ProgressView()
+            .progressViewStyle(CircularProgressViewStyle()) // 로딩 바 스타일 설정
+            .scaleEffect(2) // 크기 조절
+            .padding(.top, 60)
+            .opacity(isLoading ? 1 : 0) // 로딩 중에만 보이도록 설정)
+                   )
         //.toolbar(.hidden,for:.tabBar)
         
             
@@ -224,3 +245,21 @@ struct loginSwiftUIView: View {
     loginSwiftUIView()
 }
 
+
+enum StackViewType {
+    case sign
+    case eula
+    case mail
+}
+
+struct StackView<T>: Hashable {
+    public func hash(into hasher: inout Hasher) {
+            return hasher.combine(type)
+        }
+    static func == (lhs: StackView<T>, rhs: StackView<T>) -> Bool {
+        return lhs.type == rhs.type
+    }
+    
+    let type: StackViewType
+    let content: T
+}

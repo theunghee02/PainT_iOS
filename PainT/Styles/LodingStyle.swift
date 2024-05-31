@@ -40,7 +40,7 @@ struct LoadingView: View {
     func startLoading() {
         isLoading = true
         // 로딩이 완료된 후에 isLoading을 false로 설정하여 로딩 바를 숨김
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
             isLoading = false
         }
     }
