@@ -39,6 +39,9 @@ struct painRecordResultSwiftUIView: View {
         return formatter
     }() //
     
+    var imageID : String = "665980dcf405aa78f07608e2" // 정상
+//    var imageID : String = "665980dcf405aa78f076082" // 비정상
+    
     var body: some View {
         VStack {
             Spacer()
@@ -80,11 +83,21 @@ struct painRecordResultSwiftUIView: View {
                 .padding(20)
                 
                 // 하위 항목
-                HStack(spacing: 5) {
+                HStack {
                     // 3D 신체
-                    Rectangle()
-                        .frame(width: 150, height: 300)
-                        .foregroundStyle(.white)
+                    AsyncImage(url: URL(string: "http://chi-iu.com/unity/images/\(imageID)"),
+                               scale: 8) { phase in
+                        if let image = phase.image {
+                            image // 사진 띄우기
+                        } else {
+                            let image = Image("body-default")
+                            image.resizable()
+                        }
+                    }
+                        .frame(width: 150.0, height: 300.0)
+                        .padding(.leading, 10)
+                        .padding(.bottom, 15)
+//                        .background(Color(.white))
                     
                     // 트리거 및 느낌
                     VStack(alignment: .trailing, spacing: 20) {
@@ -168,12 +181,12 @@ struct painRecordResultSwiftUIView: View {
             Alert(title: Text("알림"),message: Text(alertMsg),
                   dismissButton: .default(Text("확인") ) )
         }
-    }
+    } // body
     
     @State var showAlert : Bool = false
     @State var alertMsg = ""
     
-}
+} // painRecordResultSwiftUIView
 
 struct RequestRecord : Encodable {
 //    {
