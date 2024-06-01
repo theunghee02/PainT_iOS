@@ -27,7 +27,7 @@ struct DiseasePredictionSwiftUIView: View {
             } // List
         } // VStack
         .onAppear() {
-            // get 메소드 호출하는 함수 호출
+            // post 메소드 호출하는 함수 호출
             postDisease()
         }
     }
