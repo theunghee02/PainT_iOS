@@ -9,13 +9,12 @@
 import SwiftUI
 
 struct painRecordInfoIntensitySwiftUIView: View {
-    @State var location: String
+    @State var location: [String]
     @State var trigger: String
-    @State var selectedTime: Date
     @State var selectedFeelings: [String]
     
     // 선택한 Intensity
-    @State var selectedIntensity: Int?
+    @State var selectedIntensity: Int = 0
     
     // Intensity dictionary
     let intensities = [0 : "통증 없음",
@@ -31,7 +30,7 @@ struct painRecordInfoIntensitySwiftUIView: View {
             .fontWeight(.semibold)
             .font(.system(size:20))
             .padding(20)
-        
+
         // Intensity
         HStack(spacing: 0) {
             
@@ -45,32 +44,33 @@ struct painRecordInfoIntensitySwiftUIView: View {
         Spacer()
         
         // 하단 버튼
-        bottomButtonSwiftUIView(nextDestination: AnyView(painRecordResultSwiftUIView(location:$location,trigger:$trigger,selectedTime: $selectedTime,selectedFeelings:$selectedFeelings,selectedIntensity:selectedIntensity?,intensityText: intensities[selectedIntensity!]!)))
+        bottomButtonSwiftUIView(nextDestination: AnyView(painRecordResultSwiftUIView(location:$location,trigger:$trigger,selectedFeelings:$selectedFeelings,selectedIntensity:$selectedIntensity,intensityText: intensities[selectedIntensity]!)))
+    }
+    // Intensity 컴포넌트
+    func intensityRow(idx: Int, intensityText: String) -> some View {
+        var body: some View {
+            VStack(spacing: 10) {
+                // 원형 Intensity
+                Text("\(idx)")
+                    .font(.system(size: 20))
+                    .frame(width: 51, height: 52)
+                    .foregroundColor(selectedIntensity == idx ? .white : Color(hex: 0x999999))
+                    .background(
+                        Circle()
+                            .foregroundColor(selectedIntensity == idx ? Color("AccentColor") : Color(hex: 0xF0F0F0))
+                    )
+                
+                // Intensity 설명
+                Text("\(intensityText)")
+                    .font(.system(size: 10))
+                    .foregroundColor(selectedIntensity == idx ? Color("AccentColor") : Color(hex: 0x999999))
+            } // VStack
+            .frame(width: 58)
+            .onTapGesture { // Intensity 클릭 시 idx 저장
+                self.selectedIntensity = idx
+            }
+        }
+        return body
     }
     
-}
-// Intensity 컴포넌트
-func intensityRow(idx: Int, intensityText: String) -> any View {
-    var body: some View {
-        VStack(spacing: 10) {
-            // 원형 Intensity
-            Text("\(idx)")
-                .font(.system(size: 20))
-                .frame(width: 51, height: 52)
-                .foregroundColor(selectedIntensity == idx ? .white : Color(hex: 0x999999))
-                .background(
-                    Circle()
-                        .foregroundColor(selectedIntensity == idx ? Color("AccentColor") : Color(hex: 0xF0F0F0))
-                )
-            
-            // Intensity 설명
-            Text("\(intensityText)")
-                .font(.system(size: 10))
-                .foregroundColor(selectedIntensity == idx ? Color("AccentColor") : Color(hex: 0x999999))
-        } // VStack
-        .frame(width: 58)
-        .onTapGesture { // Intensity 클릭 시 idx 저장
-            self.selectedIntensity = idx
-        }
-    }
 }

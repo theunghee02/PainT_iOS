@@ -9,9 +9,8 @@
 import SwiftUI
 
 struct painRecordInfoFeelingSwiftUIView: View {
-    @State var location: String
+    @State var location: [String]
     @State var trigger: String
-    @State var selectedTime: Date
     @State var arrayFeelings: [String] = []
     // 선택한 느낌
     @State var selectedFeelings: Set<String> = []
@@ -48,14 +47,11 @@ struct painRecordInfoFeelingSwiftUIView: View {
                 }
             }
         } // VStack
-        .onDisappear{
-            arrayFeelings = Array(selectedFeelings)
-        }
-        
+
         Spacer()
         
         // 하단 버튼
-        bottomButtonSwiftUIView(nextDestination:AnyView(painRecordInfoIntensitySwiftUIView(location:location,trigger:trigger,selectedTime:selectedTime,selectedFeelings:arrayFeelings)))
+        bottomButtonSwiftUIView(nextDestination:AnyView(painRecordInfoIntensitySwiftUIView(location:location,trigger:trigger,selectedFeelings:arrayFeelings)))
                         
     }
     
@@ -77,6 +73,7 @@ struct painRecordInfoFeelingSwiftUIView: View {
                 } else {
                     selectedFeelings.insert(feeling)
                 }
+                arrayFeelings = Array(selectedFeelings)
             }
     }
 }

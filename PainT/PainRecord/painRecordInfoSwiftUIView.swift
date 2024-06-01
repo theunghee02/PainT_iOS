@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct painRecordInfoTriggerSwiftUIView: View {
-    @State var location: String
+    @State var location: [String]
     @State var trigger: String = ""
     @FocusState private var isTextFieldFocused: Bool
     
@@ -29,7 +29,7 @@ struct painRecordInfoTriggerSwiftUIView: View {
             )
         
         Spacer()
-        bottomButtonSwiftUIView(nextDestination: AnyView(painRecordInfoTimeSwiftUIView(location: location,trigger: trigger)))
+        bottomButtonSwiftUIView(nextDestination: AnyView(painRecordInfoFeelingSwiftUIView(location:location,trigger:trigger)))
             .onAppear {
                 isTextFieldFocused = true // 뷰가 나타나면 텍스트 필드에 포커스를 설정합니다.
             }

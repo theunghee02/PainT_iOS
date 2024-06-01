@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct painRecordResultSwiftUIView: View {
-    @Binding var location: String
+    @Binding var location: [String]
     @Binding var trigger: String
-    @Binding var selectedTime: Date
     @Binding var selectedFeelings: [String]
     @Binding var selectedIntensity: Int
     
@@ -18,7 +17,7 @@ struct painRecordResultSwiftUIView: View {
     
     @State var intensityText : String
     
-    
+    var selectedTime: Date = Date()
     
     // 날짜를 원하는 형식의 문자열로 변환
     let dateFormatter: DateFormatter = {
@@ -143,11 +142,14 @@ struct painRecordResultSwiftUIView: View {
         .background(Color(hex: 0x252525))
         // sy-gwak
         .onAppear {
+            
             let formatTime = requestFormatter.string(from: selectedTime)
-            let body = RequestRecord(location: self.location, intensity: self.selectedIntensity, trigger: trigger, type: selectedFeelings, painTimestamp: formatTime)
+            
+            print("\(location)  | \(selectedIntensity) | \(trigger) | \(selectedFeelings) | \(formatTime) \n")
+            let body = RequestRecord(location: self.location, intensity: self.selectedIntensity, trigger: self.trigger, type: self.selectedFeelings, painTimestamp: formatTime)
             
             let svc = AuthService(apiPath: "/api/v1/pain-records/post")
-            svc.postRequest(parameters: body){
+            svc.postRequest(resultType: String.self,parameters: body){
                 result in
                     switch result {
                     case .success(let value):
@@ -181,7 +183,7 @@ struct RequestRecord : Encodable {
 //        "type":["뻑뻑함"],
 //        "painTimestamp":"2024-05-26T10:34:20"
 //    }
-    let location : String
+    let location :[String]
     let intensity : Int
     let trigger : String
     let type : [String]

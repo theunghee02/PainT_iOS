@@ -218,6 +218,7 @@ struct loginSwiftUIView: View {
                     if(value.0?.code == 2000) {
                         userDefaults.saveAccessToken(token: (value.0?.result.accessToken)!)
                         userDefaults.saveRefreshToken(token: value.1 ?? "non")
+                        //print("[refresh] : \(value.1!)")
                         shouldNavigate = true
                     } else {
                         showAlertMsg = value.0!.message

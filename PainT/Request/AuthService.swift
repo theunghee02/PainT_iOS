@@ -97,11 +97,11 @@ class AuthService {
     
     // post - 파라미터 O
     // sy-gwak edit => parameter -> encodable
-    public func postRequest(parameters: Encodable,completion: @escaping (Result<Response, Error>) -> Void) {
+    public func postRequest<T:Decodable>(resultType: T.Type, parameters: Encodable,completion: @escaping (Result<GenericResponse<T>, Error>) -> Void) {
         let headers: HTTPHeaders = [.authorization(bearerToken: tkSvc.getAccessToken()!)]
 
         AF.request(hostUrl+apiPath, method: .post, parameters: parameters , encoder: JSONParameterEncoder.default, headers: headers)
-            .responseDecodable(of: Response.self) { response in
+            .responseDecodable(of: GenericResponse<T>.self) { response in
                 
             switch response.result {
             case .success(let value):
@@ -118,8 +118,8 @@ class AuthService {
                     }
                     
                     //재귀 호출하면 문제 해결
+                    self.postRequest(resultType: resultType, parameters: parameters,completion: completion)
                 } else {
-                    self.postRequest(parameters: parameters,completion: completion)
                     completion(.success(value))
                 }
                 

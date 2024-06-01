@@ -77,5 +77,6 @@ struct Response: Codable {
 
 struct AccessResult: Codable {
     let accessToken: String
+    let refreshToken: String
     let grantType: String
 }
