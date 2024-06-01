@@ -10,6 +10,8 @@ import SwiftUI
 struct myPageSwiftUIView: View {
     @State var logoutNavigate : Bool = false
     
+    @EnvironmentObject private var appRootManager: AppRootManager
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -18,23 +20,24 @@ struct myPageSwiftUIView: View {
                         let svc = UserDefaultsService()
                         svc.deleteAccessToken()
                         svc.deleteRefreshToken()
-                        logoutNavigate = true;
+                        
+                        appRootManager.currentRoot = .authentication
+                        
                     }
                     .foregroundColor(.black)
                     
                 }
-            }
+            } // VStack
             .navigationTitle("마이페이지")
             .navigationDestination(isPresented: $logoutNavigate) {
                 loginSwiftUIView()
-                    .toolbar(.hidden, for: .tabBar)
             }
+            .navigationBarBackButtonHidden(true)
+            
             
         } // NavigationView
-        .navigationBarBackButtonHidden()
+        .navigationBarBackButtonHidden(true)
+
     }
 }
 
-#Preview {
-    myPageSwiftUIView()
-}

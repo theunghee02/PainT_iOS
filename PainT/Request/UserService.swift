@@ -42,12 +42,12 @@ class UserService {
     }
     
     // 회원가입용 리퀘스트 username:String,password:String,realName:String,email:String,gender:Bool,birthday:Date,isAgreed4:Bool
+    
+    public func voidRequest(parameters:Encodable,completion: @escaping (Result<ResponseVoid, Error>) -> Void) {
 
-    public func voidRequest(parameters:Parameters,completion: @escaping (Result<Response, Error>) -> Void) {
 
-        AF.request(hostUrl+apiPath, method: .post, parameters: parameters, encoding: JSONEncoding.default)
-            .responseDecodable(of: Response.self) { response in
-                
+        AF.request(hostUrl+apiPath, method: .post, parameters: parameters, encoder: JSONParameterEncoder.default)
+            .responseDecodable(of: ResponseVoid.self) { response in
             switch response.result {
             case .success(let value):
                 completion(.success(value))
@@ -62,6 +62,12 @@ class UserService {
         
 }
 
+struct ResponseVoid: Codable {
+    var isSuccess: Bool
+    var code: Int
+    var message: String
+}
+
 struct Response: Codable {
     var isSuccess: Bool
     var code: Int
@@ -71,5 +77,6 @@ struct Response: Codable {
 
 struct AccessResult: Codable {
     let accessToken: String
+    let refreshToken: String
     let grantType: String
 }

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct tabSwiftUIView: View {
+    @State var stack = NavigationPath()
+    
     @State private var selectedTab = 0
     
     var body: some View {
@@ -32,8 +34,9 @@ struct tabSwiftUIView: View {
                     }
                     .tag(2)
             } // TabView
-            .navigationBarBackButtonHidden()
         } // NavigationView
+        .toolbar(.visible, for:.navigationBar)
+        
     }
 }
 
