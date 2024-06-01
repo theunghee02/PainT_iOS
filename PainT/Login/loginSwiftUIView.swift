@@ -19,7 +19,8 @@ struct loginSwiftUIView: View {
     @State private var isLoading = false
     
     
-    @State var stack : [StackView<Any>] = []
+    @State var stack : [NavigationPath] = []
+    @State var root = NavigationPath()
     @State private var username: String = ""
     @State private var password: String = ""
     @State private var showAlert = false;
@@ -38,7 +39,7 @@ struct loginSwiftUIView: View {
 
     var body: some View {
         
-        NavigationStack(path: $stack) {
+        NavigationStack(path: $root) {
             
                 
                 VStack(spacing: 10) {
@@ -145,27 +146,29 @@ struct loginSwiftUIView: View {
                     
                     
                     Spacer()
-                    
-                    Button("회원가입") {
-                        stack.append(StackView(type:.eula,content:""))
+                    NavigationLink(destination:eulaSwiftUIView(stack: $stack)
+                        .onAppear {
+                            //stack.append(StackView(type:.eula,content:""))
+                            
+                        }) {
+                        Text("회원가입")
                     }
                     .buttonStyle(BasicButtonStyle())
+                    
+//                    Button("회원가입") {
+//                        stack.append(StackView(type:.eula,content:""))
+//                    }
+//                    .buttonStyle(BasicButtonStyle())
                     
                     
                 } // VStack
                 .padding()
-                .navigationDestination(for: StackView<Any>.self) { stackView in
-                    switch stack.last?.type {
-                    case .mail:
-                        mailVerifySwiftUIView(stack:$stack)
-                    case .eula:
-                        eulaSwiftUIView(stack:$stack)
-                    case .sign:
-                        signUpSwiftUIView(stack: $stack,isAgreed4: stack.last?.content as! Bool)
-                    case .none:
-                        self
-                    }
-                }
+//                .navigationDestination(for: StackView<Any>.self) { stackView in
+//                    switch stack.last {
+//                    default:
+//                        
+//                    }
+//                }
                 //.toolbar(.hidden, for: .navigationBar)
                 .onChange(of: shouldNavigate) {
                     username = ""

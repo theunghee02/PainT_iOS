@@ -12,7 +12,7 @@ struct mailVerifySwiftUIView: View {
     
     @State private var isLoading = false
     
-    @Binding var stack: [StackView<Any>]
+    @Binding var stack: [NavigationPath]
     @State var code : String = ""
     
     @State private var showAlert = false;

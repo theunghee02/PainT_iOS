@@ -23,7 +23,7 @@ import Alamofire
 
 struct signUpSwiftUIView: View {
     
-    @Binding var stack :[StackView<Any>]
+    @Binding var stack :[NavigationPath]
     
     @State private var canSubmit = false
     
@@ -165,6 +165,8 @@ struct signUpSwiftUIView: View {
                         .datePickerStyle(CompactDatePickerStyle())
                     
                     Spacer(minLength: 50)
+                    
+                    
                     Button("제출"){
                         
                         
@@ -186,7 +188,7 @@ struct signUpSwiftUIView: View {
                             switch result {
                             case .success(let value):
                                 if(value.code == 2000) {
-                                    stack.append(StackView(type:.mail,content:""))
+                                    stack.append(NavigationPath())
                                 }
                                 else {
                                     print(value.message)
@@ -196,12 +198,15 @@ struct signUpSwiftUIView: View {
                             }
                         }// Request
                         
+                        
                         isLoading = false
                         
                     }
                     .background(idNonDup && eNonDup && canUsePW ? Color.accentColor.cornerRadius(10) : Color(.systemGray5).cornerRadius(10))
                     .buttonStyle(NoColorButtonStyle())
                     .disabled(canSubmit)
+                    
+                    
                     
                     
                 } // VStack

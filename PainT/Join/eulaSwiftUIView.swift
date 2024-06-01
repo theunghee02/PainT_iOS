@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct eulaSwiftUIView: View {
-    @Binding var stack : [StackView<Any>]
+    @Binding var stack : [NavigationPath]
     
     @State private var isAgreed1 = false
     @State private var isAgreed2 = false
@@ -26,20 +26,24 @@ struct eulaSwiftUIView: View {
                 
                 Spacer(minLength: 30)
                 
-                Button("다음") {
-                    stack.append(StackView(type: .sign, content: isAgreed4))
-                }
-                    .buttonStyle(NoColorButtonStyle())
-                    .background(isAgreed1 && isAgreed2 && isAgreed3 ? Color.accentColor.cornerRadius(10) : Color(.systemGray5).cornerRadius(10))
-                    .disabled(!isAgreed1)
-                
-                
-//                    NavigationLink(destination: signUpSwiftUIView(stack:$stack , isAgreed4: isAgreed4)) {
-//                        Text("다음")
-//                    }
+//                Button("다음") {
+//                    stack.append(StackView(type: .sign, content: isAgreed4))
+//                }
 //                    .buttonStyle(NoColorButtonStyle())
 //                    .background(isAgreed1 && isAgreed2 && isAgreed3 ? Color.accentColor.cornerRadius(10) : Color(.systemGray5).cornerRadius(10))
 //                    .disabled(!isAgreed1)
+                
+
+                NavigationLink(destination: signUpSwiftUIView(stack:$stack , isAgreed4: isAgreed4)
+                    .onAppear {
+                        stack.append(NavigationPath())
+                    }
+                ) {
+                    Text("다음")
+                }
+                .buttonStyle(NoColorButtonStyle())
+                .background(isAgreed1 && isAgreed2 && isAgreed3 ? Color.accentColor.cornerRadius(10) : Color(.systemGray5).cornerRadius(10))
+                .disabled(!isAgreed1)
             }
         
         } // ScrollView
@@ -51,6 +55,9 @@ struct eulaSwiftUIView: View {
             }
         }
         .navigationBarBackButtonHidden()
+        .onAppear {
+            print("\(stack)\n");
+        }
     
         
        

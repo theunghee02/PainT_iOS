@@ -72,6 +72,11 @@ extension View {
     }
   }
 }
+extension NavigationPath{
+    func popToRoot() {
+        self = NavigationPath()
+    }
+}
 
 final class AppRootManager: ObservableObject {
     
