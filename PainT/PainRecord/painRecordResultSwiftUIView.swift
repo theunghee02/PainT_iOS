@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct painRecordResultSwiftUIView: View {
+    @Binding var location: [String]
+    @Binding var trigger: String
+    @Binding var selectedFeelings: [String]
+    @Binding var selectedIntensity: Int
+    
     var username: String = "수정"
     
-    // 선택한 날짜
-    var selectedTime : Date = Date()
-     
-    // Intensity
-    let intensityNum : Int = 2
-    let intensityText : String = "가벼운 통증"
+    @State var intensityText : String
+    
+    var selectedTime: Date = Date()
     
     // 날짜를 원하는 형식의 문자열로 변환
     let dateFormatter: DateFormatter = {
@@ -30,12 +32,12 @@ struct painRecordResultSwiftUIView: View {
         return formatter
     }()
     
-    // 트리거
-    var trigger : String = "엎드려 있을 때"
-    
-    // 느낌
-    var feelings : [String] = ["날카로운 느낌",
-                               "누르는 듯한 느낌"]
+    // sy-gwak
+    let requestFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        return formatter
+    }() //
     
     var imageID : String = "665980dcf405aa78f07608e2" // 정상
 //    var imageID : String = "665980dcf405aa78f076082" // 비정상
@@ -69,7 +71,7 @@ struct painRecordResultSwiftUIView: View {
                     
                     // 강도 아이콘
                     VStack {
-                        Image("pain\(intensityNum)")
+                        Image("pain\(selectedIntensity)")
                         Text("\(intensityText)")
                             .foregroundStyle(.white)
                     } // VStack
@@ -99,12 +101,25 @@ struct painRecordResultSwiftUIView: View {
                     
                     // 트리거 및 느낌
                     VStack(alignment: .trailing, spacing: 20) {
-                        ForEach(0..<feelings.count+1, id: \.self) { idx in
+                        ForEach(0..<selectedFeelings.count+1, id: \.self) { idx in
                             if idx == 0 {
-                                resultRow(text: trigger)
+                                //오류나서 하드코딩함
+                                Text(trigger)
+                                    .font(.system(size: 15))
+                                    .foregroundStyle(.white)
+                                    .padding(.horizontal, 20)
+                                    .padding(.vertical, 10)
+                                    .background(Color(hex: 0x0E0E0E, alpha: 0.5))
+                                    .cornerRadius(26)
                             }
                             else {
-                                resultRow(text: feelings[idx-1])
+                                Text(selectedFeelings[idx-1])
+                                    .font(.system(size: 15))
+                                    .foregroundStyle(.white)
+                                    .padding(.horizontal, 20)
+                                    .padding(.vertical, 10)
+                                    .background(Color(hex: 0x0E0E0E, alpha: 0.5))
+                                    .cornerRadius(26)
                             }
                         }
                     }
@@ -138,20 +153,64 @@ struct painRecordResultSwiftUIView: View {
             } // HStack
         } // VStack
         .background(Color(hex: 0x252525))
+        // sy-gwak
+        .onAppear {
+            
+            let formatTime = requestFormatter.string(from: selectedTime)
+            
+            print("\(location)  | \(selectedIntensity) | \(trigger) | \(selectedFeelings) | \(formatTime) \n")
+            let body = RequestRecord(location: self.location, intensity: self.selectedIntensity, trigger: self.trigger, type: self.selectedFeelings, painTimestamp: formatTime)
+            
+            let svc = AuthService(apiPath: "/api/v1/pain-records/post")
+            svc.postRequest(resultType: String.self,parameters: body){
+                result in
+                    switch result {
+                    case .success(let value):
+                        if(value.code == 2000) {
+                        }
+                        else {
+                            alertMsg = value.message
+                            showAlert = true
+                        }
+                    case .failure(let error):
+                        print("Error fetching data: \(error)")
+                    }
+            }
+        }
+        .alert(isPresented: $showAlert) {
+            Alert(title: Text("알림"),message: Text(alertMsg),
+                  dismissButton: .default(Text("확인") ) )
+        }
     } // body
     
-    // Result Row
-    func resultRow(text: String) -> some View {
-        Text("\(text)")
-            .font(.system(size: 15))
-            .foregroundStyle(.white)
-            .padding(.horizontal, 20)
-            .padding(.vertical, 10)
-            .background(Color(hex: 0x0E0E0E, alpha: 0.5))
-            .cornerRadius(26)
-    }
+    @State var showAlert : Bool = false
+    @State var alertMsg = ""
+    
 } // painRecordResultSwiftUIView
 
-#Preview {
-    painRecordResultSwiftUIView()
+struct RequestRecord : Encodable {
+//    {
+//        "location": "무릎",
+//        "intensity":3,
+//        "trigger":"앉을때",
+//        "type":["뻑뻑함"],
+//        "painTimestamp":"2024-05-26T10:34:20"
+//    }
+    let location :[String]
+    let intensity : Int
+    let trigger : String
+    let type : [String]
+    let painTimestamp: String
 }
+
+//// Result Row
+//func resultRow(text: String) -> some View {
+//    Text("\(text)")
+//        .font(.system(size: 15))
+//        .foregroundStyle(.white)
+//        .padding(.horizontal, 20)
+//        .padding(.vertical, 10)
+//        .background(Color(hex: 0x0E0E0E, alpha: 0.5))
+//        .cornerRadius(26)
+//}
+// ~ sy-gwak

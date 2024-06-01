@@ -22,11 +22,11 @@ class AuthService {
     
     
     // get - 파라미터 O
-    public func getRequest(parameters:Parameters,completion: @escaping (Result<Response, Error>) -> Void) {
+    public func getRequest<T: Decodable>(parameters:Parameters,resultType: T.Type,completion: @escaping (Result<GenericResponse<T>, Error>) -> Void) {
         let headers: HTTPHeaders = [.authorization(bearerToken: tkSvc.getAccessToken()!)]
 
         AF.request(hostUrl+apiPath, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: headers)
-            .responseDecodable(of: Response.self) { response in
+            .responseDecodable(of: GenericResponse<T>.self) { response in
                 
             switch response.result {
             case .success(let value):
@@ -44,7 +44,7 @@ class AuthService {
                     
                     //재귀 호출하면 문제 해결
                     
-                    self.getRequest(parameters: parameters,completion: completion)
+                    self.getRequest<T>(parameters: parameters,resultType: resultType,completion: completion)
                     
                 } else {
                     completion(.success(value))
@@ -96,11 +96,12 @@ class AuthService {
     }
     
     // post - 파라미터 O
-    public func postRequest(parameters:Parameters,completion: @escaping (Result<Response, Error>) -> Void) {
+    // sy-gwak edit => parameter -> encodable
+    public func postRequest<T:Decodable>(resultType: T.Type, parameters: Encodable,completion: @escaping (Result<GenericResponse<T>, Error>) -> Void) {
         let headers: HTTPHeaders = [.authorization(bearerToken: tkSvc.getAccessToken()!)]
 
-        AF.request(hostUrl+apiPath, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
-            .responseDecodable(of: Response.self) { response in
+        AF.request(hostUrl+apiPath, method: .post, parameters: parameters , encoder: JSONParameterEncoder.default, headers: headers)
+            .responseDecodable(of: GenericResponse<T>.self) { response in
                 
             switch response.result {
             case .success(let value):
@@ -117,8 +118,8 @@ class AuthService {
                     }
                     
                     //재귀 호출하면 문제 해결
+                    self.postRequest(resultType: resultType, parameters: parameters,completion: completion)
                 } else {
-                    self.postRequest(parameters: parameters,completion: completion)
                     completion(.success(value))
                 }
                 
@@ -158,9 +159,6 @@ class AuthService {
                     } else {
                         completion(.success(value))
                     }
-                } catch {
-                    print("Decoding error: \(error)")
-                    completion(.failure(error))
                 }
                 
             case .failure(let error):

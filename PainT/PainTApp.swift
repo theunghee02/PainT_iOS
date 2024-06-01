@@ -58,6 +58,20 @@ extension UINavigationController: ObservableObject, UIGestureRecognizerDelegate 
         return viewControllers.count > 1
     }
 }
+// 출처 https://green1229.tistory.com/298
+extension View {
+  @ViewBuilder public func overlayIf<T: View>(
+    _ condition: Bool,
+    _ content: T,
+    alignment: Alignment = .center
+  ) -> some View {
+    if condition {
+      self.overlay(content, alignment: alignment)
+    } else {
+      self
+    }
+  }
+}
 
 final class AppRootManager: ObservableObject {
     

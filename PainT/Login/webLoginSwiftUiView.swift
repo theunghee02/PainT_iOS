@@ -101,7 +101,7 @@ class AuthViewController: UIViewController, WKNavigationDelegate {
     }
 
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        if let url = webView.url,
+        if //let url = webView.url,
            let _ = """
         document.querySelector('pre').textContent
         """.data(using: .utf8) {
