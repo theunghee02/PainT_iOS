@@ -12,6 +12,12 @@ struct tabSwiftUIView: View {
     
     @State private var selectedTab = 0
     
+//    init() {
+//        // UITabBar의 배경색을 하얗게 설정
+//        UITabBar.appearance().barTintColor = .white
+//        UITabBar.appearance().isTranslucent = false // 배경을 불투명하게 설정
+//    }
+    
     var body: some View {
         NavigationView {
             TabView(selection: $selectedTab) {
@@ -27,6 +33,7 @@ struct tabSwiftUIView: View {
                         Label("통증 통계", image: selectedTab == 1 ? "painStat-colored" : "painStat-default")
                     }
                     .tag(1)
+                    .background(Color.white)
                 // myPage
                 myPageSwiftUIView()
                     .tabItem {
@@ -34,6 +41,11 @@ struct tabSwiftUIView: View {
                     }
                     .tag(2)
             } // TabView
+            .background {
+                    RoundedRectangle(cornerRadius: 24)
+                        .fill(Color.white)
+                        .shadow(color: .black.opacity(0.15), radius: 8, y: 2)
+                }
         } // NavigationView
         .toolbar(.visible, for:.navigationBar)
         
