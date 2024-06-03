@@ -41,18 +41,24 @@
 		D06876012C05B8290088E186 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06875FE2C05B8290088E186 /* AuthService.swift */; };
 		D06876022C05B8290088E186 /* NoAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06875FF2C05B8290088E186 /* NoAuthService.swift */; };
 		D07EC5DC2BED0F98006E74DE /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07EC5DB2BED0F98006E74DE /* ColorExtension.swift */; };
+		D09E53DF2C0DF31C005B597A /* UnityFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D09E53DD2C0DF31C005B597A /* UnityFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D09E53E32C0DF718005B597A /* viewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09E53E22C0DF718005B597A /* viewController.swift */; };
+		D0A260132C0CD3FB00D7F6ED /* UIViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A260122C0CD3FB00D7F6ED /* UIViewControllerRepresentable.swift */; };
+		D0A260152C0CD5B100D7F6ED /* UnityManager_launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A260142C0CD5B100D7F6ED /* UnityManager_launch.swift */; };
+		D0A260172C0CDA7200D7F6ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A260162C0CDA7200D7F6ED /* AppDelegate.swift */; };
 		D0B9867C2C0629DA0040FF37 /* GenericResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B9867B2C0629DA0040FF37 /* GenericResponse.swift */; };
 		D0CE7A752BFF2A7D00E3B025 /* DiseaseResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CE7A742BFF2A7D00E3B025 /* DiseaseResult.swift */; };
 		D0D85D332C09E00D008C931A /* LodingStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D85D322C09E00D008C931A /* LodingStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		D00675A12BF51379003A3B89 /* Embed Frameworks */ = {
+		D0A260102C0CD3A900D7F6ED /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				D09E53DF2C0DF31C005B597A /* UnityFramework.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -95,6 +101,11 @@
 		D06875FE2C05B8290088E186 /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		D06875FF2C05B8290088E186 /* NoAuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoAuthService.swift; sourceTree = "<group>"; };
 		D07EC5DB2BED0F98006E74DE /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		D09E53DD2C0DF31C005B597A /* UnityFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UnityFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D09E53E22C0DF718005B597A /* viewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viewController.swift; sourceTree = "<group>"; };
+		D0A260122C0CD3FB00D7F6ED /* UIViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerRepresentable.swift; sourceTree = "<group>"; };
+		D0A260142C0CD5B100D7F6ED /* UnityManager_launch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnityManager_launch.swift; sourceTree = "<group>"; };
+		D0A260162C0CDA7200D7F6ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0B9867B2C0629DA0040FF37 /* GenericResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
 		D0CE7A742BFF2A7D00E3B025 /* DiseaseResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseResult.swift; sourceTree = "<group>"; };
 		D0D85D322C09E00D008C931A /* LodingStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LodingStyle.swift; sourceTree = "<group>"; };
@@ -125,6 +136,7 @@
 			children = (
 				D007C26B2BDB64EE005F2A29 /* PainT */,
 				D007C26A2BDB64EE005F2A29 /* Products */,
+				D0A25FFF2C0CD1E400D7F6ED /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -139,6 +151,7 @@
 		D007C26B2BDB64EE005F2A29 /* PainT */ = {
 			isa = PBXGroup;
 			children = (
+				D0A260112C0CD3E700D7F6ED /* UnityController */,
 				D06875FC2C05B8040088E186 /* Splash */,
 				D03C36D62BF6277B0028E759 /* Styles */,
 				D03C36D22BF627760028E759 /* Request */,
@@ -284,6 +297,25 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		D0A25FFF2C0CD1E400D7F6ED /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D09E53DD2C0DF31C005B597A /* UnityFramework.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D0A260112C0CD3E700D7F6ED /* UnityController */ = {
+			isa = PBXGroup;
+			children = (
+				D0A260122C0CD3FB00D7F6ED /* UIViewControllerRepresentable.swift */,
+				D0A260142C0CD5B100D7F6ED /* UnityManager_launch.swift */,
+				D0A260162C0CDA7200D7F6ED /* AppDelegate.swift */,
+				D09E53E22C0DF718005B597A /* viewController.swift */,
+			);
+			path = UnityController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -294,7 +326,7 @@
 				D007C2652BDB64EE005F2A29 /* Sources */,
 				D007C2662BDB64EE005F2A29 /* Frameworks */,
 				D007C2672BDB64EE005F2A29 /* Resources */,
-				D00675A12BF51379003A3B89 /* Embed Frameworks */,
+				D0A260102C0CD3A900D7F6ED /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -361,6 +393,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D09E53E32C0DF718005B597A /* viewController.swift in Sources */,
 				D0273E722BE789A70052824A /* painRecordResultSwiftUIView.swift in Sources */,
 				D0273E702BE787BC0052824A /* bottomButtonSwiftUIView.swift in Sources */,
 				D02FB3852BE26B12009B4875 /* loginSwiftUIView.swift in Sources */,
@@ -374,6 +407,7 @@
 				D03C36CE2BF627470028E759 /* signUpSwiftUIView.swift in Sources */,
 				D007C2712BDB64EE005F2A29 /* Item.swift in Sources */,
 				D03C36CC2BF627470028E759 /* EulaText.swift in Sources */,
+				D0A260172C0CDA7200D7F6ED /* AppDelegate.swift in Sources */,
 				D02FB3762BDF4555009B4875 /* myPageSwiftUIView.swift in Sources */,
 				D0273E6E2BE77F8D0052824A /* painRecordInfoTimeSwiftUIView.swift in Sources */,
 				D02FB37D2BE017B0009B4875 /* painRecordInfoSwiftUIView.swift in Sources */,
@@ -387,6 +421,8 @@
 				D03C36D72BF6277B0028E759 /* buttonStyles.swift in Sources */,
 				D006759F2BF5136A003A3B89 /* webview.swift in Sources */,
 				D06875FD2C05B8040088E186 /* splashSwiftUIView.swift in Sources */,
+				D0A260152C0CD5B100D7F6ED /* UnityManager_launch.swift in Sources */,
+				D0A260132C0CD3FB00D7F6ED /* UIViewControllerRepresentable.swift in Sources */,
 				D03C36CB2BF627470028E759 /* eulaSwiftUIView.swift in Sources */,
 				081EB58D2BE275960097E960 /* findPasswordSwiftUIView.swift in Sources */,
 				D0CE7A752BFF2A7D00E3B025 /* DiseaseResult.swift in Sources */,
@@ -533,7 +569,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PainT/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -564,7 +599,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PainT/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
