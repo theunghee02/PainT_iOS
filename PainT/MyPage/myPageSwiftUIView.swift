@@ -15,6 +15,9 @@ struct myPageSwiftUIView: View {
     var body: some View {
         NavigationStack {
             VStack {
+                Text("마이페이지")
+                    .font(.system(size: 24))
+                    .fontWeight(.bold)
                 List {
                     Button("로그아웃") {
                         let svc = UserDefaultsService()
@@ -28,7 +31,6 @@ struct myPageSwiftUIView: View {
                     
                 }
             } // VStack
-            .navigationTitle("마이페이지")
             .navigationDestination(isPresented: $logoutNavigate) {
                 loginSwiftUIView()
             }
@@ -41,3 +43,6 @@ struct myPageSwiftUIView: View {
     }
 }
 
+#Preview {
+    myPageSwiftUIView()
+}
