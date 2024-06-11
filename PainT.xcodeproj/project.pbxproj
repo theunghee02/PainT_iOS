@@ -15,6 +15,7 @@
 		D007C2712BDB64EE005F2A29 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = D007C2702BDB64EE005F2A29 /* Item.swift */; };
 		D007C2732BDB64F0005F2A29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D007C2722BDB64F0005F2A29 /* Assets.xcassets */; };
 		D007C2762BDB64F0005F2A29 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D007C2752BDB64F0005F2A29 /* Preview Assets.xcassets */; };
+		D01889232C1044C9008C9118 /* UnityFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D01889212C1044C9008C9118 /* UnityFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D0273E6E2BE77F8D0052824A /* painRecordInfoTimeSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0273E6D2BE77F8D0052824A /* painRecordInfoTimeSwiftUIView.swift */; };
 		D0273E702BE787BC0052824A /* bottomButtonSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0273E6F2BE787BC0052824A /* bottomButtonSwiftUIView.swift */; };
 		D0273E722BE789A70052824A /* painRecordResultSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0273E712BE789A70052824A /* painRecordResultSwiftUIView.swift */; };
@@ -53,6 +54,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				D01889232C1044C9008C9118 /* UnityFramework.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -69,6 +71,7 @@
 		D007C2702BDB64EE005F2A29 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		D007C2722BDB64F0005F2A29 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D007C2752BDB64F0005F2A29 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D01889212C1044C9008C9118 /* UnityFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UnityFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0273E6D2BE77F8D0052824A /* painRecordInfoTimeSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = painRecordInfoTimeSwiftUIView.swift; sourceTree = "<group>"; };
 		D0273E6F2BE787BC0052824A /* bottomButtonSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bottomButtonSwiftUIView.swift; sourceTree = "<group>"; };
 		D0273E712BE789A70052824A /* painRecordResultSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = painRecordResultSwiftUIView.swift; sourceTree = "<group>"; };
@@ -125,6 +128,7 @@
 			children = (
 				D007C26B2BDB64EE005F2A29 /* PainT */,
 				D007C26A2BDB64EE005F2A29 /* Products */,
+				D01889202C1044C9008C9118 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -168,6 +172,14 @@
 				D007C2752BDB64F0005F2A29 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D01889202C1044C9008C9118 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D01889212C1044C9008C9118 /* UnityFramework.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		D02FB3692BDE9F69009B4875 /* Home */ = {

@@ -13,7 +13,7 @@ struct painRecordResultSwiftUIView: View {
     @Binding var selectedFeelings: [String]
     @Binding var selectedIntensity: Int
     
-    var username: String = "수정"
+    var username: String = "user123"
     
     @State var intensityText : String
     
@@ -47,10 +47,11 @@ struct painRecordResultSwiftUIView: View {
             Spacer()
             
             // 상위 문구
-            Text("\(username)님의\n기록이 완성되었습니다")
+            Text("\(username) 님의\n기록이 완성되었습니다")
                 .multilineTextAlignment(.center)
                 .foregroundStyle(.white)
                 .font(.system(size: 24))
+                .padding(.bottom, 30)
             
             // 기록 카드
             VStack {
@@ -80,69 +81,76 @@ struct painRecordResultSwiftUIView: View {
                     .background(Color(hex: 0x0E0E0E, alpha: 0.5))
                     .cornerRadius(27)
                 } // HStack
-                .padding(20)
+                .padding(5)
                 
                 // 하위 항목
-                HStack {
+                ZStack(alignment: .topLeading) {
                     // 3D 신체
                     AsyncImage(url: URL(string: "http://chi-iu.com/unity/images/\(imageID)"),
                                scale: 8) { phase in
                         if let image = phase.image {
                             image // 사진 띄우기
+                                .offset(x: 20, y: -20)
                         } else {
                             let image = Image("body-default")
                             image.resizable()
                         }
                     }
-                        .frame(width: 150.0, height: 300.0)
-                        .padding(.leading, 10)
-                        .padding(.bottom, 15)
-//                        .background(Color(.white))
+                    // 데모용
+//                    Image("body-ex")
+//                        .resizable()
+//                        .frame(width: 180.0, height: 300.0)
+//                        .offset(x: 10, y: -20)
                     
                     // 트리거 및 느낌
-                    VStack(alignment: .trailing, spacing: 20) {
-                        ForEach(0..<selectedFeelings.count+1, id: \.self) { idx in
-                            if idx == 0 {
-                                //오류나서 하드코딩함
-                                Text(trigger)
-                                    .font(.system(size: 15))
-                                    .foregroundStyle(.white)
-                                    .padding(.horizontal, 20)
-                                    .padding(.vertical, 10)
-                                    .background(Color(hex: 0x0E0E0E, alpha: 0.5))
-                                    .cornerRadius(26)
+                    HStack {
+                        Spacer()
+                        VStack(alignment: .trailing, spacing: 15) {
+                            ForEach(0..<selectedFeelings.count+1, id: \.self) { idx in
+                                if idx == 0 {
+                                    //오류나서 하드코딩함
+                                    Text(trigger)
+                                        .font(.system(size: 15))
+                                        .foregroundStyle(.white)
+                                        .padding(.horizontal, 20)
+                                        .padding(.vertical, 10)
+                                        .background(Color(hex: 0x0E0E0E, alpha: 0.5))
+                                        .cornerRadius(26)
+                                        .lineLimit(nil)
+                                }
+                                else {
+                                    Text(selectedFeelings[idx-1])
+                                        .font(.system(size: 15))
+                                        .foregroundStyle(.white)
+                                        .padding(.horizontal, 20)
+                                        .padding(.vertical, 10)
+                                        .background(Color(hex: 0x0E0E0E, alpha: 0.5))
+                                        .cornerRadius(26)
+                                }
                             }
-                            else {
-                                Text(selectedFeelings[idx-1])
-                                    .font(.system(size: 15))
-                                    .foregroundStyle(.white)
-                                    .padding(.horizontal, 20)
-                                    .padding(.vertical, 10)
-                                    .background(Color(hex: 0x0E0E0E, alpha: 0.5))
-                                    .cornerRadius(26)
-                            }
-                        }
-                    }
-                    .padding()
-                }
+                        } // VStack
+                        .padding(.trailing, 5)
+                        .frame(width: 190)
+                    } // HStack
+                } // ZStack
+                .frame(maxWidth: 320, maxHeight: 310)
             } // VStack
-            .overlay(
-                RoundedRectangle(cornerRadius: 60) // 원하는 cornerRadius 값으로 설정
-                    .stroke(Color.black, lineWidth: 1) // 테두리 색상 및 두께 지정
+            .background(
+                RoundedRectangle(cornerRadius: 60)
+                    .fill(Color(hex: 0x2D2B2E))
+                
+                    .shadow(color: .black, radius: 1)
             )
-//            .background(Color(hex: 0x333333))
             
             Spacer()
             
             // 하단 버튼
             HStack(spacing: 0) {
-                NavigationLink(destination: tabSwiftUIView().navigationBarBackButtonHidden()) {
-                    Text("홈 돌아가기")
-                        .foregroundStyle(.white)
-                        .frame(minHeight: 50)
-                        .frame(width: UIScreen.main.bounds.width * 0.4)
-                        .background(Color(hex: 0xD9D9D9))
-                }
+                NavigationLink("홈 돌아가기", value: "tabSwiftUIView")
+                    .foregroundStyle(.white)
+                    .frame(minHeight: 50)
+                    .frame(width: UIScreen.main.bounds.width * 0.4)
+                    .background(Color(hex: 0xD9D9D9))
                 NavigationLink(destination: DiseasePredictionSwiftUIView()) {
                     Text("질환 예측하기")
                         .foregroundStyle(.white)
@@ -151,6 +159,15 @@ struct painRecordResultSwiftUIView: View {
                         .background(Color("AccentColor"))
                 }
             } // HStack
+            .navigationDestination(for: String.self) { viewName in
+                switch viewName {
+                case "tabSwiftUIView":
+                    tabSwiftUIView()
+                        .navigationBarBackButtonHidden(true)
+                default:
+                    EmptyView()
+                }
+            }
         } // VStack
         .background(Color(hex: 0x252525))
         // sy-gwak
@@ -164,17 +181,17 @@ struct painRecordResultSwiftUIView: View {
             let svc = AuthService(apiPath: "/api/v1/pain-records/post")
             svc.postRequest(resultType: String.self,parameters: body){
                 result in
-                    switch result {
-                    case .success(let value):
-                        if(value.code == 2000) {
-                        }
-                        else {
-                            alertMsg = value.message
-                            showAlert = true
-                        }
-                    case .failure(let error):
-                        print("Error fetching data: \(error)")
+                switch result {
+                case .success(let value):
+                    if(value.code == 2000) {
                     }
+                    else {
+                        alertMsg = value.message
+                        showAlert = true
+                    }
+                case .failure(let error):
+                    print("Error fetching data: \(error)")
+                }
             }
         }
         .alert(isPresented: $showAlert) {
