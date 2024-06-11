@@ -1,5 +1,5 @@
 # Paint_iOS
-Paint의 iOS native 개발 repository입니다.
+Paint의 iOS native 개발 repository입니다.
 
 ### 브랜치 소개
 1. main : 제품으로 출시될 수 있는 브랜치
