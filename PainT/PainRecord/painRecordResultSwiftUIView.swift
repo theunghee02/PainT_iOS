@@ -39,7 +39,7 @@ struct painRecordResultSwiftUIView: View {
         return formatter
     }() //
     
-    var imageID : String = "665980dcf405aa78f07608e2" // 정상
+    var imageID : String = "666857d117f9173cd96fe93f" // 정상
 //    var imageID : String = "665980dcf405aa78f076082" // 비정상
     
     var body: some View {
