@@ -13,10 +13,11 @@ struct homeSwiftUIView: View {
     @State var percent: CGFloat = 30
     @State var exercises: [String] = ["랫 풀다운", "랫 풀다운", "랫 풀다운", "랫 풀다운", "랫 풀다운", "랫 풀다운", "랫 풀다운", "랫 풀다운"]
     @State var exerciseTimes: [String] = ["15min", "15min", "15min", "50sec", "50sec", "50sec", "50sec", "50sec"]
+    @State var totalTime: String = "54분"
     
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 0) {
                 // 질환명
                 HStack(spacing: 0) {
                     Text("질환명 | ")
@@ -76,29 +77,28 @@ struct homeSwiftUIView: View {
                 
                 // 추천 가이드 루틴
                 VStack(alignment: .center, spacing: 0) {
-                    // [버튼] 추천 가이드 시작하기
-                    GeometryReader { geometry in
-                        HStack {
-                            Button(action: {
-                                
-                            }) {
-                                Text("추천 가이드 시작하기")
-                                    .fontWeight(.semibold)
-                                    .foregroundColor(Color(hex: 0x252525)) // 글씨 색상
-                                    .padding(.vertical, 14.0)
-                                    .padding(.horizontal)
-                                    .background(Color("AccentColor"))
-                                    .cornerRadius(14)
-                                    .frame(width: geometry.size.width - 40)
-                            } // Button
-                            .frame(maxWidth: .infinity)
-                        } // HStack
-                        .padding(.horizontal, 20)
-//                        .background(Color(.red))
-                    } // GeometryReader
-                    .padding(.top, 20.0)
-                    .frame(height: 85)
-                    .background(Color(.blue))
+                    HStack {
+                        // 개수 & 시간
+                        Text("총 \(exercises.count)개 | 🕒 \(totalTime)")
+                            .padding(.leading, 20)
+                        
+                        Spacer()
+                        
+                        // [버튼] 추천 가이드 시작하기
+                        Button(action: {
+                            
+                        }) {
+                            Text("추천 가이드 시작하기")
+                                .fontWeight(.semibold)
+                                .foregroundColor(Color(hex: 0x252525)) // 글씨 색상
+                                .padding(14)
+                                .background(Color("AccentColor"))
+                                .cornerRadius(14)
+                        } // Button
+                        .padding(.trailing, 20)
+                    } // HStack
+                    .padding(.vertical, 20)
+//                    .background(Color(.red))
                     
                     // 루틴 리스트
                     ForEach(0..<exercises.count, id: \.self) { idx in
@@ -107,6 +107,14 @@ struct homeSwiftUIView: View {
                 } // VStack
                 .background(Color(red: 0.94, green: 0.94, blue: 0.94))
                 .clipShape(RoundedRectangle(cornerRadius: 25))
+                
+                // [버튼] 가이드 추가하기
+                HStack {
+                    // 가이드 추가하기
+                    HStack{
+                        
+                    }
+                }
             } // VStack
             .padding(.top, 30.0)
             .padding(.horizontal, 13.0)
@@ -132,7 +140,6 @@ struct homeSwiftUIView: View {
                 Text("\(exerciseTime)")
                     .padding(.trailing, 20)
             } // HStack
-//            .background(Color(.blue))
             .overlay(
                 Rectangle()
                     .frame(height: 1)
