@@ -1,5 +1,5 @@
 //
-//  LodingStyle.swift
+//  LodingView.swift
 //  PainT
 //
 //  Created by Shin Yeong Gwak on 5/29/24.

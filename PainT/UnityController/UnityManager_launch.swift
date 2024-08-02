@@ -15,7 +15,7 @@ class Unity: UIResponder, UIApplicationDelegate {
     private let dataBundleId: String = "com.unity3d.framework"
     private let frameworkPath: String = "/Frameworks/UnityFramework.framework"
 
-    private var ufw : UnityFramework?
+    private(set) var ufw : UnityFramework?
     private var hostMainWindow : UIWindow?
 
     private var isInitialized: Bool {
@@ -61,7 +61,8 @@ class Unity: UIResponder, UIApplicationDelegate {
         }
     }
 
-    private func unloadWindow() {
+//    private func unloadWindow() {
+    func unloadWindow() {
         if isInitialized {
             ufw?.unloadApplication()
         }
@@ -84,6 +85,33 @@ class Unity: UIResponder, UIApplicationDelegate {
         }
         return ufw
     }
+//    
+//    private func unloadUnityInternal() {
+//        if let unityFramework = ufw {
+//            unityFramework.unregisterFrameworkListener(self)
+//            
+//        }
+//        ufw = nil
+//        
+//        if let nativeWindow = hostMainWindow {
+//            nativeWindow.makeKeyAndVisible()
+//        }
+//    }
+//    
+//    private func unloadUnity() {
+//        if !isInitialized {
+//            UnitySampleUtils.showAlert(Constants.ERRORMESSAGES.NOT_INITIALIZED, Constants.ERRORMESSAGES.INIT_FIREST, window: hostMainWindow)
+//            return
+//        } else {
+//            if let unityFramework = getUnityFramework() {
+//                unityFramework.unloadApplication()
+//            }
+//        }
+//    }
+//    
+//    func unityDidUnload(_ notification: Notification!) {
+//        unloadUnityInternal()
+//    }
 }
 
 extension Unity: UnityFrameworkListener {

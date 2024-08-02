@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		081EB58D2BE275960097E960 /* findPasswordSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081EB58B2BE275960097E960 /* findPasswordSwiftUIView.swift */; };
-		081EB5922BE276970097E960 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 081EB5912BE276970097E960 /* Alamofire */; };
 		D006759F2BF5136A003A3B89 /* webview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D006759D2BF5136A003A3B89 /* webview.swift */; };
 		D007C26D2BDB64EE005F2A29 /* PainTApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D007C26C2BDB64EE005F2A29 /* PainTApp.swift */; };
 		D007C26F2BDB64EE005F2A29 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D007C26E2BDB64EE005F2A29 /* ContentView.swift */; };
@@ -37,18 +36,19 @@
 		D03C36D32BF627770028E759 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C36D12BF627760028E759 /* UserService.swift */; };
 		D03C36D72BF6277B0028E759 /* buttonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C36D42BF6277B0028E759 /* buttonStyles.swift */; };
 		D03C36D82BF6277B0028E759 /* checkboxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C36D52BF6277B0028E759 /* checkboxStyle.swift */; };
+		D066A5222C55601D00644359 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = D066A5212C55601D00644359 /* Alamofire */; };
 		D06875FD2C05B8040088E186 /* splashSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06875FB2C05B8040088E186 /* splashSwiftUIView.swift */; };
 		D06876012C05B8290088E186 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06875FE2C05B8290088E186 /* AuthService.swift */; };
 		D06876022C05B8290088E186 /* NoAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06875FF2C05B8290088E186 /* NoAuthService.swift */; };
 		D07EC5DC2BED0F98006E74DE /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07EC5DB2BED0F98006E74DE /* ColorExtension.swift */; };
+		D099C73A2C5A92AB00EA53BB /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D099C7392C5A92AB00EA53BB /* ViewExtension.swift */; };
+		D099C73C2C5AC35500EA53BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D099C73B2C5AC35500EA53BB /* AppDelegate.swift */; };
 		D09E53DF2C0DF31C005B597A /* UnityFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D09E53DD2C0DF31C005B597A /* UnityFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D09E53E32C0DF718005B597A /* viewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09E53E22C0DF718005B597A /* viewController.swift */; };
-		D0A260132C0CD3FB00D7F6ED /* UIViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A260122C0CD3FB00D7F6ED /* UIViewControllerRepresentable.swift */; };
 		D0A260152C0CD5B100D7F6ED /* UnityManager_launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A260142C0CD5B100D7F6ED /* UnityManager_launch.swift */; };
-		D0A260172C0CDA7200D7F6ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A260162C0CDA7200D7F6ED /* AppDelegate.swift */; };
 		D0B9867C2C0629DA0040FF37 /* GenericResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B9867B2C0629DA0040FF37 /* GenericResponse.swift */; };
 		D0CE7A752BFF2A7D00E3B025 /* DiseaseResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CE7A742BFF2A7D00E3B025 /* DiseaseResult.swift */; };
-		D0D85D332C09E00D008C931A /* LodingStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D85D322C09E00D008C931A /* LodingStyle.swift */; };
+		D0D85D332C09E00D008C931A /* LodingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D85D322C09E00D008C931A /* LodingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -97,18 +97,19 @@
 		D03C36D12BF627760028E759 /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		D03C36D42BF6277B0028E759 /* buttonStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = buttonStyles.swift; sourceTree = "<group>"; };
 		D03C36D52BF6277B0028E759 /* checkboxStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = checkboxStyle.swift; sourceTree = "<group>"; };
+		D04F58832C18808A00C71247 /* UnityBridgeHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnityBridgeHeader.h; sourceTree = "<group>"; };
 		D06875FB2C05B8040088E186 /* splashSwiftUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = splashSwiftUIView.swift; sourceTree = "<group>"; };
 		D06875FE2C05B8290088E186 /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		D06875FF2C05B8290088E186 /* NoAuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoAuthService.swift; sourceTree = "<group>"; };
 		D07EC5DB2BED0F98006E74DE /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		D099C7392C5A92AB00EA53BB /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
+		D099C73B2C5AC35500EA53BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D09E53DD2C0DF31C005B597A /* UnityFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UnityFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D09E53E22C0DF718005B597A /* viewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viewController.swift; sourceTree = "<group>"; };
-		D0A260122C0CD3FB00D7F6ED /* UIViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		D0A260142C0CD5B100D7F6ED /* UnityManager_launch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnityManager_launch.swift; sourceTree = "<group>"; };
-		D0A260162C0CDA7200D7F6ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0B9867B2C0629DA0040FF37 /* GenericResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
 		D0CE7A742BFF2A7D00E3B025 /* DiseaseResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseResult.swift; sourceTree = "<group>"; };
-		D0D85D322C09E00D008C931A /* LodingStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LodingStyle.swift; sourceTree = "<group>"; };
+		D0D85D322C09E00D008C931A /* LodingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LodingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				081EB5922BE276970097E960 /* Alamofire in Frameworks */,
+				D066A5222C55601D00644359 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				D006759D2BF5136A003A3B89 /* webview.swift */,
+				D0D85D322C09E00D008C931A /* LodingView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -151,15 +153,15 @@
 		D007C26B2BDB64EE005F2A29 /* PainT */ = {
 			isa = PBXGroup;
 			children = (
+				081EB58F2BE276350097E960 /* Info.plist */,
 				D0A260112C0CD3E700D7F6ED /* UnityController */,
 				D06875FC2C05B8040088E186 /* Splash */,
-				D03C36D62BF6277B0028E759 /* Styles */,
 				D03C36D22BF627760028E759 /* Request */,
 				D03C36CA2BF627470028E759 /* Join */,
 				D03C36C42BF627320028E759 /* Data */,
+				D03C36D62BF6277B0028E759 /* Styles */,
 				D006759E2BF5136A003A3B89 /* Components */,
 				D07EC5DA2BED0F65006E74DE /* Extension */,
-				081EB58F2BE276350097E960 /* Info.plist */,
 				D02FB3832BE26B06009B4875 /* Login */,
 				D02FB3772BE00B5D009B4875 /* DiseasePrediction */,
 				D02FB3742BDF4546009B4875 /* MyPage */,
@@ -276,7 +278,6 @@
 			children = (
 				D03C36D42BF6277B0028E759 /* buttonStyles.swift */,
 				D03C36D52BF6277B0028E759 /* checkboxStyle.swift */,
-				D0D85D322C09E00D008C931A /* LodingStyle.swift */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -293,6 +294,7 @@
 			isa = PBXGroup;
 			children = (
 				D07EC5DB2BED0F98006E74DE /* ColorExtension.swift */,
+				D099C7392C5A92AB00EA53BB /* ViewExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -308,10 +310,10 @@
 		D0A260112C0CD3E700D7F6ED /* UnityController */ = {
 			isa = PBXGroup;
 			children = (
-				D0A260122C0CD3FB00D7F6ED /* UIViewControllerRepresentable.swift */,
 				D0A260142C0CD5B100D7F6ED /* UnityManager_launch.swift */,
-				D0A260162C0CDA7200D7F6ED /* AppDelegate.swift */,
 				D09E53E22C0DF718005B597A /* viewController.swift */,
+				D04F58832C18808A00C71247 /* UnityBridgeHeader.h */,
+				D099C73B2C5AC35500EA53BB /* AppDelegate.swift */,
 			);
 			path = UnityController;
 			sourceTree = "<group>";
@@ -334,7 +336,7 @@
 			);
 			name = PainT;
 			packageProductDependencies = (
-				081EB5912BE276970097E960 /* Alamofire */,
+				D066A5212C55601D00644359 /* Alamofire */,
 			);
 			productName = PainT;
 			productReference = D007C2692BDB64EE005F2A29 /* PainT.app */;
@@ -395,19 +397,20 @@
 			files = (
 				D09E53E32C0DF718005B597A /* viewController.swift in Sources */,
 				D0273E722BE789A70052824A /* painRecordResultSwiftUIView.swift in Sources */,
+				D099C73C2C5AC35500EA53BB /* AppDelegate.swift in Sources */,
 				D0273E702BE787BC0052824A /* bottomButtonSwiftUIView.swift in Sources */,
 				D02FB3852BE26B12009B4875 /* loginSwiftUIView.swift in Sources */,
 				D02FB37F2BE0A728009B4875 /* painRecordInfoFeelingSwiftUIView.swift in Sources */,
 				D02FB3732BDF451F009B4875 /* painStatSwiftUIView.swift in Sources */,
 				D03C36C52BF627320028E759 /* UserDefaults.swift in Sources */,
 				D03C36D32BF627770028E759 /* UserService.swift in Sources */,
+				D099C73A2C5A92AB00EA53BB /* ViewExtension.swift in Sources */,
 				D007C26F2BDB64EE005F2A29 /* ContentView.swift in Sources */,
-				D0D85D332C09E00D008C931A /* LodingStyle.swift in Sources */,
+				D0D85D332C09E00D008C931A /* LodingView.swift in Sources */,
 				D06876022C05B8290088E186 /* NoAuthService.swift in Sources */,
 				D03C36CE2BF627470028E759 /* signUpSwiftUIView.swift in Sources */,
 				D007C2712BDB64EE005F2A29 /* Item.swift in Sources */,
 				D03C36CC2BF627470028E759 /* EulaText.swift in Sources */,
-				D0A260172C0CDA7200D7F6ED /* AppDelegate.swift in Sources */,
 				D02FB3762BDF4555009B4875 /* myPageSwiftUIView.swift in Sources */,
 				D0273E6E2BE77F8D0052824A /* painRecordInfoTimeSwiftUIView.swift in Sources */,
 				D02FB37D2BE017B0009B4875 /* painRecordInfoSwiftUIView.swift in Sources */,
@@ -422,7 +425,6 @@
 				D006759F2BF5136A003A3B89 /* webview.swift in Sources */,
 				D06875FD2C05B8040088E186 /* splashSwiftUIView.swift in Sources */,
 				D0A260152C0CD5B100D7F6ED /* UnityManager_launch.swift in Sources */,
-				D0A260132C0CD3FB00D7F6ED /* UIViewControllerRepresentable.swift in Sources */,
 				D03C36CB2BF627470028E759 /* eulaSwiftUIView.swift in Sources */,
 				081EB58D2BE275960097E960 /* findPasswordSwiftUIView.swift in Sources */,
 				D0CE7A752BFF2A7D00E3B025 /* DiseaseResult.swift in Sources */,
@@ -651,9 +653,8 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		081EB5912BE276970097E960 /* Alamofire */ = {
+		D066A5212C55601D00644359 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 081EB5902BE276970097E960 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */

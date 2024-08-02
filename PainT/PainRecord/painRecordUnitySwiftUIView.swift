@@ -12,21 +12,14 @@ struct painRecordUnitySwiftUIView: View {
     @State var location: [String] = ["척추 중간에서 살짝 아래 부분"]
     var body: some View {
         VStack {
-            Button(action: {
-                Unity.shared.show()
-            }) {
-                Text("Launch Unity")
-                    .padding()
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
-            }
-//            Text("Unity will launch soon...")
-//                .onAppear() {
-//                    Unity.shared.show()
-//                }
-            Spacer()
-            NavigationLink(destination: painRecordInfoTriggerSwiftUIView(location: location)) {
+            // 유니티 연동 버튼
+            UnityContainerView()
+            Spacer(minLength: 0)
+            NavigationLink(destination: painRecordInfoTriggerSwiftUIView(location: location)
+                .onAppear {
+//                    Unity.shared.unityDidUnload(<#Notification?#>)
+//                    Unity.shared.unloadWindow()
+                }) {
                 Text("다음")
                     .frame(maxWidth: .infinity, minHeight: 50)
                     .background(Color("AccentColor"))
@@ -37,6 +30,12 @@ struct painRecordUnitySwiftUIView: View {
     }
 }
 
-#Preview {
-    painRecordUnitySwiftUIView()
+struct UnityContainerView: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> UnityViewController {
+        return UnityViewController()
+    }
+
+    func updateUIViewController(_ uiViewController: UnityViewController, context: Context) {
+        // 업데이트할 내용이 있으면 추가
+    }
 }
