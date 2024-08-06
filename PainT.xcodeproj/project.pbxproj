@@ -37,6 +37,7 @@
 		D03C36D32BF627770028E759 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C36D12BF627760028E759 /* UserService.swift */; };
 		D03C36D72BF6277B0028E759 /* buttonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C36D42BF6277B0028E759 /* buttonStyles.swift */; };
 		D03C36D82BF6277B0028E759 /* checkboxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C36D52BF6277B0028E759 /* checkboxStyle.swift */; };
+		D066A5152C553E3600644359 /* UnityFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D066A5132C553E3600644359 /* UnityFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D06875FD2C05B8040088E186 /* splashSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06875FB2C05B8040088E186 /* splashSwiftUIView.swift */; };
 		D06876012C05B8290088E186 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06875FE2C05B8290088E186 /* AuthService.swift */; };
 		D06876022C05B8290088E186 /* NoAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06875FF2C05B8290088E186 /* NoAuthService.swift */; };
@@ -53,6 +54,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				D066A5152C553E3600644359 /* UnityFramework.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -91,6 +93,7 @@
 		D03C36D12BF627760028E759 /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		D03C36D42BF6277B0028E759 /* buttonStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = buttonStyles.swift; sourceTree = "<group>"; };
 		D03C36D52BF6277B0028E759 /* checkboxStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = checkboxStyle.swift; sourceTree = "<group>"; };
+		D066A5132C553E3600644359 /* UnityFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UnityFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D06875FB2C05B8040088E186 /* splashSwiftUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = splashSwiftUIView.swift; sourceTree = "<group>"; };
 		D06875FE2C05B8290088E186 /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		D06875FF2C05B8290088E186 /* NoAuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoAuthService.swift; sourceTree = "<group>"; };
@@ -140,14 +143,14 @@
 		D007C26B2BDB64EE005F2A29 /* PainT */ = {
 			isa = PBXGroup;
 			children = (
-				D06875FC2C05B8040088E186 /* Splash */,
+				081EB58F2BE276350097E960 /* Info.plist */,
 				D03C36D62BF6277B0028E759 /* Styles */,
-				D03C36D22BF627760028E759 /* Request */,
-				D03C36CA2BF627470028E759 /* Join */,
-				D03C36C42BF627320028E759 /* Data */,
 				D006759E2BF5136A003A3B89 /* Components */,
 				D07EC5DA2BED0F65006E74DE /* Extension */,
-				081EB58F2BE276350097E960 /* Info.plist */,
+				D03C36D22BF627760028E759 /* Request */,
+				D03C36C42BF627320028E759 /* Data */,
+				D06875FC2C05B8040088E186 /* Splash */,
+				D03C36CA2BF627470028E759 /* Join */,
 				D02FB3832BE26B06009B4875 /* Login */,
 				D02FB3772BE00B5D009B4875 /* DiseasePrediction */,
 				D02FB3742BDF4546009B4875 /* MyPage */,
@@ -174,6 +177,7 @@
 		D01889202C1044C9008C9118 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D066A5132C553E3600644359 /* UnityFramework.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
