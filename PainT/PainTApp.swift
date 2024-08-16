@@ -38,7 +38,8 @@ struct PainTApp: App {
                     loginSwiftUIView()
                     
                 case .home:
-                    tabSwiftUIView()
+//                    tabSwiftUIView()
+                    DiseaseSurveySwiftUIView()
                 }
             }
             .environmentObject(appRootManager)
