@@ -145,20 +145,12 @@ struct painRecordResultSwiftUIView: View {
             Spacer()
             
             // 하단 버튼
-            HStack(spacing: 0) {
-                NavigationLink("홈 돌아가기", value: "tabSwiftUIView")
-                    .foregroundStyle(.white)
-                    .frame(minHeight: 50)
-                    .frame(width: UIScreen.main.bounds.width * 0.4)
-                    .background(Color(hex: 0xD9D9D9))
-                NavigationLink(destination: DiseasePredictionSwiftUIView()) {
-                    Text("질환 예측하기")
-                        .foregroundStyle(.white)
-                        .frame(minHeight: 50)
-                        .frame(width: UIScreen.main.bounds.width * 0.6)
-                        .background(Color("AccentColor"))
-                }
-            } // HStack
+            NavigationLink(destination: Top2DiseasePredictionSwiftUIView()) {
+                Text("질환 예측하기")
+                    .frame(maxWidth: .infinity, minHeight: 50)
+                    .background(Color("AccentColor"))
+                    .foregroundColor(Color(hex:0x252525))
+            } // NavigationLink
             .navigationDestination(for: String.self) { viewName in
                 switch viewName {
                 case "tabSwiftUIView":
