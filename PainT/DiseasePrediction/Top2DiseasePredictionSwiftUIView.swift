@@ -35,6 +35,7 @@ struct Top2DiseasePredictionSwiftUIView: View {
                     Rectangle()
                         .fill(Color(hex: 0xEBE9EE))
                         .clipShape(RoundedRectangle(cornerRadius: 50))
+                        .frame()
                     
                     // contents
                     VStack {
@@ -60,15 +61,13 @@ struct Top2DiseasePredictionSwiftUIView: View {
                             .padding(.top, 20)
                             .padding(.bottom, 10)
                             
-                            // 설명 + 이미지
+                            // 설명
                             HStack(spacing: 0) {
                                 Text("\(discription_1)")
                                     .font(.system(size: 15))
                                     .padding(.trailing, 15)
-                                Rectangle()
-                                    .frame(width: 90, height: 90)
                             } // HStack
-                            .padding(.horizontal, 30)
+                            .padding(.leading, 30)
                             .padding(.bottom, 20)
                             .frame(maxHeight: .infinity)
                         } // VStack - 질환1
@@ -92,21 +91,19 @@ struct Top2DiseasePredictionSwiftUIView: View {
                             .padding(.top, 20)
                             .padding(.bottom, 10)
                             
-                            // 설명 + 이미지
+                            // 설명
                             HStack(spacing: 0) {
                                 Text("\(discription_2)")
                                     .font(.system(size: 15))
                                     .padding(.trailing, 15)
-                                Rectangle()
-                                    .frame(width: 90, height: 90)
                             } // HStack
-                            .padding(.horizontal, 30)
+                            .padding(.leading, 30)
                             .padding(.bottom, 20)
                             .frame(maxHeight: .infinity)
-                        } // VStack - 질환1
+                        } // VStack - 질환2
                         .background(Color(.white))
                         .clipShape(RoundedRectangle(cornerRadius: 25))
-                        .padding(.bottom, 40)
+                        .padding(.bottom, 30)
                     } // VStack
                     .padding(.horizontal, 30.0)
                 } // ZStack
