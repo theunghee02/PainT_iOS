@@ -12,7 +12,7 @@ struct tabSwiftUIView: View {
     @State private var selectedTab = 0
 
     var body: some View {
-        NavigationStack {
+//        NavigationStack {
             TabView(selection: $selectedTab) {
                 // home
                 homeSwiftUIView()
@@ -33,8 +33,8 @@ struct tabSwiftUIView: View {
                     }
                     .tag(2)
             } // TabView
-        } // NavigationStack
-        .toolbar(.visible, for: .navigationBar)
+//        } // NavigationStack
+//        .toolbar(.visible, for: .navigationBar)
     } // body
 } // tabSwiftUIView
 
