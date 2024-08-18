@@ -41,6 +41,7 @@
 		D06875FD2C05B8040088E186 /* splashSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06875FB2C05B8040088E186 /* splashSwiftUIView.swift */; };
 		D06876012C05B8290088E186 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06875FE2C05B8290088E186 /* AuthService.swift */; };
 		D06876022C05B8290088E186 /* NoAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06875FF2C05B8290088E186 /* NoAuthService.swift */; };
+		D07A5D242C71C82E00603446 /* RoundedCornerStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07A5D232C71C82E00603446 /* RoundedCornerStyle.swift */; };
 		D07EC5DC2BED0F98006E74DE /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07EC5DB2BED0F98006E74DE /* ColorExtension.swift */; };
 		D099C73E2C6271E000EA53BB /* Top2DiseasePredictionSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D099C73D2C6271E000EA53BB /* Top2DiseasePredictionSwiftUIView.swift */; };
 		D099C7412C62825B00EA53BB /* DiseaseSurveySwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D099C7402C62825B00EA53BB /* DiseaseSurveySwiftUIView.swift */; };
@@ -99,6 +100,7 @@
 		D06875FB2C05B8040088E186 /* splashSwiftUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = splashSwiftUIView.swift; sourceTree = "<group>"; };
 		D06875FE2C05B8290088E186 /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		D06875FF2C05B8290088E186 /* NoAuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoAuthService.swift; sourceTree = "<group>"; };
+		D07A5D232C71C82E00603446 /* RoundedCornerStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerStyle.swift; sourceTree = "<group>"; };
 		D07EC5DB2BED0F98006E74DE /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		D099C73D2C6271E000EA53BB /* Top2DiseasePredictionSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Top2DiseasePredictionSwiftUIView.swift; sourceTree = "<group>"; };
 		D099C7402C62825B00EA53BB /* DiseaseSurveySwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseSurveySwiftUIView.swift; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 		D07EC5DA2BED0F65006E74DE /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				D07A5D232C71C82E00603446 /* RoundedCornerStyle.swift */,
 				D07EC5DB2BED0F98006E74DE /* ColorExtension.swift */,
 			);
 			path = Extension;
@@ -400,6 +403,7 @@
 				D03C36CE2BF627470028E759 /* signUpSwiftUIView.swift in Sources */,
 				D007C2712BDB64EE005F2A29 /* Item.swift in Sources */,
 				D03C36CC2BF627470028E759 /* EulaText.swift in Sources */,
+				D07A5D242C71C82E00603446 /* RoundedCornerStyle.swift in Sources */,
 				D02FB3762BDF4555009B4875 /* myPageSwiftUIView.swift in Sources */,
 				D0273E6E2BE77F8D0052824A /* painRecordInfoTimeSwiftUIView.swift in Sources */,
 				D02FB37D2BE017B0009B4875 /* painRecordInfoSwiftUIView.swift in Sources */,

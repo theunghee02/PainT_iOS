@@ -40,6 +40,9 @@ struct PainTApp: App {
                 case .home:
 //                    tabSwiftUIView()
                     DiseaseSurveySwiftUIView()
+                    
+                case .survey:
+                    DiseaseSurveySwiftUIView()
                 }
             }
             .environmentObject(appRootManager)
@@ -82,5 +85,6 @@ final class AppRootManager: ObservableObject {
         case splash
         case authentication
         case home
+        case survey
     }
 }

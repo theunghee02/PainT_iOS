@@ -83,9 +83,9 @@ struct loginSwiftUIView: View {
                     .font(.subheadline)
                     
                     Spacer()
-                    Text("or")
-                        .font(.caption)
-                        .foregroundColor(.gray)
+//                    Text("or")
+//                        .font(.caption)
+//                        .foregroundColor(.gray)
                     
                     HStack {
                         Spacer()

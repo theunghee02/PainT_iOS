@@ -18,8 +18,9 @@ struct Top2DiseasePredictionSwiftUIView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            ScrollView {
-                Text("자신의 증상과 가장 부합하는 질환을 클릭해주세요")
+//            ScrollView {
+            VStack {
+                Text("자신의 증상과 가장 부합하는\n질환을 클릭해주세요")
                     .fontWeight(.semibold)
                     .font(.system(size: 28))
                     .multilineTextAlignment(.center)
@@ -28,14 +29,16 @@ struct Top2DiseasePredictionSwiftUIView: View {
                     .multilineTextAlignment(.center)
                     .padding(.bottom, 20)
                     .foregroundStyle(Color(hex: 0x414141))
+            } // VStack
                 
                 // 질환 리스트 박스
+            GeometryReader { geometry in
                 ZStack(alignment: .top) {
                     // 배경 사각형
                     Rectangle()
                         .fill(Color(hex: 0xEBE9EE))
-                        .clipShape(RoundedRectangle(cornerRadius: 50))
-                        .frame()
+                        .clipShape(RoundedCorner(radius: 25, corners: [.topLeft, .topRight]))
+                        .frame(height: geometry.size.height)
                     
                     // contents
                     VStack {
@@ -69,7 +72,6 @@ struct Top2DiseasePredictionSwiftUIView: View {
                             } // HStack
                             .padding(.leading, 30)
                             .padding(.bottom, 20)
-                            .frame(maxHeight: .infinity)
                         } // VStack - 질환1
                         .background(Color(.white))
                         .clipShape(RoundedRectangle(cornerRadius: 25))
@@ -99,7 +101,6 @@ struct Top2DiseasePredictionSwiftUIView: View {
                             } // HStack
                             .padding(.leading, 30)
                             .padding(.bottom, 20)
-                            .frame(maxHeight: .infinity)
                         } // VStack - 질환2
                         .background(Color(.white))
                         .clipShape(RoundedRectangle(cornerRadius: 25))
@@ -107,14 +108,17 @@ struct Top2DiseasePredictionSwiftUIView: View {
                     } // VStack
                     .padding(.horizontal, 30.0)
                 } // ZStack
-            } // ScrollView
+            } // GeometryReader
+//            } // ScrollView
+            
+//            Spacer()
             
             // 다음 버튼
             NavigationLink(destination: homeSwiftUIView()) {
                 Text("다음")
                     .frame(maxWidth: .infinity, minHeight: 50)
                     .background(Color("AccentColor"))
-                    .foregroundColor(.white)
+                    .foregroundColor(Color(hex:0x252525))
             } // NavigationLink
         } // VStack
     }
