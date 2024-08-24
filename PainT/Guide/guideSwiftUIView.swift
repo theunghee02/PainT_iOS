@@ -6,20 +6,25 @@
 //
 
 import SwiftUI
+import AVKit
 
 struct guideSwiftUIView: View {
     var currentCount: Int = 1
     var totalCount: Int = 2
-    var excerciseName: String = "Wall_Squats"
-    var excercise2Name: String = "Seated_Ham-string_Stretch"
+    var exerciseName: String = "Wall_Squats"
+    var exercise2Name: String = "Seated_Hamstring_Stretch"
     
     var body: some View {
         VStack(spacing: 0) {
             Text("\(currentCount) / \(totalCount)")
                 .padding(.bottom, 10)
-            Text("\(excerciseName)")
+            Text("\(exerciseName)")
                 .font(.system(size: 24))
-            AsyncImage(url: URL(string: "http://chi-iu.com/videos/download/\(excerciseName)"))
+//            AsyncImage(url: URL(string: "http://chi-iu.com/videos/download/\(exerciseName)"))
+//                .frame(width: 300, height: 300)
+//                .padding(.top, 50)
+//                .padding(.horizontal, 30)
+            VideoPlayer(player: AVPlayer(url: URL(string: "http://chi-iu.com/videos/download/\(exerciseName)")!))
                 .frame(width: 300, height: 300)
                 .padding(.top, 50)
                 .padding(.horizontal, 30)
@@ -28,7 +33,13 @@ struct guideSwiftUIView: View {
             
             // 다음 가이드
             HStack {
-                AsyncImage(url: URL(string: "http://chi-iu.com/videos/download/\(excercise2Name)"))
+                AsyncImage(url: URL(string: "http://chi-iu.com/videos/download/image/\(exercise2Name)")) { result in
+                    result
+                        .resizable()
+                        .scaledToFill()
+                } placeholder: {
+                    ProgressView()
+                }
                     .frame(width: 70, height: 70)
                     .padding([.vertical, .leading], 15)
                     .padding(.trailing, 20)
@@ -40,7 +51,7 @@ struct guideSwiftUIView: View {
                         .foregroundStyle(Color("AccentColor"))
                     
                     // 운동 이름
-                    Text("\(excercise2Name)")
+                    Text("\(exercise2Name)")
                         .font(.system(size: 20))
                         .fontWeight(.semibold)
                 } // VStack

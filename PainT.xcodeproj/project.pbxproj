@@ -50,6 +50,7 @@
 		D0D85D332C09E00D008C931A /* LodingStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D85D322C09E00D008C931A /* LodingStyle.swift */; };
 		D0ECC03C2C79F7CD00E8A482 /* _2guideSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0ECC03B2C79F7CD00E8A482 /* _2guideSwiftUIView.swift */; };
 		D0ECC03F2C79FF4D00E8A482 /* UnityFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D066A5132C553E3600644359 /* UnityFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D0ECC0422C7A027600E8A482 /* tem_painRecordUnitySwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0ECC0412C7A027600E8A482 /* tem_painRecordUnitySwiftUIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -112,6 +113,7 @@
 		D0D85D322C09E00D008C931A /* LodingStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LodingStyle.swift; sourceTree = "<group>"; };
 		D0ECC0372C79F47D00E8A482 /* UnityFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UnityFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0ECC03B2C79F7CD00E8A482 /* _2guideSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _2guideSwiftUIView.swift; sourceTree = "<group>"; };
+		D0ECC0412C7A027600E8A482 /* tem_painRecordUnitySwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tem_painRecordUnitySwiftUIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				081EB58F2BE276350097E960 /* Info.plist */,
+				D0ECC0432C7A073A00E8A482 /* UnityController */,
 				D03C36D62BF6277B0028E759 /* Styles */,
 				D006759E2BF5136A003A3B89 /* Components */,
 				D07EC5DA2BED0F65006E74DE /* Extension */,
@@ -208,6 +211,7 @@
 		D02FB36C2BDEBAE7009B4875 /* PainRecord */ = {
 			isa = PBXGroup;
 			children = (
+				D0ECC0412C7A027600E8A482 /* tem_painRecordUnitySwiftUIView.swift */,
 				D02FB37A2BE01789009B4875 /* painRecordUnitySwiftUIView.swift */,
 				D02FB37C2BE017B0009B4875 /* painRecordInfoSwiftUIView.swift */,
 				D0273E6D2BE77F8D0052824A /* painRecordInfoTimeSwiftUIView.swift */,
@@ -329,6 +333,13 @@
 			path = DiseaseSurvey;
 			sourceTree = "<group>";
 		};
+		D0ECC0432C7A073A00E8A482 /* UnityController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UnityController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -440,6 +451,7 @@
 				081EB58D2BE275960097E960 /* findPasswordSwiftUIView.swift in Sources */,
 				D0CE7A752BFF2A7D00E3B025 /* DiseaseResult.swift in Sources */,
 				D02FB3702BDF4427009B4875 /* tabSwiftUIView.swift in Sources */,
+				D0ECC0422C7A027600E8A482 /* tem_painRecordUnitySwiftUIView.swift in Sources */,
 				D02FB37B2BE01789009B4875 /* painRecordUnitySwiftUIView.swift in Sources */,
 				D02FB36B2BDEA000009B4875 /* homeSwiftUIView.swift in Sources */,
 				D07A5D272C71D2C400603446 /* guideSwiftUIView.swift in Sources */,

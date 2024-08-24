@@ -129,7 +129,13 @@ struct homeSwiftUIView: View {
         var body: some View {
             NavigationLink(destination: guideSwiftUIView()) {
                 HStack {
-                    AsyncImage(url: /*@START_MENU_TOKEN@*/URL(string: "https://example.com/icon.png")/*@END_MENU_TOKEN@*/)
+                    AsyncImage(url: URL(string: "http://chi-iu.com/videos/download/image/\(exerciseName)")) { result in
+                        result
+                            .resizable()
+                            .scaledToFill()
+                    } placeholder: {
+                        ProgressView()
+                    }
                         .frame(width: 70, height: 70)
                         .padding(.leading, 20)
                         .padding(.vertical, 15)

@@ -10,13 +10,13 @@ import SwiftUI
 struct _2guideSwiftUIView: View {
     var currentCount: Int = 2
     var totalCount: Int = 2
-    var excerciseName: String = "Seated_Ham-string_Stretch"
+    var exerciseName: String = "Seated_Hamstring_Stretch"
     
     var body: some View {
         VStack(spacing: 0) {
             Text("\(currentCount) / \(totalCount)")
                 .padding(.bottom, 10)
-            Text("\(excerciseName)")
+            Text("\(exerciseName)")
                 .font(.system(size: 24))
             AsyncImage(url: /*@START_MENU_TOKEN@*/URL(string: "https://example.com/icon.png")/*@END_MENU_TOKEN@*/)
                 .frame(width: 300, height: 300)

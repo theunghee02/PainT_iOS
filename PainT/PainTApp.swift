@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import UIKit
 
 @main
 struct PainTApp: App {
@@ -86,5 +87,18 @@ final class AppRootManager: ObservableObject {
         case authentication
         case home
         case survey
+    }
+}
+
+class ViewController: UIViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        let vc = UIHostingController(rootView: ContentView())
+        addChild(vc)
+        vc.view.frame = self.view.frame
+        view.addSubview(vc.view)
+        vc.didMove(toParent: self)
     }
 }
