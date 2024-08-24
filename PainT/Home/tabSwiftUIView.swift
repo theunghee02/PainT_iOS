@@ -21,7 +21,7 @@ struct tabSwiftUIView: View {
                     }
                     .tag(0)
                 // painStat
-                painRecordUnitySwiftUIView()
+                tem_painRecordUnitySwiftUIView()
                     .tabItem {
                         Label("통증 기록", image: selectedTab == 1 ? "painRecord-colored" : "painRecord-default")
                     }

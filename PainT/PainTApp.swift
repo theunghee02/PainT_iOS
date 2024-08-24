@@ -11,6 +11,7 @@ import UIKit
 
 @main
 struct PainTApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     @StateObject  private  var appRootManager =  AppRootManager ()
     

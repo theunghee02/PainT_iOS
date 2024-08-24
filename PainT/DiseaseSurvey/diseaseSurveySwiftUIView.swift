@@ -58,7 +58,7 @@ struct DiseaseSurveySwiftUIView: View {
                 .padding(.horizontal, 40)
                 
                 // 통증 체크하러 가기
-                NavigationLink(destination: painRecordUnitySwiftUIView()) {
+                NavigationLink(destination: tem_painRecordUnitySwiftUIView()) {
                     VStack(alignment: .leading) {
                         // 설명
                         Text("통증 체크하러 가기")

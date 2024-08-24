@@ -9,7 +9,17 @@ import SwiftUI
 
 struct tem_painRecordUnitySwiftUIView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button(action: {
+                    Unity.shared.show()
+                }) {
+                    Text("Launch Unity!")
+                }
+//        VStack {
+//            
+//        }
+//        .onAppear() {
+//            Unity.shared.show()
+//        }
     }
 }
 
