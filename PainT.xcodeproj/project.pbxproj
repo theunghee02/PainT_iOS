@@ -48,18 +48,18 @@
 		D0B9867C2C0629DA0040FF37 /* GenericResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B9867B2C0629DA0040FF37 /* GenericResponse.swift */; };
 		D0CE7A752BFF2A7D00E3B025 /* DiseaseResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CE7A742BFF2A7D00E3B025 /* DiseaseResult.swift */; };
 		D0D85D332C09E00D008C931A /* LodingStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D85D322C09E00D008C931A /* LodingStyle.swift */; };
-		D0ECC0392C79F47D00E8A482 /* UnityFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D0ECC0372C79F47D00E8A482 /* UnityFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D0ECC03C2C79F7CD00E8A482 /* _2guideSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0ECC03B2C79F7CD00E8A482 /* _2guideSwiftUIView.swift */; };
+		D0ECC03F2C79FF4D00E8A482 /* UnityFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D066A5132C553E3600644359 /* UnityFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		D0ECC03A2C79F47D00E8A482 /* Embed Frameworks */ = {
+		D0ECC0402C79FF4E00E8A482 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D0ECC0392C79F47D00E8A482 /* UnityFramework.framework in Embed Frameworks */,
+				D0ECC03F2C79FF4D00E8A482 /* UnityFramework.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -339,7 +339,7 @@
 				D007C2652BDB64EE005F2A29 /* Sources */,
 				D007C2662BDB64EE005F2A29 /* Frameworks */,
 				D007C2672BDB64EE005F2A29 /* Resources */,
-				D0ECC03A2C79F47D00E8A482 /* Embed Frameworks */,
+				D0ECC0402C79FF4E00E8A482 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -583,7 +583,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PainT/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -615,7 +614,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PainT/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
