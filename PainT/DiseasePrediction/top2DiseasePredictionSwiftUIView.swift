@@ -113,13 +113,8 @@ struct Top2DiseasePredictionSwiftUIView: View {
             
 //            Spacer()
             
-            // 다음 버튼
-            NavigationLink(destination: homeSwiftUIView()) {
-                Text("다음")
-                    .frame(maxWidth: .infinity, minHeight: 50)
-                    .background(Color("AccentColor"))
-                    .foregroundColor(Color(hex:0x252525))
-            } // NavigationLink
+            // 하단 버튼
+            bottomButtonSwiftUIView(nextDestination: AnyView(tabSwiftUIView()))
         } // VStack
     }
 }

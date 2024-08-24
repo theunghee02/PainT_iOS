@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct homeSwiftUIView: View {
-    @State var diseaseName: String = "허리 디스크"
-    @State var count: String = "21"
-    @State var percent: CGFloat = 30
-    @State var exercises: [String] = ["랫 풀다운", "랫 풀다운", "랫 풀다운", "랫 풀다운", "랫 풀다운", "랫 풀다운", "랫 풀다운", "랫 풀다운"]
-    @State var exerciseTimes: [String] = ["15min", "15min", "15min", "50sec", "50sec", "50sec", "50sec", "50sec"]
-    @State var totalTime: String = "54분"
+    @State var diseaseName: String = "척추관 협착증"
+    @State var count: String = "3"
+    @State var percent: CGFloat = 10
+    @State var exercises: [String] = ["Wall_Squats", "Seated_Hamstring_Stretch"]
+    @State var exerciseTimes: [String] = ["15sec", "15sec"]
+    @State var totalTime: String = "30초"
     
     var body: some View {
         ScrollView {
@@ -85,16 +85,14 @@ struct homeSwiftUIView: View {
                         Spacer()
                         
                         // [버튼] 추천 가이드 시작하기
-                        Button(action: {
-                            
-                        }) {
+                        NavigationLink(destination: guideSwiftUIView()) {
                             Text("추천 가이드 시작하기")
                                 .fontWeight(.semibold)
                                 .foregroundColor(Color(hex: 0x252525)) // 글씨 색상
                                 .padding(14)
                                 .background(Color("AccentColor"))
                                 .cornerRadius(14)
-                        } // Button
+                        }
                         .padding(.trailing, 20)
                     } // HStack
                     .padding(.vertical, 20)
@@ -129,23 +127,27 @@ struct homeSwiftUIView: View {
     // Exercise Row
     func exerciseRow(exerciseName: String, exerciseTime: String) -> some View {
         var body: some View {
-            HStack {
-                Rectangle()
-                    .frame(width: 70, height: 70)
-                    .padding(.leading, 20)
-                    .padding(.vertical, 15)
-                Text("\(exerciseName)")
-                    .padding(.leading, 20)
-                Spacer()
-                Text("\(exerciseTime)")
-                    .padding(.trailing, 20)
-            } // HStack
-            .overlay(
-                Rectangle()
-                    .frame(height: 1)
-                    .foregroundColor(Color(hex: 0x9E9E9E)),
-                alignment: .bottom
-            )
+            NavigationLink(destination: guideSwiftUIView()) {
+                HStack {
+                    AsyncImage(url: /*@START_MENU_TOKEN@*/URL(string: "https://example.com/icon.png")/*@END_MENU_TOKEN@*/)
+                        .frame(width: 70, height: 70)
+                        .padding(.leading, 20)
+                        .padding(.vertical, 15)
+                    Text("\(exerciseName)")
+                        .padding(.leading, 20)
+                        .foregroundColor(Color(.black))
+                    Spacer()
+                    Text("\(exerciseTime)")
+                        .padding(.trailing, 20)
+                        .foregroundColor(Color(.black))
+                } // HStack
+                .overlay(
+                    Rectangle()
+                        .frame(height: 1)
+                        .foregroundColor(Color(hex: 0x9E9E9E)),
+                    alignment: .bottom
+                )
+            } // NavigationLink
         } // body
         return body
     } //

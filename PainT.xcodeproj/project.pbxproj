@@ -22,7 +22,7 @@
 		D02FB3702BDF4427009B4875 /* tabSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FB36F2BDF4426009B4875 /* tabSwiftUIView.swift */; };
 		D02FB3732BDF451F009B4875 /* painStatSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FB3722BDF451F009B4875 /* painStatSwiftUIView.swift */; };
 		D02FB3762BDF4555009B4875 /* myPageSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FB3752BDF4555009B4875 /* myPageSwiftUIView.swift */; };
-		D02FB3792BE00B91009B4875 /* DiseasePredictionSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FB3782BE00B91009B4875 /* DiseasePredictionSwiftUIView.swift */; };
+		D02FB3792BE00B91009B4875 /* diseasePredictionSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FB3782BE00B91009B4875 /* diseasePredictionSwiftUIView.swift */; };
 		D02FB37B2BE01789009B4875 /* painRecordUnitySwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FB37A2BE01789009B4875 /* painRecordUnitySwiftUIView.swift */; };
 		D02FB37D2BE017B0009B4875 /* painRecordInfoSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FB37C2BE017B0009B4875 /* painRecordInfoSwiftUIView.swift */; };
 		D02FB37F2BE0A728009B4875 /* painRecordInfoFeelingSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FB37E2BE0A728009B4875 /* painRecordInfoFeelingSwiftUIView.swift */; };
@@ -37,27 +37,28 @@
 		D03C36D32BF627770028E759 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C36D12BF627760028E759 /* UserService.swift */; };
 		D03C36D72BF6277B0028E759 /* buttonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C36D42BF6277B0028E759 /* buttonStyles.swift */; };
 		D03C36D82BF6277B0028E759 /* checkboxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C36D52BF6277B0028E759 /* checkboxStyle.swift */; };
-		D066A5152C553E3600644359 /* UnityFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D066A5132C553E3600644359 /* UnityFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D06875FD2C05B8040088E186 /* splashSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06875FB2C05B8040088E186 /* splashSwiftUIView.swift */; };
 		D06876012C05B8290088E186 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06875FE2C05B8290088E186 /* AuthService.swift */; };
 		D06876022C05B8290088E186 /* NoAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06875FF2C05B8290088E186 /* NoAuthService.swift */; };
 		D07A5D242C71C82E00603446 /* RoundedCornerStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07A5D232C71C82E00603446 /* RoundedCornerStyle.swift */; };
+		D07A5D272C71D2C400603446 /* guideSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07A5D262C71D2C400603446 /* guideSwiftUIView.swift */; };
 		D07EC5DC2BED0F98006E74DE /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07EC5DB2BED0F98006E74DE /* ColorExtension.swift */; };
-		D099C73E2C6271E000EA53BB /* Top2DiseasePredictionSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D099C73D2C6271E000EA53BB /* Top2DiseasePredictionSwiftUIView.swift */; };
-		D099C7412C62825B00EA53BB /* DiseaseSurveySwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D099C7402C62825B00EA53BB /* DiseaseSurveySwiftUIView.swift */; };
+		D099C73E2C6271E000EA53BB /* top2DiseasePredictionSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D099C73D2C6271E000EA53BB /* top2DiseasePredictionSwiftUIView.swift */; };
+		D099C7412C62825B00EA53BB /* diseaseSurveySwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D099C7402C62825B00EA53BB /* diseaseSurveySwiftUIView.swift */; };
 		D0B9867C2C0629DA0040FF37 /* GenericResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B9867B2C0629DA0040FF37 /* GenericResponse.swift */; };
 		D0CE7A752BFF2A7D00E3B025 /* DiseaseResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CE7A742BFF2A7D00E3B025 /* DiseaseResult.swift */; };
 		D0D85D332C09E00D008C931A /* LodingStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D85D322C09E00D008C931A /* LodingStyle.swift */; };
+		D0ECC0392C79F47D00E8A482 /* UnityFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D0ECC0372C79F47D00E8A482 /* UnityFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		D00675A12BF51379003A3B89 /* Embed Frameworks */ = {
+		D0ECC03A2C79F47D00E8A482 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D066A5152C553E3600644359 /* UnityFramework.framework in Embed Frameworks */,
+				D0ECC0392C79F47D00E8A482 /* UnityFramework.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -81,7 +82,7 @@
 		D02FB36F2BDF4426009B4875 /* tabSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tabSwiftUIView.swift; sourceTree = "<group>"; };
 		D02FB3722BDF451F009B4875 /* painStatSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = painStatSwiftUIView.swift; sourceTree = "<group>"; };
 		D02FB3752BDF4555009B4875 /* myPageSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myPageSwiftUIView.swift; sourceTree = "<group>"; };
-		D02FB3782BE00B91009B4875 /* DiseasePredictionSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseasePredictionSwiftUIView.swift; sourceTree = "<group>"; };
+		D02FB3782BE00B91009B4875 /* diseasePredictionSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = diseasePredictionSwiftUIView.swift; sourceTree = "<group>"; };
 		D02FB37A2BE01789009B4875 /* painRecordUnitySwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = painRecordUnitySwiftUIView.swift; sourceTree = "<group>"; };
 		D02FB37C2BE017B0009B4875 /* painRecordInfoSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = painRecordInfoSwiftUIView.swift; sourceTree = "<group>"; };
 		D02FB37E2BE0A728009B4875 /* painRecordInfoFeelingSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = painRecordInfoFeelingSwiftUIView.swift; sourceTree = "<group>"; };
@@ -101,12 +102,14 @@
 		D06875FE2C05B8290088E186 /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		D06875FF2C05B8290088E186 /* NoAuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoAuthService.swift; sourceTree = "<group>"; };
 		D07A5D232C71C82E00603446 /* RoundedCornerStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerStyle.swift; sourceTree = "<group>"; };
+		D07A5D262C71D2C400603446 /* guideSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = guideSwiftUIView.swift; sourceTree = "<group>"; };
 		D07EC5DB2BED0F98006E74DE /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
-		D099C73D2C6271E000EA53BB /* Top2DiseasePredictionSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Top2DiseasePredictionSwiftUIView.swift; sourceTree = "<group>"; };
-		D099C7402C62825B00EA53BB /* DiseaseSurveySwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseSurveySwiftUIView.swift; sourceTree = "<group>"; };
+		D099C73D2C6271E000EA53BB /* top2DiseasePredictionSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = top2DiseasePredictionSwiftUIView.swift; sourceTree = "<group>"; };
+		D099C7402C62825B00EA53BB /* diseaseSurveySwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = diseaseSurveySwiftUIView.swift; sourceTree = "<group>"; };
 		D0B9867B2C0629DA0040FF37 /* GenericResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
 		D0CE7A742BFF2A7D00E3B025 /* DiseaseResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseResult.swift; sourceTree = "<group>"; };
 		D0D85D322C09E00D008C931A /* LodingStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LodingStyle.swift; sourceTree = "<group>"; };
+		D0ECC0372C79F47D00E8A482 /* UnityFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UnityFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +161,7 @@
 				D06875FC2C05B8040088E186 /* Splash */,
 				D03C36CA2BF627470028E759 /* Join */,
 				D02FB3832BE26B06009B4875 /* Login */,
+				D07A5D252C71D29D00603446 /* Guide */,
 				D099C73F2C62822A00EA53BB /* DiseaseSurvey */,
 				D02FB3772BE00B5D009B4875 /* DiseasePrediction */,
 				D02FB3742BDF4546009B4875 /* MyPage */,
@@ -184,6 +188,7 @@
 		D01889202C1044C9008C9118 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D0ECC0372C79F47D00E8A482 /* UnityFramework.framework */,
 				D066A5132C553E3600644359 /* UnityFramework.framework */,
 			);
 			name = Frameworks;
@@ -231,8 +236,8 @@
 		D02FB3772BE00B5D009B4875 /* DiseasePrediction */ = {
 			isa = PBXGroup;
 			children = (
-				D02FB3782BE00B91009B4875 /* DiseasePredictionSwiftUIView.swift */,
-				D099C73D2C6271E000EA53BB /* Top2DiseasePredictionSwiftUIView.swift */,
+				D02FB3782BE00B91009B4875 /* diseasePredictionSwiftUIView.swift */,
+				D099C73D2C6271E000EA53BB /* top2DiseasePredictionSwiftUIView.swift */,
 			);
 			path = DiseasePrediction;
 			sourceTree = "<group>";
@@ -296,6 +301,14 @@
 			path = Splash;
 			sourceTree = "<group>";
 		};
+		D07A5D252C71D29D00603446 /* Guide */ = {
+			isa = PBXGroup;
+			children = (
+				D07A5D262C71D2C400603446 /* guideSwiftUIView.swift */,
+			);
+			path = Guide;
+			sourceTree = "<group>";
+		};
 		D07EC5DA2BED0F65006E74DE /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -308,7 +321,7 @@
 		D099C73F2C62822A00EA53BB /* DiseaseSurvey */ = {
 			isa = PBXGroup;
 			children = (
-				D099C7402C62825B00EA53BB /* DiseaseSurveySwiftUIView.swift */,
+				D099C7402C62825B00EA53BB /* diseaseSurveySwiftUIView.swift */,
 			);
 			path = DiseaseSurvey;
 			sourceTree = "<group>";
@@ -323,7 +336,7 @@
 				D007C2652BDB64EE005F2A29 /* Sources */,
 				D007C2662BDB64EE005F2A29 /* Frameworks */,
 				D007C2672BDB64EE005F2A29 /* Resources */,
-				D00675A12BF51379003A3B89 /* Embed Frameworks */,
+				D0ECC03A2C79F47D00E8A482 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -411,10 +424,10 @@
 				D03C36CD2BF627470028E759 /* mailVerifySwiftUIView.swift in Sources */,
 				D007C26D2BDB64EE005F2A29 /* PainTApp.swift in Sources */,
 				D03C36D02BF6275D0028E759 /* webLoginSwiftUiView.swift in Sources */,
-				D099C73E2C6271E000EA53BB /* Top2DiseasePredictionSwiftUIView.swift in Sources */,
+				D099C73E2C6271E000EA53BB /* top2DiseasePredictionSwiftUIView.swift in Sources */,
 				D0B9867C2C0629DA0040FF37 /* GenericResponse.swift in Sources */,
-				D02FB3792BE00B91009B4875 /* DiseasePredictionSwiftUIView.swift in Sources */,
-				D099C7412C62825B00EA53BB /* DiseaseSurveySwiftUIView.swift in Sources */,
+				D02FB3792BE00B91009B4875 /* diseasePredictionSwiftUIView.swift in Sources */,
+				D099C7412C62825B00EA53BB /* diseaseSurveySwiftUIView.swift in Sources */,
 				D02FB3812BE0AF09009B4875 /* painRecordInfoIntensitySwiftUIView.swift in Sources */,
 				D03C36D72BF6277B0028E759 /* buttonStyles.swift in Sources */,
 				D006759F2BF5136A003A3B89 /* webview.swift in Sources */,
@@ -425,6 +438,7 @@
 				D02FB3702BDF4427009B4875 /* tabSwiftUIView.swift in Sources */,
 				D02FB37B2BE01789009B4875 /* painRecordUnitySwiftUIView.swift in Sources */,
 				D02FB36B2BDEA000009B4875 /* homeSwiftUIView.swift in Sources */,
+				D07A5D272C71D2C400603446 /* guideSwiftUIView.swift in Sources */,
 				D03C36D82BF6277B0028E759 /* checkboxStyle.swift in Sources */,
 				D07EC5DC2BED0F98006E74DE /* ColorExtension.swift in Sources */,
 			);
