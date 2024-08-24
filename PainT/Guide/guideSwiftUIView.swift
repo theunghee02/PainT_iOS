@@ -11,6 +11,7 @@ struct guideSwiftUIView: View {
     var currentCount: Int = 1
     var totalCount: Int = 2
     var excerciseName: String = "Wall_Squats"
+    var excercise2Name: String = "Seated_Ham-string_Stretch"
     
     var body: some View {
         VStack(spacing: 0) {
@@ -18,7 +19,7 @@ struct guideSwiftUIView: View {
                 .padding(.bottom, 10)
             Text("\(excerciseName)")
                 .font(.system(size: 24))
-            AsyncImage(url: /*@START_MENU_TOKEN@*/URL(string: "https://example.com/icon.png")/*@END_MENU_TOKEN@*/)
+            AsyncImage(url: URL(string: "http://chi-iu.com/videos/download/\(excerciseName)"))
                 .frame(width: 300, height: 300)
                 .padding(.top, 50)
                 .padding(.horizontal, 30)
@@ -27,7 +28,7 @@ struct guideSwiftUIView: View {
             
             // 다음 가이드
             HStack {
-                AsyncImage(url: /*@START_MENU_TOKEN@*/URL(string: "https://example.com/icon.png")/*@END_MENU_TOKEN@*/)
+                AsyncImage(url: URL(string: "http://chi-iu.com/videos/download/\(excercise2Name)"))
                     .frame(width: 70, height: 70)
                     .padding([.vertical, .leading], 15)
                     .padding(.trailing, 20)
@@ -37,13 +38,13 @@ struct guideSwiftUIView: View {
                     // Title
                     Text("다음 가이드")
                         .foregroundStyle(Color("AccentColor"))
-                        .padding(.bottom, 6)
                     
                     // 운동 이름
-                    Text("\(excerciseName)")
+                    Text("\(excercise2Name)")
                         .font(.system(size: 20))
                         .fontWeight(.semibold)
                 } // VStack
+                .padding(.vertical, 15)
                 
                 Spacer()
             } // HStack
@@ -66,7 +67,7 @@ struct guideSwiftUIView: View {
             
             
             // 하단 버튼
-            bottomButtonSwiftUIView(nextDestination: AnyView(guideSwiftUIView()))
+            bottomButtonSwiftUIView(nextDestination: AnyView(_2guideSwiftUIView()))
         } // VStack
     }
 }

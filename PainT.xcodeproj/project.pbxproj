@@ -49,6 +49,7 @@
 		D0CE7A752BFF2A7D00E3B025 /* DiseaseResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CE7A742BFF2A7D00E3B025 /* DiseaseResult.swift */; };
 		D0D85D332C09E00D008C931A /* LodingStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D85D322C09E00D008C931A /* LodingStyle.swift */; };
 		D0ECC0392C79F47D00E8A482 /* UnityFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D0ECC0372C79F47D00E8A482 /* UnityFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D0ECC03C2C79F7CD00E8A482 /* _2guideSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0ECC03B2C79F7CD00E8A482 /* _2guideSwiftUIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -110,6 +111,7 @@
 		D0CE7A742BFF2A7D00E3B025 /* DiseaseResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseResult.swift; sourceTree = "<group>"; };
 		D0D85D322C09E00D008C931A /* LodingStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LodingStyle.swift; sourceTree = "<group>"; };
 		D0ECC0372C79F47D00E8A482 /* UnityFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UnityFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0ECC03B2C79F7CD00E8A482 /* _2guideSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _2guideSwiftUIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -305,6 +307,7 @@
 			isa = PBXGroup;
 			children = (
 				D07A5D262C71D2C400603446 /* guideSwiftUIView.swift */,
+				D0ECC03B2C79F7CD00E8A482 /* _2guideSwiftUIView.swift */,
 			);
 			path = Guide;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 				D02FB37F2BE0A728009B4875 /* painRecordInfoFeelingSwiftUIView.swift in Sources */,
 				D02FB3732BDF451F009B4875 /* painStatSwiftUIView.swift in Sources */,
 				D03C36C52BF627320028E759 /* UserDefaults.swift in Sources */,
+				D0ECC03C2C79F7CD00E8A482 /* _2guideSwiftUIView.swift in Sources */,
 				D03C36D32BF627770028E759 /* UserService.swift in Sources */,
 				D007C26F2BDB64EE005F2A29 /* ContentView.swift in Sources */,
 				D0D85D332C09E00D008C931A /* LodingStyle.swift in Sources */,
