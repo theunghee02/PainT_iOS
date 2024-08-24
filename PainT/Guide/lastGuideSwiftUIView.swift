@@ -1,5 +1,5 @@
 //
-//  _2guideSwiftUIView.swift
+//  lastGuideSwiftUIView.swift
 //  PainT
 //
 //  Created by 최승희 on 8/24/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct _2guideSwiftUIView: View {
+struct lastGuideSwiftUIView: View {
     var currentCount: Int = 2
     var totalCount: Int = 2
     var exerciseName: String = "Seated_Hamstring_Stretch"
@@ -72,5 +72,5 @@ struct _2guideSwiftUIView: View {
 }
 
 #Preview {
-    _2guideSwiftUIView()
+    lastGuideSwiftUIView()
 }

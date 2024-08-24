@@ -100,7 +100,7 @@ struct homeSwiftUIView: View {
                     
                     // 루틴 리스트
                     ForEach(0..<exercises.count, id: \.self) { idx in
-                        exerciseRow(exerciseName: exercises[idx], exerciseTime: exerciseTimes[idx])
+                        exerciseRow(exerciseName: exercises[idx], exerciseTime: exerciseTimes[idx], isLast: idx == exercises.count-1)
                     }
                 } // VStack
                 .background(Color(red: 0.94, green: 0.94, blue: 0.94))
@@ -125,9 +125,17 @@ struct homeSwiftUIView: View {
     } // body
     
     // Exercise Row
-    func exerciseRow(exerciseName: String, exerciseTime: String) -> some View {
+    func exerciseRow(exerciseName: String, exerciseTime: String, isLast: Bool) -> some View {
         var body: some View {
-            NavigationLink(destination: guideSwiftUIView()) {
+            let destination: AnyView
+            
+            if isLast == true {
+                    destination = AnyView(lastGuideSwiftUIView())
+            } else {
+                destination = AnyView(guideSwiftUIView())
+            }
+            
+            return NavigationLink(destination: destination) {
                 HStack {
                     AsyncImage(url: URL(string: "http://chi-iu.com/videos/download/image/\(exerciseName)")) { result in
                         result
