@@ -13,7 +13,7 @@ struct painRecordResultSwiftUIView: View {
     @Binding var selectedFeelings: [String]
     @Binding var selectedIntensity: Int
     
-    var username: String = "user123"
+    var username: String = "chii-u"
     
     @State var intensityText : String
     
@@ -86,21 +86,21 @@ struct painRecordResultSwiftUIView: View {
                 // 하위 항목
                 ZStack(alignment: .topLeading) {
                     // 3D 신체
-                    AsyncImage(url: URL(string: "http://chi-iu.com/unity/images/\(imageID)"),
-                               scale: 8) { phase in
-                        if let image = phase.image {
-                            image // 사진 띄우기
-                                .offset(x: 20, y: -20)
-                        } else {
-                            let image = Image("body-default")
-                            image.resizable()
-                        }
-                    }
+//                    AsyncImage(url: URL(string: "http://chi-iu.com/unity/images/\(imageID)"),
+//                               scale: 8) { phase in
+//                        if let image = phase.image {
+//                            image // 사진 띄우기
+//                                .offset(x: 20, y: -20)
+//                        } else {
+//                            let image = Image("body-default")
+//                            image.resizable()
+//                        }
+//                    }
                     // 데모용
-//                    Image("body-ex")
-//                        .resizable()
-//                        .frame(width: 180.0, height: 300.0)
-//                        .offset(x: 10, y: -20)
+                    Image("body-default")
+                        .resizable()
+                        .frame(width: 170.0, height: 300.0)
+                        .offset(x: 20, y: -20)
                     
                     // 트리거 및 느낌
                     HStack {
