@@ -37,6 +37,7 @@
 		D03C36D32BF627770028E759 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C36D12BF627760028E759 /* UserService.swift */; };
 		D03C36D72BF6277B0028E759 /* buttonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C36D42BF6277B0028E759 /* buttonStyles.swift */; };
 		D03C36D82BF6277B0028E759 /* checkboxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C36D52BF6277B0028E759 /* checkboxStyle.swift */; };
+		D05076F12C7F0F9D00A780FC /* testVideoSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05076F02C7F0F9D00A780FC /* testVideoSwiftUIView.swift */; };
 		D06875FD2C05B8040088E186 /* splashSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06875FB2C05B8040088E186 /* splashSwiftUIView.swift */; };
 		D06876012C05B8290088E186 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06875FE2C05B8290088E186 /* AuthService.swift */; };
 		D06876022C05B8290088E186 /* NoAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06875FF2C05B8290088E186 /* NoAuthService.swift */; };
@@ -97,6 +98,7 @@
 		D03C36D12BF627760028E759 /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		D03C36D42BF6277B0028E759 /* buttonStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = buttonStyles.swift; sourceTree = "<group>"; };
 		D03C36D52BF6277B0028E759 /* checkboxStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = checkboxStyle.swift; sourceTree = "<group>"; };
+		D05076F02C7F0F9D00A780FC /* testVideoSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testVideoSwiftUIView.swift; sourceTree = "<group>"; };
 		D06875FB2C05B8040088E186 /* splashSwiftUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = splashSwiftUIView.swift; sourceTree = "<group>"; };
 		D06875FE2C05B8290088E186 /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		D06875FF2C05B8290088E186 /* NoAuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoAuthService.swift; sourceTree = "<group>"; };
@@ -306,6 +308,7 @@
 			children = (
 				D07A5D262C71D2C400603446 /* guideSwiftUIView.swift */,
 				D0ECC03B2C79F7CD00E8A482 /* lastGuideSwiftUIView.swift */,
+				D05076F02C7F0F9D00A780FC /* testVideoSwiftUIView.swift */,
 			);
 			path = Guide;
 			sourceTree = "<group>";
@@ -440,6 +443,7 @@
 				D02FB3812BE0AF09009B4875 /* painRecordInfoIntensitySwiftUIView.swift in Sources */,
 				D03C36D72BF6277B0028E759 /* buttonStyles.swift in Sources */,
 				D006759F2BF5136A003A3B89 /* webview.swift in Sources */,
+				D05076F12C7F0F9D00A780FC /* testVideoSwiftUIView.swift in Sources */,
 				D06875FD2C05B8040088E186 /* splashSwiftUIView.swift in Sources */,
 				D03C36CB2BF627470028E759 /* eulaSwiftUIView.swift in Sources */,
 				081EB58D2BE275960097E960 /* findPasswordSwiftUIView.swift in Sources */,

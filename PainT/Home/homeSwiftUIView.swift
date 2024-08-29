@@ -85,7 +85,7 @@ struct homeSwiftUIView: View {
                         Spacer()
                         
                         // [버튼] 추천 가이드 시작하기
-                        NavigationLink(destination: guideSwiftUIView()) {
+                        NavigationLink(destination: testVideoSwiftUIView()) {
                             Text("추천 가이드 시작하기")
                                 .fontWeight(.semibold)
                                 .foregroundColor(Color(hex: 0x252525)) // 글씨 색상
