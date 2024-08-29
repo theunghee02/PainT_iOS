@@ -4,6 +4,7 @@
 //
 //  Created by 최승희 on 8/24/24.
 //
+// 두 번째 가이드 화면(마지막 화면)
 
 import SwiftUI
 import AVKit
@@ -30,6 +31,7 @@ struct lastGuideSwiftUIView: View {
             Text("\(exerciseName)")
                 .font(.system(size: 24))
             VideoPlayer(player: AVPlayer(url: URL(string: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4")!))
+//            VideoPlayer(player: AVPlayer(url: URL(string: "http://chi-iu.com/videos/download/\(exerciseName).mp4")!))
                 .frame(width: UIScreen.main.bounds.width * 0.86, height: UIScreen.main.bounds.width * 0.86)
                 .padding(30)
             

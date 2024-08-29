@@ -4,6 +4,7 @@
 //
 //  Created by 최승희 on 8/18/24.
 //
+// 첫 번째 가이드 화면
 
 import SwiftUI
 import AVKit
