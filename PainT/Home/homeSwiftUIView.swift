@@ -4,6 +4,7 @@
 //
 //  Created by 최승희 on 4/29/24.
 //
+// 홈 페이지
 
 import SwiftUI
 
@@ -166,6 +167,53 @@ struct homeSwiftUIView: View {
         return body
     } //
 } // homeSwiftUIView
+
+struct modalView: View {
+    @Binding var selectedDate: Date
+    
+    var body: some View {
+        ScrollView {
+            GeometryReader { geometry in
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("통증 기록")
+                        .font(.system(size: 24))
+                        .fontWeight(.semibold)
+                        .padding(.top, 30)
+                    
+                    // 통증 기록 리스트
+                    ForEach(0..<3) { _ in
+                        VStack(alignment: .leading) {
+                            Text("통증 위치")
+                            HStack {
+                                Text("쑤시는 느낌")
+                                Text("원인 모름")
+                                Text("고통 8")
+                            } // HStack
+                        } // VStack
+                        .background(Color("AccentColor").opacity(0.5))
+                    } // List
+                } // VStack
+                .frame(minWidth: geometry.size.width*0.7)
+            } // GeometryReader
+        } // ScrollView
+    }
+}
+
+struct calendarView: View {
+    @Binding var selectedDate: Date
+    
+    var body: some View {
+        Text("Calendar for \(selectedDate, formatter: dateFormatter)")
+            .font(.headline)
+            .padding()
+    }
+    
+    private var dateFormatter: DateFormatter {
+            let formatter = DateFormatter()
+            formatter.dateStyle = .long
+            return formatter
+        }
+}
 
 #Preview {
     homeSwiftUIView()
