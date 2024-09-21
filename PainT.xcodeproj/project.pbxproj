@@ -29,6 +29,7 @@
 		D02FB37F2BE0A728009B4875 /* painRecordInfoFeelingSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FB37E2BE0A728009B4875 /* painRecordInfoFeelingSwiftUIView.swift */; };
 		D02FB3812BE0AF09009B4875 /* painRecordInfoIntensitySwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FB3802BE0AF09009B4875 /* painRecordInfoIntensitySwiftUIView.swift */; };
 		D02FB3852BE26B12009B4875 /* loginSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FB3842BE26B12009B4875 /* loginSwiftUIView.swift */; };
+		D04577B02C9C3C5E00160F53 /* calendarHomeSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04577AF2C9C3C5E00160F53 /* calendarHomeSwiftUIView.swift */; };
 		D07EC5DC2BED0F98006E74DE /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07EC5DB2BED0F98006E74DE /* ColorExtension.swift */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +70,7 @@
 		D02FB37E2BE0A728009B4875 /* painRecordInfoFeelingSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = painRecordInfoFeelingSwiftUIView.swift; sourceTree = "<group>"; };
 		D02FB3802BE0AF09009B4875 /* painRecordInfoIntensitySwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = painRecordInfoIntensitySwiftUIView.swift; sourceTree = "<group>"; };
 		D02FB3842BE26B12009B4875 /* loginSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginSwiftUIView.swift; sourceTree = "<group>"; };
+		D04577AF2C9C3C5E00160F53 /* calendarHomeSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calendarHomeSwiftUIView.swift; sourceTree = "<group>"; };
 		D07EC5DB2BED0F98006E74DE /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -141,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				D02FB36A2BDEA000009B4875 /* homeSwiftUIView.swift */,
+				D04577AF2C9C3C5E00160F53 /* calendarHomeSwiftUIView.swift */,
 				D02FB36F2BDF4426009B4875 /* tabSwiftUIView.swift */,
 			);
 			path = Home;
@@ -299,6 +302,7 @@
 				D02FB37B2BE01789009B4875 /* painRecordUnitySwiftUIView.swift in Sources */,
 				D02FB36B2BDEA000009B4875 /* homeSwiftUIView.swift in Sources */,
 				D07EC5DC2BED0F98006E74DE /* ColorExtension.swift in Sources */,
+				D04577B02C9C3C5E00160F53 /* calendarHomeSwiftUIView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
