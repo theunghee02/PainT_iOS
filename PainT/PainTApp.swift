@@ -7,9 +7,14 @@
 
 import SwiftUI
 import SwiftData
+import UIKit
 
 @main
 struct PainTApp: App {
+    
+    @StateObject  private  var appRootManager =  AppRootManager ()
+    
+    
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Item.self,
@@ -25,8 +30,75 @@ struct PainTApp: App {
 
     var body: some Scene {
         WindowGroup {
-            tabSwiftUIView() // 처음 시작 뷰
+            Group {
+                switch appRootManager.currentRoot {
+                case .splash:
+                    splashSwiftUIView()
+                    
+                case .authentication:
+                    loginSwiftUIView()
+                    
+                case .home:
+//                    tabSwiftUIView()
+                    DiseaseSurveySwiftUIView()
+                    
+                case .survey:
+                    DiseaseSurveySwiftUIView()
+                }
+            }
+            .environmentObject(appRootManager)
         }
         .modelContainer(sharedModelContainer)
+    }
+}
+
+extension UINavigationController: ObservableObject, UIGestureRecognizerDelegate {
+    override open func viewDidLoad() {
+        super.viewDidLoad()
+        navigationController?.navigationBar.isHidden = true
+        interactivePopGestureRecognizer?.delegate = self
+    }
+
+    public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return viewControllers.count > 1
+    }
+}
+// 출처 https://green1229.tistory.com/298
+extension View {
+  @ViewBuilder public func overlayIf<T: View>(
+    _ condition: Bool,
+    _ content: T,
+    alignment: Alignment = .center
+  ) -> some View {
+    if condition {
+      self.overlay(content, alignment: alignment)
+    } else {
+      self
+    }
+  }
+}
+
+final class AppRootManager: ObservableObject {
+    
+    @Published var currentRoot: eAppRoots = .splash
+    
+    enum eAppRoots {
+        case splash
+        case authentication
+        case home
+        case survey
+    }
+}
+
+class ViewController: UIViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        let vc = UIHostingController(rootView: ContentView())
+        addChild(vc)
+        vc.view.frame = self.view.frame
+        view.addSubview(vc.view)
+        vc.didMove(toParent: self)
     }
 }
