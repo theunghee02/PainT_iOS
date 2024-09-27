@@ -15,7 +15,7 @@ struct tabSwiftUIView: View {
 //        NavigationStack {
             TabView(selection: $selectedTab) {
                 // home
-                calendarHomeSwiftUIView()
+                homeSwiftUIView()
                     .tabItem {
                         Label("홈", image: selectedTab == 0 ? "homeGNB-colored" : "homeGNB-default")
                     }

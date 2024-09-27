@@ -16,6 +16,10 @@ struct homeSwiftUIView: View {
     @State var exerciseTimes: [String] = ["15sec", "15sec"]
     @State var totalTime: String = "30초"
     
+    // 캘린더용
+    @State private var date = Date()
+    @State private var isModalPresented = false
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 0) {
@@ -28,22 +32,22 @@ struct homeSwiftUIView: View {
                         .font(.system(size: 20))
                 } // HStack
                 .padding(.bottom, 25.0)
-                .padding(.leading, 20.0)
+                .padding(.horizontal, 20.0)
                 
                 // 치유 달성도
                 VStack {
                     // 제목 & 횟수
                     GeometryReader { geometry in
                         HStack(alignment: .center, spacing: 0) {
-                            Text("치유 달성도")
+                            Text("오늘의 치유 달성도")
                                 .font(.system(size: 20))
                                 .fontWeight(.bold)
-                                .padding(.trailing, 80)
+//                                .padding(.trailing, 80)
                             Spacer()
-                            Text("\(count)")
-                                .font(.system(size: 24))
-                                .fontWeight(.bold)
-                            Text("번째 치유 중")
+//                            Text("\(count)")
+//                                .font(.system(size: 24))
+//                                .fontWeight(.bold)
+//                            Text("번째 치유 중")
                         } // HStack
                         .frame(width: geometry.size.width)
                     } // GeometryReader
@@ -73,10 +77,56 @@ struct homeSwiftUIView: View {
                         Text("\(Int(percent))%")
                     } // HStack
                 } // VStack
-                .padding(.horizontal, 20.0)
-                .padding(.bottom, 40)
+                .padding(.horizontal, 20)
+                .padding(.bottom, 20)
+                
+                // 구분선1
+                Rectangle()
+                    .foregroundStyle(Color(hex: 0xF0F0F0))
+                    .frame(width: UIScreen.main.bounds.width, height: 2)
+                
+                // 캘린더
+                    // 캘린더 title
+                Text("통증 달력")
+                    .font(.system(size: 20))
+                    .fontWeight(.bold)
+                    .padding([.leading,.top], 20)
+                
+                    // 캘린더 뷰
+                VStack {
+                    DatePicker(
+                        "Start Date",
+                        selection: $date,
+                        displayedComponents: [.date]
+                    )
+                    .datePickerStyle(.graphical)
+                    .onChange(of: date) {
+                        isModalPresented = true
+                    }
+                } // VStack
+                .padding(.horizontal, 20)
+                .sheet(isPresented: $isModalPresented, onDismiss: {
+                    isModalPresented = false
+                }) {
+                    modalView(selectedDate: $date)
+                        .presentationDetents([.fraction(0.8)])
+                        .presentationDragIndicator(.visible)
+                }
+                
+                // 구분선2
+                Rectangle()
+                    .foregroundStyle(Color(hex: 0xF0F0F0))
+                    .frame(width: UIScreen.main.bounds.width, height: 2)
+                    .padding(.bottom, 20)
                 
                 // 추천 가이드 루틴
+                    // 가이드 title
+                Text("치유 가이드")
+                    .font(.system(size: 20))
+                    .fontWeight(.bold)
+                    .padding([.leading, .bottom], 20)
+                    
+                    // 가이드 list
                 VStack(alignment: .center, spacing: 0) {
                     HStack {
                         // 개수 & 시간
@@ -96,8 +146,7 @@ struct homeSwiftUIView: View {
                         }
                         .padding(.trailing, 20)
                     } // HStack
-                    .padding(.vertical, 20)
-//                    .background(Color(.red))
+                    .padding(.top, 20)
                     
                     // 루틴 리스트
                     ForEach(0..<exercises.count, id: \.self) { idx in
@@ -106,17 +155,9 @@ struct homeSwiftUIView: View {
                 } // VStack
                 .background(Color(red: 0.94, green: 0.94, blue: 0.94))
                 .clipShape(RoundedRectangle(cornerRadius: 25))
-                
-                // [버튼] 가이드 추가하기
-                HStack {
-                    // 가이드 추가하기
-                    HStack{
-                        
-                    }
-                }
+                .padding(.bottom, 20.0)
+                .padding(.horizontal, 20)
             } // VStack
-            .padding(.top, 30.0)
-            .padding(.horizontal, 13.0)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Image("appIcon")
@@ -131,7 +172,7 @@ struct homeSwiftUIView: View {
             let destination: AnyView
             
             if isLast == true {
-                    destination = AnyView(lastGuideSwiftUIView())
+                destination = AnyView(lastGuideSwiftUIView())
             } else {
                 destination = AnyView(guideSwiftUIView())
             }
@@ -145,9 +186,9 @@ struct homeSwiftUIView: View {
                     } placeholder: {
                         ProgressView()
                     }
-                        .frame(width: 70, height: 70)
-                        .padding(.leading, 20)
-                        .padding(.vertical, 15)
+                    .frame(width: 70, height: 70)
+                    .padding(.leading, 20)
+                    .padding(.vertical, 15)
                     Text("\(exerciseName)")
                         .padding(.leading, 20)
                         .foregroundColor(Color(.black))
@@ -180,6 +221,15 @@ struct modalView: View {
                         .fontWeight(.semibold)
                         .padding(.top, 30)
                     
+                    // 날짜를 원하는 형식의 문자열로 변환
+                    let dateFormatter: DateFormatter = {
+                        let formatter = DateFormatter()
+                        formatter.dateFormat = "YYYY년 MM월 dd일"
+                        return formatter
+                    }()
+                    
+                    Text("\(dateFormatter.string(from: selectedDate))")
+                    
                     // 통증 기록 리스트
                     ForEach(0..<3) { _ in
                         VStack(alignment: .leading) {
@@ -197,22 +247,6 @@ struct modalView: View {
             } // GeometryReader
         } // ScrollView
     }
-}
-
-struct calendarView: View {
-    @Binding var selectedDate: Date
-    
-    var body: some View {
-        Text("Calendar for \(selectedDate, formatter: dateFormatter)")
-            .font(.headline)
-            .padding()
-    }
-    
-    private var dateFormatter: DateFormatter {
-            let formatter = DateFormatter()
-            formatter.dateStyle = .long
-            return formatter
-        }
 }
 
 #Preview {
