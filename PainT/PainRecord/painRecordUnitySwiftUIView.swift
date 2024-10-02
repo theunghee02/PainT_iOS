@@ -38,12 +38,15 @@ struct painRecordUnitySwiftUIView: View {
                 .padding(.top, 10)
                 .foregroundStyle(Color(hex: 0x252525))
             Spacer()
-            NavigationLink(destination: painRecordInfoTriggerSwiftUIView(location: locations)) {
-                Text("다음")
-                    .frame(maxWidth: .infinity, minHeight: 50)
-                    .background(Color("AccentColor"))
-                    .foregroundColor(Color(hex:0x252525))
-            } // NavigationLink
+//            NavigationLink(destination: painRecordInfoTriggerSwiftUIView(location: locations)) {
+//                Text("다음")
+//                    .frame(maxWidth: .infinity, minHeight: 50)
+//                    .background(Color("AccentColor"))
+//                    .foregroundColor(Color(hex:0x252525))
+//            } // NavigationLink
+            
+            // 하단 버튼
+            bottomButtonSwiftUIView(nextDestination: AnyView(painRecordInfoTriggerSwiftUIView(location: locations)))
         }
     }
 }

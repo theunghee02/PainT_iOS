@@ -29,6 +29,8 @@ struct painRecordInfoTriggerSwiftUIView: View {
             )
         
         Spacer()
+        
+        // 하단 버튼
         bottomButtonSwiftUIView(nextDestination: AnyView(painRecordInfoFeelingSwiftUIView(location:location,trigger:trigger)))
             .onAppear {
                 isTextFieldFocused = true // 뷰가 나타나면 텍스트 필드에 포커스를 설정합니다.
