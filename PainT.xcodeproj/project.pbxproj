@@ -172,7 +172,6 @@
 				D03C36CA2BF627470028E759 /* Join */,
 				D02FB3832BE26B06009B4875 /* Login */,
 				D07A5D252C71D29D00603446 /* Guide */,
-				D099C73F2C62822A00EA53BB /* DiseaseSurvey */,
 				D02FB3772BE00B5D009B4875 /* DiseasePrediction */,
 				D02FB3742BDF4546009B4875 /* MyPage */,
 				D02FB3712BDF450B009B4875 /* PainStat */,
@@ -216,13 +215,14 @@
 		D02FB36C2BDEBAE7009B4875 /* PainRecord */ = {
 			isa = PBXGroup;
 			children = (
-				D0ECC0412C7A027600E8A482 /* tem_painRecordUnitySwiftUIView.swift */,
+				D099C7402C62825B00EA53BB /* diseaseSurveySwiftUIView.swift */,
 				D02FB37A2BE01789009B4875 /* painRecordUnitySwiftUIView.swift */,
 				D02FB37C2BE017B0009B4875 /* painRecordInfoSwiftUIView.swift */,
 				D0273E6D2BE77F8D0052824A /* painRecordInfoTimeSwiftUIView.swift */,
 				D02FB37E2BE0A728009B4875 /* painRecordInfoFeelingSwiftUIView.swift */,
 				D02FB3802BE0AF09009B4875 /* painRecordInfoIntensitySwiftUIView.swift */,
 				D0273E712BE789A70052824A /* painRecordResultSwiftUIView.swift */,
+				D0ECC0412C7A027600E8A482 /* tem_painRecordUnitySwiftUIView.swift */,
 			);
 			path = PainRecord;
 			sourceTree = "<group>";
@@ -329,14 +329,6 @@
 				D07EC5DB2BED0F98006E74DE /* ColorExtension.swift */,
 			);
 			path = Extension;
-			sourceTree = "<group>";
-		};
-		D099C73F2C62822A00EA53BB /* DiseaseSurvey */ = {
-			isa = PBXGroup;
-			children = (
-				D099C7402C62825B00EA53BB /* diseaseSurveySwiftUIView.swift */,
-			);
-			path = DiseaseSurvey;
 			sourceTree = "<group>";
 		};
 		D0ECC0432C7A073A00E8A482 /* UnityController */ = {
