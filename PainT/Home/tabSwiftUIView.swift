@@ -10,31 +10,29 @@ import SwiftUI
 struct tabSwiftUIView: View {
     @State var stack = NavigationPath()
     @State private var selectedTab = 0
-
+    
     var body: some View {
-//        NavigationStack {
-            TabView(selection: $selectedTab) {
-                // home
-                homeSwiftUIView()
-                    .tabItem {
-                        Label("홈", image: selectedTab == 0 ? "homeGNB-colored" : "homeGNB-default")
-                    }
-                    .tag(0)
-                // painStat
-                painRecordUnitySwiftUIView()
-                    .tabItem {
-                        Label("통증 기록", image: selectedTab == 1 ? "painRecord-colored" : "painRecord-default")
-                    }
-                    .tag(1)
-                // myPage
-                myPageSwiftUIView()
-                    .tabItem {
-                        Label("마이페이지", image: selectedTab == 2 ? "mypage-colored" : "mypage-default")
-                    }
-                    .tag(2)
-            } // TabView
-//        } // NavigationStack
-//        .toolbar(.visible, for: .navigationBar)
+        TabView(selection: $selectedTab) {
+            // home
+            homeSwiftUIView()
+                .tabItem {
+                    Label("홈", image: selectedTab == 0 ? "homeGNB-colored" : "homeGNB-default")
+                }
+                .tag(0)
+            // pain record
+            DiseaseSurveySwiftUIView()
+            //                painRecordUnitySwiftUIView()
+                .tabItem {
+                    Label("통증 기록", image: selectedTab == 1 ? "painRecord-colored" : "painRecord-default")
+                }
+                .tag(1)
+            // myPage
+            myPageSwiftUIView()
+                .tabItem {
+                    Label("마이페이지", image: selectedTab == 2 ? "mypage-colored" : "mypage-default")
+                }
+                .tag(2)
+        } // TabView
     } // body
 } // tabSwiftUIView
 
@@ -45,12 +43,12 @@ struct tabSwiftUIView: View {
 extension UITabBarController {
     open override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-
+        
         tabBar.layer.masksToBounds = true
         tabBar.layer.cornerRadius = 30
         // Choose with corners should be rounded
         tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner] // top left, top right
-
+        
         // Uses `accessibilityIdentifier` in order to retrieve shadow view if already added
         if let shadowView = view.subviews.first(where: { $0.accessibilityIdentifier == "TabBarShadow" }) {
             shadowView.frame = tabBar.frame

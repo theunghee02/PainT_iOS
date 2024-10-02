@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct Top2DiseasePredictionSwiftUIView: View {
+    // tab의 tag
+    @State private var selectedTab = 1
+    
     // 질환 정보 배열
     let predictions: [(predicted: String, subject: String, description: String)] = [
         ("척추관 협착증", "신경외과, 정형외과", "척추관 협착증은 척추관이 좁아져 신경을 압박하는 질환으로, 허리 통증, 다리 저림, 근력 약화, 걷기 어려움 등의 증상을 유발합니다. 증상은 오래 앉아 있거나 걷는 동안 심해질 수 있습니다."),
@@ -64,9 +67,42 @@ struct Top2DiseasePredictionSwiftUIView: View {
             } // GeometryReader
             
             // 하단 버튼
-            bottomButtonSwiftUIView(nextDestination: AnyView(tabSwiftUIView()))
+            diseaseToHomeBtnView(selectedTab: $selectedTab)
         } // VStack
     } // body
+    
+    struct diseaseToHomeBtnView: View {
+        @Environment(\.presentationMode) var presentationMode
+        @Binding var selectedTab: Int
+        
+        var body: some View {
+            VStack {
+                HStack(spacing: 0) {
+                    Button(action: {
+                        // 네비게이션 스택에서 이전 뷰로 이동 == Modal View 닫기
+                        self.presentationMode.wrappedValue.dismiss()
+                    }) {
+                        Text("이전")
+                            .foregroundColor(Color.black)
+                            .frame(minHeight: 50)
+                            .frame(width: UIScreen.main.bounds.width * 0.4)
+                            .background(Color.gray)
+                    }
+                    Button(action: {
+                        // 다음 탭으로 이동
+                        self.selectedTab = 0
+                    }) {
+                        Text("다음")
+                            .foregroundColor(Color.white)
+                            .frame(minHeight: 50)
+                            .frame(width: UIScreen.main.bounds.width * 0.6)
+                            .background(Color("AccentColor"))
+                    }
+                }
+            } // VStack
+        }
+    }
+
     
     // 질환 정보 컴포넌트
     func diseaseRow(idx: Int, predicted: String, subject: String, discription: String) -> some View {

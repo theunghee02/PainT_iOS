@@ -39,8 +39,7 @@ struct PainTApp: App {
                     loginSwiftUIView()
                     
                 case .home:
-//                    tabSwiftUIView()
-                    DiseaseSurveySwiftUIView()
+                    tabSwiftUIView()
                     
                 case .survey:
                     DiseaseSurveySwiftUIView()

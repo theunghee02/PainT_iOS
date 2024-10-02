@@ -44,7 +44,6 @@ struct painRecordUnitySwiftUIView: View {
                     .background(Color("AccentColor"))
                     .foregroundColor(Color(hex:0x252525))
             } // NavigationLink
-                    .navigationTitle("통증 기록")
         }
     }
 }

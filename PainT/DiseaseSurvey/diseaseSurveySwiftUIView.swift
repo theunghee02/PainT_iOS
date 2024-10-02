@@ -79,7 +79,7 @@ struct DiseaseSurveySwiftUIView: View {
                 }
                 
                 // 다음 버튼
-                NavigationLink(destination: tabSwiftUIView()) {
+                NavigationLink(destination: painRecordUnitySwiftUIView()) {
                     Text("다음")
                         .frame(maxWidth: .infinity, minHeight: 50)
                         .background(Color("AccentColor"))

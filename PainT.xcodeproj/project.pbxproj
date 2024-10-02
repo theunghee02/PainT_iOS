@@ -37,13 +37,14 @@
 		D03C36D32BF627770028E759 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C36D12BF627760028E759 /* UserService.swift */; };
 		D03C36D72BF6277B0028E759 /* buttonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C36D42BF6277B0028E759 /* buttonStyles.swift */; };
 		D03C36D82BF6277B0028E759 /* checkboxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C36D52BF6277B0028E759 /* checkboxStyle.swift */; };
+		D04214B62CA6D643008B6F28 /* TabSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04214B52CA6D63A008B6F28 /* TabSelection.swift */; };
+		D04577B02C9C3C5E00160F53 /* calendarHomeSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04577AF2C9C3C5E00160F53 /* calendarHomeSwiftUIView.swift */; };
 		D05076F12C7F0F9D00A780FC /* testVideoSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05076F02C7F0F9D00A780FC /* testVideoSwiftUIView.swift */; };
 		D06875FD2C05B8040088E186 /* splashSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06875FB2C05B8040088E186 /* splashSwiftUIView.swift */; };
 		D06876012C05B8290088E186 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06875FE2C05B8290088E186 /* AuthService.swift */; };
 		D06876022C05B8290088E186 /* NoAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06875FF2C05B8290088E186 /* NoAuthService.swift */; };
 		D07A5D242C71C82E00603446 /* RoundedCornerStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07A5D232C71C82E00603446 /* RoundedCornerStyle.swift */; };
 		D07A5D272C71D2C400603446 /* guideSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07A5D262C71D2C400603446 /* guideSwiftUIView.swift */; };
-		D04577B02C9C3C5E00160F53 /* calendarHomeSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04577AF2C9C3C5E00160F53 /* calendarHomeSwiftUIView.swift */; };
 		D07EC5DC2BED0F98006E74DE /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07EC5DB2BED0F98006E74DE /* ColorExtension.swift */; };
 		D099C73E2C6271E000EA53BB /* top2DiseasePredictionSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D099C73D2C6271E000EA53BB /* top2DiseasePredictionSwiftUIView.swift */; };
 		D099C7412C62825B00EA53BB /* diseaseSurveySwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D099C7402C62825B00EA53BB /* diseaseSurveySwiftUIView.swift */; };
@@ -99,13 +100,14 @@
 		D03C36D12BF627760028E759 /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		D03C36D42BF6277B0028E759 /* buttonStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = buttonStyles.swift; sourceTree = "<group>"; };
 		D03C36D52BF6277B0028E759 /* checkboxStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = checkboxStyle.swift; sourceTree = "<group>"; };
+		D04214B52CA6D63A008B6F28 /* TabSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSelection.swift; sourceTree = "<group>"; };
+		D04577AF2C9C3C5E00160F53 /* calendarHomeSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calendarHomeSwiftUIView.swift; sourceTree = "<group>"; };
 		D05076F02C7F0F9D00A780FC /* testVideoSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testVideoSwiftUIView.swift; sourceTree = "<group>"; };
 		D06875FB2C05B8040088E186 /* splashSwiftUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = splashSwiftUIView.swift; sourceTree = "<group>"; };
 		D06875FE2C05B8290088E186 /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		D06875FF2C05B8290088E186 /* NoAuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoAuthService.swift; sourceTree = "<group>"; };
 		D07A5D232C71C82E00603446 /* RoundedCornerStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerStyle.swift; sourceTree = "<group>"; };
 		D07A5D262C71D2C400603446 /* guideSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = guideSwiftUIView.swift; sourceTree = "<group>"; };
-		D04577AF2C9C3C5E00160F53 /* calendarHomeSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calendarHomeSwiftUIView.swift; sourceTree = "<group>"; };
 		D07EC5DB2BED0F98006E74DE /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		D099C73D2C6271E000EA53BB /* top2DiseasePredictionSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = top2DiseasePredictionSwiftUIView.swift; sourceTree = "<group>"; };
 		D099C7402C62825B00EA53BB /* diseaseSurveySwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = diseaseSurveySwiftUIView.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 		D02FB3692BDE9F69009B4875 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				D04214B52CA6D63A008B6F28 /* TabSelection.swift */,
 				D02FB36A2BDEA000009B4875 /* homeSwiftUIView.swift */,
 				D04577AF2C9C3C5E00160F53 /* calendarHomeSwiftUIView.swift */,
 				D02FB36F2BDF4426009B4875 /* tabSwiftUIView.swift */,
@@ -449,6 +452,7 @@
 				D05076F12C7F0F9D00A780FC /* testVideoSwiftUIView.swift in Sources */,
 				D06875FD2C05B8040088E186 /* splashSwiftUIView.swift in Sources */,
 				D03C36CB2BF627470028E759 /* eulaSwiftUIView.swift in Sources */,
+				D04214B62CA6D643008B6F28 /* TabSelection.swift in Sources */,
 				081EB58D2BE275960097E960 /* findPasswordSwiftUIView.swift in Sources */,
 				D0CE7A752BFF2A7D00E3B025 /* DiseaseResult.swift in Sources */,
 				D02FB3702BDF4427009B4875 /* tabSwiftUIView.swift in Sources */,

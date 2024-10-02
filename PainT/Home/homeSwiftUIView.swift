@@ -23,6 +23,40 @@ struct homeSwiftUIView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 0) {
+                // 캘린더
+                // 캘린더 title
+                Text("통증 달력")
+                    .font(.system(size: 20))
+                    .fontWeight(.bold)
+                    .padding([.leading,.top], 20)
+                
+                // 캘린더 뷰
+                VStack {
+                    DatePicker(
+                        "Start Date",
+                        selection: $date,
+                        displayedComponents: [.date]
+                    )
+                    .datePickerStyle(.graphical)
+                    .onChange(of: date) {
+                        isModalPresented = true
+                    }
+                } // VStack
+                .padding(.horizontal, 20)
+                .sheet(isPresented: $isModalPresented, onDismiss: {
+                    isModalPresented = false
+                }) {
+                    modalView(selectedDate: $date)
+                        .presentationDetents([.fraction(0.8)])
+                        .presentationDragIndicator(.visible)
+                }
+                
+                // 구분선2
+                Rectangle()
+                    .foregroundStyle(Color(hex: 0xF0F0F0))
+                    .frame(width: UIScreen.main.bounds.width, height: 2)
+                    .padding(.bottom, 20)
+                
                 // 질환명
                 HStack(spacing: 0) {
                     Text("질환명 | ")
@@ -42,12 +76,12 @@ struct homeSwiftUIView: View {
                             Text("오늘의 치유 달성도")
                                 .font(.system(size: 20))
                                 .fontWeight(.bold)
-//                                .padding(.trailing, 80)
+                            //                                .padding(.trailing, 80)
                             Spacer()
-//                            Text("\(count)")
-//                                .font(.system(size: 24))
-//                                .fontWeight(.bold)
-//                            Text("번째 치유 중")
+                            //                            Text("\(count)")
+                            //                                .font(.system(size: 24))
+                            //                                .fontWeight(.bold)
+                            //                            Text("번째 치유 중")
                         } // HStack
                         .frame(width: geometry.size.width)
                     } // GeometryReader
@@ -80,53 +114,19 @@ struct homeSwiftUIView: View {
                 .padding(.horizontal, 20)
                 .padding(.bottom, 20)
                 
-                // 구분선1
-                Rectangle()
-                    .foregroundStyle(Color(hex: 0xF0F0F0))
-                    .frame(width: UIScreen.main.bounds.width, height: 2)
-                
-                // 캘린더
-                    // 캘린더 title
-                Text("통증 달력")
-                    .font(.system(size: 20))
-                    .fontWeight(.bold)
-                    .padding([.leading,.top], 20)
-                
-                    // 캘린더 뷰
-                VStack {
-                    DatePicker(
-                        "Start Date",
-                        selection: $date,
-                        displayedComponents: [.date]
-                    )
-                    .datePickerStyle(.graphical)
-                    .onChange(of: date) {
-                        isModalPresented = true
-                    }
-                } // VStack
-                .padding(.horizontal, 20)
-                .sheet(isPresented: $isModalPresented, onDismiss: {
-                    isModalPresented = false
-                }) {
-                    modalView(selectedDate: $date)
-                        .presentationDetents([.fraction(0.8)])
-                        .presentationDragIndicator(.visible)
-                }
-                
-                // 구분선2
-                Rectangle()
-                    .foregroundStyle(Color(hex: 0xF0F0F0))
-                    .frame(width: UIScreen.main.bounds.width, height: 2)
-                    .padding(.bottom, 20)
+//                // 구분선1
+//                Rectangle()
+//                    .foregroundStyle(Color(hex: 0xF0F0F0))
+//                    .frame(width: UIScreen.main.bounds.width, height: 2)
                 
                 // 추천 가이드 루틴
-                    // 가이드 title
+                // 가이드 title
                 Text("치유 가이드")
                     .font(.system(size: 20))
                     .fontWeight(.bold)
                     .padding([.leading, .bottom], 20)
-                    
-                    // 가이드 list
+                
+                // 가이드 list
                 VStack(alignment: .center, spacing: 0) {
                     HStack {
                         // 개수 & 시간
@@ -209,6 +209,7 @@ struct homeSwiftUIView: View {
     } //
 } // homeSwiftUIView
 
+// 통증 기록 날짜 클릭시 뜨는 모달뷰
 struct modalView: View {
     @Binding var selectedDate: Date
     
@@ -219,7 +220,7 @@ struct modalView: View {
                     Text("통증 기록")
                         .font(.system(size: 24))
                         .fontWeight(.semibold)
-                        .padding(.top, 30)
+                        .padding([.top,.leading], 30)
                     
                     // 날짜를 원하는 형식의 문자열로 변환
                     let dateFormatter: DateFormatter = {
@@ -229,18 +230,58 @@ struct modalView: View {
                     }()
                     
                     Text("\(dateFormatter.string(from: selectedDate))")
+                        .padding(.leading, 30)
+                        .padding(.bottom, 10)
                     
                     // 통증 기록 리스트
                     ForEach(0..<3) { _ in
-                        VStack(alignment: .leading) {
-                            Text("통증 위치")
-                            HStack {
-                                Text("쑤시는 느낌")
-                                Text("원인 모름")
-                                Text("고통 8")
-                            } // HStack
-                        } // VStack
-                        .background(Color("AccentColor").opacity(0.5))
+                        // 전체 감싸는 wrapper
+                        HStack(alignment: .top) {
+                            // 시간
+                            Text("오후 2:13")
+                                .padding(.trailing, 15)
+                            
+                            // 통증 기록 요소
+                            VStack(alignment: .leading) {
+                                // 통증유발행동(trigger), 통증 느낌(type)
+                                // 위치(location), 발생시간(pain_timestamp), 예측 질환, 통증 강도(intensity),
+                                Text("허리 통증")
+                                    .font(.system(size: 20))
+                                    .padding(.bottom, 10)
+                                    .padding([.top,.horizontal], 30)
+                                    .fontWeight(.semibold)
+                                HStack {
+                                    Text("쑤시는 느낌")
+                                        .background(Color(hex: 0xA3A3A3))
+                                        .cornerRadius(20)
+                                        .padding(10)
+                                    Text("고통 8")
+                                        .background(Color(hex: 0xA3A3A3))
+                                        .cornerRadius(20)
+                                        .padding(10)
+                                } // HStack
+                                .padding(.leading, 30)
+                                Text("바닥에 떨어진 물건을 주울 때")
+                                    .background(Color(hex: 0xA3A3A3))
+                                    .padding(.horizontal, 30)
+                                    .padding(10)
+                                    .cornerRadius(20)
+                                
+                                HStack {
+                                    Image("wand")
+                                        .resizable()
+                                        .frame(width: 15, height: 15)
+                                        .padding(.trailing, 10)
+                                    Text("척추관 협착증 예상")
+                                        .fontWeight(.semibold)
+                                } // HStack
+                                .padding([.horizontal, .bottom], 30)
+                            } // VStack - (시간 제외한) 통증 기록 요소
+                            .background(Color(hex: 0xCDCDCD))
+                            .cornerRadius(30)
+                        } // HStack - wrapper
+                        .padding([.horizontal,.bottom], 30)
+                        
                     } // List
                 } // VStack
                 .frame(minWidth: geometry.size.width*0.7)
