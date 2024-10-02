@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct homeSwiftUIView: View {
+    // api 데이터
     @State var diseaseName: String = "척추관 협착증"
     @State var count: String = "3"
     @State var percent: CGFloat = 10
@@ -51,7 +52,7 @@ struct homeSwiftUIView: View {
                         .presentationDragIndicator(.visible)
                 }
                 
-                // 구분선2
+                // 구분선1
                 Rectangle()
                     .foregroundStyle(Color(hex: 0xF0F0F0))
                     .frame(width: UIScreen.main.bounds.width, height: 2)

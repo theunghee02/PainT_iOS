@@ -30,7 +30,9 @@ struct DiseasePredictionSwiftUIView: View {
             // post 메소드 호출하는 함수 호출
             postDisease()
         }
-    }
+    } // body
+    
+    // 질환 예측 post api 연동
     func postDisease(){
         let authService = AuthService(apiPath: "/api/v1/ai/predict")
         authService.postRequest(resultType: DiseaseResult.self) { response in
@@ -50,7 +52,7 @@ struct DiseasePredictionSwiftUIView: View {
                 print("POST 요청 실패: \(error.localizedDescription)")
             }
         }
-    }
+    } // postDisease()
 }
 
 #Preview {
