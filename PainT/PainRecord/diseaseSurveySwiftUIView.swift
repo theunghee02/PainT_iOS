@@ -27,35 +27,39 @@ struct DiseaseSurveySwiftUIView: View {
                 
                 Spacer()
                 
-//                // 질환명 입력
-//                VStack(alignment: .leading) {
-//                    // 설명
-//                    Text("질환명 입력")
-//                        .fontWeight(.semibold)
-//                        .font(.system(size: 24))
-//                        .padding([.top, .leading, .trailing], 30.0)
-//                        .padding(.bottom, 10)
-//                    Text("병원에서 통증 관련 진단을 받은 적 있어요")
-//                        .foregroundStyle(Color(hex: 0x414141))
-//                        .padding(.horizontal, 30.0)
-//                        .padding(.bottom, 10)
-//                    
-//                    // textfield
-//                    TextField("질환명을 직접 입력해주세요", text: $disease)
-//                        .padding([.bottom, .leading, .trailing], 30.0)
-//                        .padding(.top, 10)
-//                        .overlay(
-//                            RoundedRectangle(cornerRadius: 4)
-//                                .stroke(Color.black, lineWidth: 1)
-//                                .frame(height: 1)
-//                                .padding(.top, 30)
-//                                .frame(maxWidth: UIScreen.main.bounds.width * 0.7)
-//                        )
-//                } // VStack
-//                .background(Color(hex: 0xF0F0F0))
-//                .clipShape(RoundedRectangle(cornerRadius: 25))
-//                .padding(.bottom, 40)
-//                .padding(.horizontal, 40)
+                Image("example")
+                    .scaleEffect(0.8)
+                    .padding(.bottom, 20)
+                
+                //                // 질환명 입력
+                //                VStack(alignment: .leading) {
+                //                    // 설명
+                //                    Text("질환명 입력")
+                //                        .fontWeight(.semibold)
+                //                        .font(.system(size: 24))
+                //                        .padding([.top, .leading, .trailing], 30.0)
+                //                        .padding(.bottom, 10)
+                //                    Text("병원에서 통증 관련 진단을 받은 적 있어요")
+                //                        .foregroundStyle(Color(hex: 0x414141))
+                //                        .padding(.horizontal, 30.0)
+                //                        .padding(.bottom, 10)
+                //
+                //                    // textfield
+                //                    TextField("질환명을 직접 입력해주세요", text: $disease)
+                //                        .padding([.bottom, .leading, .trailing], 30.0)
+                //                        .padding(.top, 10)
+                //                        .overlay(
+                //                            RoundedRectangle(cornerRadius: 4)
+                //                                .stroke(Color.black, lineWidth: 1)
+                //                                .frame(height: 1)
+                //                                .padding(.top, 30)
+                //                                .frame(maxWidth: UIScreen.main.bounds.width * 0.7)
+                //                        )
+                //                } // VStack
+                //                .background(Color(hex: 0xF0F0F0))
+                //                .clipShape(RoundedRectangle(cornerRadius: 25))
+                //                .padding(.bottom, 40)
+                //                .padding(.horizontal, 40)
                 
                 // 통증 체크하러 가기
                 NavigationLink(destination: painRecordUnitySwiftUIView()) {
@@ -78,12 +82,12 @@ struct DiseaseSurveySwiftUIView: View {
                 }
                 
                 // 다음 버튼
-//                NavigationLink(destination: painRecordUnitySwiftUIView()) {
-//                    Text("다음")
-//                        .frame(maxWidth: .infinity, minHeight: 50)
-//                        .background(Color("AccentColor"))
-//                        .foregroundColor(Color(hex:0x252525))
-//                } // NavigationLink
+                //                NavigationLink(destination: painRecordUnitySwiftUIView()) {
+                //                    Text("다음")
+                //                        .frame(maxWidth: .infinity, minHeight: 50)
+                //                        .background(Color("AccentColor"))
+                //                        .foregroundColor(Color(hex:0x252525))
+                //                } // NavigationLink
             } // VStack
         } // NavigationStack
         .toolbar(.visible, for: .navigationBar)
