@@ -42,7 +42,7 @@ class UserService {
     }
     
     // 회원가입용 리퀘스트 username:String,password:String,realName:String,email:String,gender:Bool,birthday:Date,isAgreed4:Bool
-
+    
     public func voidRequest(parameters:Encodable,completion: @escaping (Result<ResponseVoid, Error>) -> Void) {
 
 
@@ -77,5 +77,6 @@ struct Response: Codable {
 
 struct AccessResult: Codable {
     let accessToken: String
+    let refreshToken: String
     let grantType: String
 }

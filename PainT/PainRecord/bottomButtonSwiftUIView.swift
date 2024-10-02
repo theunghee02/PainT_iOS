@@ -21,14 +21,14 @@ struct bottomButtonSwiftUIView: View {
                 self.presentationMode.wrappedValue.dismiss()
             }) {
                 Text("이전")
-                    .foregroundStyle(.white)
+                    .foregroundColor(Color(hex:0x252525))
                     .frame(minHeight: 50)
                     .frame(width: UIScreen.main.bounds.width * 0.4)
                     .background(Color(hex: 0xD9D9D9))
             }
             NavigationLink(destination: nextDestination) {
                 Text("다음")
-                    .foregroundStyle(.white)
+                    .foregroundColor(Color(hex:0x252525))
                     .frame(minHeight: 50)
                     .frame(width: UIScreen.main.bounds.width * 0.6)
                     .background(Color("AccentColor"))

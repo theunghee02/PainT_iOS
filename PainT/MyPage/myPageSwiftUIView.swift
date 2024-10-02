@@ -9,12 +9,15 @@ import SwiftUI
 
 struct myPageSwiftUIView: View {
     @State var logoutNavigate : Bool = false
-    @Binding var stack:NavigationPath
+    
     @EnvironmentObject private var appRootManager: AppRootManager
     
     var body: some View {
-        NavigationStack(path: $stack) {
+        NavigationStack {
             VStack {
+                Text("마이페이지")
+                    .font(.system(size: 24))
+                    .fontWeight(.bold)
                 List {
                     Button("로그아웃") {
                         let svc = UserDefaultsService()
@@ -28,9 +31,8 @@ struct myPageSwiftUIView: View {
                     
                 }
             } // VStack
-            .navigationTitle("마이페이지")
             .navigationDestination(isPresented: $logoutNavigate) {
-                loginSwiftUIView(stack: stack)
+                loginSwiftUIView()
             }
             .navigationBarBackButtonHidden(true)
             
@@ -41,3 +43,6 @@ struct myPageSwiftUIView: View {
     }
 }
 
+#Preview {
+    myPageSwiftUIView()
+}
