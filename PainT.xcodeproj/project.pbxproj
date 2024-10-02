@@ -135,6 +135,7 @@
 		D006759E2BF5136A003A3B89 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				D0273E6F2BE787BC0052824A /* bottomButtonSwiftUIView.swift */,
 				D006759D2BF5136A003A3B89 /* webview.swift */,
 			);
 			path = Components;
@@ -222,7 +223,6 @@
 				D02FB37E2BE0A728009B4875 /* painRecordInfoFeelingSwiftUIView.swift */,
 				D02FB3802BE0AF09009B4875 /* painRecordInfoIntensitySwiftUIView.swift */,
 				D0273E712BE789A70052824A /* painRecordResultSwiftUIView.swift */,
-				D0273E6F2BE787BC0052824A /* bottomButtonSwiftUIView.swift */,
 			);
 			path = PainRecord;
 			sourceTree = "<group>";

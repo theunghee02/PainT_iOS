@@ -9,27 +9,27 @@ import SwiftUI
 
 struct tabSwiftUIView: View {
     @State var stack = NavigationPath()
-    @State private var selectedTab = 0
+    @EnvironmentObject var tabSelection: TabSelection
     
     var body: some View {
-        TabView(selection: $selectedTab) {
+        TabView(selection: $tabSelection.selectedTab) {
             // home
             homeSwiftUIView()
                 .tabItem {
-                    Label("홈", image: selectedTab == 0 ? "homeGNB-colored" : "homeGNB-default")
+                    Label("홈", image: tabSelection.selectedTab == 0 ? "homeGNB-colored" : "homeGNB-default")
                 }
                 .tag(0)
             // pain record
             DiseaseSurveySwiftUIView()
             //                painRecordUnitySwiftUIView()
                 .tabItem {
-                    Label("통증 기록", image: selectedTab == 1 ? "painRecord-colored" : "painRecord-default")
+                    Label("통증 기록", image: tabSelection.selectedTab == 1 ? "painRecord-colored" : "painRecord-default")
                 }
                 .tag(1)
             // myPage
             myPageSwiftUIView()
                 .tabItem {
-                    Label("마이페이지", image: selectedTab == 2 ? "mypage-colored" : "mypage-default")
+                    Label("마이페이지", image: tabSelection.selectedTab == 2 ? "mypage-colored" : "mypage-default")
                 }
                 .tag(2)
         } // TabView

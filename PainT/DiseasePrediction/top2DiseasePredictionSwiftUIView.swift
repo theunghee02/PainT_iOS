@@ -77,7 +77,7 @@ struct Top2DiseasePredictionSwiftUIView: View {
             } // GeometryReader
             
             // 하단 버튼
-            diseaseToHomeBtnView(selectedTab: $selectedTab)
+            diseaseToHomeBtnView()
         } // VStack
         .onAppear() {
             // post 메소드 호출하는 함수 호출
@@ -89,27 +89,26 @@ struct Top2DiseasePredictionSwiftUIView: View {
     // 하단 버튼(홈으로 가기 위한 커스텀마이징)
     struct diseaseToHomeBtnView: View {
         @Environment(\.presentationMode) var presentationMode
-        @Binding var selectedTab: Int
+        @EnvironmentObject var tabSelection: TabSelection
         
         var body: some View {
             VStack {
                 HStack(spacing: 0) {
                     Button(action: {
-                        // 네비게이션 스택에서 이전 뷰로 이동 == Modal View 닫기
                         self.presentationMode.wrappedValue.dismiss()
                     }) {
                         Text("이전")
-                            .foregroundColor(Color.black)
+                            .foregroundColor(Color(hex:0x252525))
                             .frame(minHeight: 50)
                             .frame(width: UIScreen.main.bounds.width * 0.4)
-                            .background(Color.gray)
+                            .background(Color(hex: 0xD9D9D9))
                     }
                     Button(action: {
                         // 다음 탭으로 이동
-                        self.selectedTab = 0
+                        self.tabSelection.selectedTab = 0
                     }) {
-                        Text("다음")
-                            .foregroundColor(Color.white)
+                        Text("치유하러 가기")
+                            .foregroundColor(Color(hex:0x252525))
                             .frame(minHeight: 50)
                             .frame(width: UIScreen.main.bounds.width * 0.6)
                             .background(Color("AccentColor"))

@@ -17,7 +17,7 @@ struct bottomButtonSwiftUIView: View {
     var body: some View {
         HStack(spacing: 0) {
             Button(action: {
-                // 네비게이션 스택에서 이전 뷰로 이동 == Modal View 닫기
+                // 네비게이션 스택에서 이전 뷰로 이동
                 self.presentationMode.wrappedValue.dismiss()
             }) {
                 Text("이전")
