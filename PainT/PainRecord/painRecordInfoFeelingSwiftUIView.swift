@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct painRecordInfoFeelingSwiftUIView: View {
-    @State var location: [String]
+    @State var location: String
     @State var trigger: String
     @State var arrayFeelings: [String] = []
     // 선택한 느낌

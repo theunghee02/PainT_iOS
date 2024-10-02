@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct painRecordInfoTriggerSwiftUIView: View {
-    @State var location: [String]
+    @State var location: String
     @State var trigger: String = ""
     @FocusState private var isTextFieldFocused: Bool
     

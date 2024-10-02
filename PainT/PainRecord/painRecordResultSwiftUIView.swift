@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct painRecordResultSwiftUIView: View {
-    @Binding var location: [String]
+    @Binding var location: String
     @Binding var trigger: String
     @Binding var selectedFeelings: [String]
     @Binding var selectedIntensity: Int
@@ -168,7 +168,7 @@ struct painRecordResultSwiftUIView: View {
             let formatTime = requestFormatter.string(from: selectedTime)
             
             print("\(location)  | \(selectedIntensity) | \(trigger) | \(selectedFeelings) | \(formatTime) \n")
-            let body = RequestRecord(location: self.location, intensity: self.selectedIntensity, trigger: self.trigger, type: self.selectedFeelings, painTimestamp: formatTime)
+            let body = RequestRecord(location: [self.location], intensity: self.selectedIntensity, trigger: self.trigger, type: self.selectedFeelings, painTimestamp: formatTime)
             
             let svc = AuthService(apiPath: "/api/v1/pain-records/post")
             svc.postRequest(resultType: String.self,parameters: body){
