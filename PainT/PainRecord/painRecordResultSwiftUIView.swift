@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct painRecordResultSwiftUIView: View {
-    @Binding var location: [String]
+    @Binding var location: String
     @Binding var trigger: String
     @Binding var selectedFeelings: [String]
     @Binding var selectedIntensity: Int
@@ -47,7 +47,7 @@ struct painRecordResultSwiftUIView: View {
             Spacer()
             
             // 상위 문구
-            Text("\(username) 님의\n기록이 완성되었습니다")
+            Text("\(username) 님의 \(location) \n통증 기록이 완성되었습니다")
                 .multilineTextAlignment(.center)
                 .foregroundStyle(.white)
                 .font(.system(size: 24))
@@ -168,7 +168,7 @@ struct painRecordResultSwiftUIView: View {
             let formatTime = requestFormatter.string(from: selectedTime)
             
             print("\(location)  | \(selectedIntensity) | \(trigger) | \(selectedFeelings) | \(formatTime) \n")
-            let body = RequestRecord(location: self.location, intensity: self.selectedIntensity, trigger: self.trigger, type: self.selectedFeelings, painTimestamp: formatTime)
+            let body = RequestRecord(location: [self.location], intensity: self.selectedIntensity, trigger: self.trigger, type: self.selectedFeelings, painTimestamp: formatTime)
             
             let svc = AuthService(apiPath: "/api/v1/pain-records/post")
             svc.postRequest(resultType: String.self,parameters: body){

@@ -11,8 +11,9 @@ import UIKit
 
 @main
 struct PainTApp: App {
-    
     @StateObject  private  var appRootManager =  AppRootManager ()
+    // 선택한 탭
+    @StateObject var tabSelection = TabSelection()
     
     
     var sharedModelContainer: ModelContainer = {
@@ -40,6 +41,7 @@ struct PainTApp: App {
                     
                 case .home:
                     tabSwiftUIView()
+                        .environmentObject(tabSelection)
                     
                 case .survey:
                     DiseaseSurveySwiftUIView()

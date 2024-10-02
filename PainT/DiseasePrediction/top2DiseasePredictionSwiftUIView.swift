@@ -11,11 +11,13 @@ struct Top2DiseasePredictionSwiftUIView: View {
     // tab의 tag
     @State private var selectedTab = 1
     
+    // api 로딩 상태를 관리
+    @State var isLoading: Bool = true
+    
+    // api에서 불러온 데이터
     // 질환 정보 배열
-    let predictions: [(predicted: String, subject: String, description: String)] = [
-        ("척추관 협착증", "신경외과, 정형외과", "척추관 협착증은 척추관이 좁아져 신경을 압박하는 질환으로, 허리 통증, 다리 저림, 근력 약화, 걷기 어려움 등의 증상을 유발합니다. 증상은 오래 앉아 있거나 걷는 동안 심해질 수 있습니다."),
-        ("요추 염좌", "정형외과, 재활의학과", "요추 염좌는 일반적으로 갑작스러운 움직임, 중량 들기, 또는 부적절한 자세로 인해 발생하는 허리 근육과 인대의 손상을 말합니다. 이로 인해 허리 부위에 통증, 뻣뻣함, 움직임 제한 등의 증상이 나타날 수 있습니다. 치료는 통증 완화를 위한 안정, 냉찜질, 약물 복용, 그리고 물리치료 등을 포함할 수 있습니다.")
-    ]
+    @State var predictions: [(predicted: String?, subject: String?, description: String?)] = [("","",""),("","","")]
+    @State var username: String = ""
     
     @State var selectedDisease: Int = 0
     
@@ -27,7 +29,7 @@ struct Top2DiseasePredictionSwiftUIView: View {
                     .font(.system(size: 28))
                     .multilineTextAlignment(.center)
                     .padding(.bottom, 10)
-                Text("통증 기반 질환 예측 결과입니다")
+                Text("\(username) 님의 통증 기반 질환 예측 결과입니다")
                     .multilineTextAlignment(.center)
                     .padding(.bottom, 20)
                     .foregroundStyle(Color(hex: 0x414141))
@@ -51,49 +53,62 @@ struct Top2DiseasePredictionSwiftUIView: View {
                             .frame(maxWidth: 250)
                         
                         // 질환 2개
-                        VStack(spacing: 0) {
-                            ForEach(0..<predictions.count, id: \.self) { idx in
-                                diseaseRow(
-                                    idx: idx,
-                                    predicted: predictions[idx].predicted,
-                                    subject: predictions[idx].subject,
-                                    discription: predictions[idx].description
-                                )
-                            }
-                        } // VStack
+                        if isLoading {
+                            ProgressView()
+                                .progressViewStyle(CircularProgressViewStyle())
+                                .scaleEffect(3)
+                                .padding(.top, 100)
+                        } else {
+                            VStack(spacing: 0) {
+                                ForEach(0..<predictions.count, id: \.self) { idx in
+                                    diseaseRow(
+                                        idx: idx,
+                                        predicted: predictions[idx].predicted!,
+                                        subject: predictions[idx].subject!,
+                                        discription: predictions[idx].description!
+                                    )
+                                }
+                            } // VStack
+                        } // else
+                        
                     } // VStack
                     .padding(.horizontal, 30.0)
                 } // ZStack
             } // GeometryReader
             
             // 하단 버튼
-            diseaseToHomeBtnView(selectedTab: $selectedTab)
+            diseaseToHomeBtnView()
         } // VStack
+        .onAppear() {
+            // post 메소드 호출하는 함수 호출
+            postDiseasePrediction()
+        }
     } // body
+        
     
+    // 하단 버튼(홈으로 가기 위한 커스텀마이징)
     struct diseaseToHomeBtnView: View {
         @Environment(\.presentationMode) var presentationMode
-        @Binding var selectedTab: Int
+        @EnvironmentObject var tabSelection: TabSelection
         
         var body: some View {
             VStack {
                 HStack(spacing: 0) {
                     Button(action: {
-                        // 네비게이션 스택에서 이전 뷰로 이동 == Modal View 닫기
                         self.presentationMode.wrappedValue.dismiss()
                     }) {
                         Text("이전")
-                            .foregroundColor(Color.black)
+                            .foregroundColor(Color(hex:0x252525))
                             .frame(minHeight: 50)
                             .frame(width: UIScreen.main.bounds.width * 0.4)
-                            .background(Color.gray)
+                            .background(Color(hex: 0xD9D9D9))
                     }
                     Button(action: {
                         // 다음 탭으로 이동
-                        self.selectedTab = 0
+                        self.tabSelection.selectedTab = 0
                     }) {
-                        Text("다음")
-                            .foregroundColor(Color.white)
+                        Text("치유하러 가기")
+                            .foregroundColor(Color(hex:0x252525))
                             .frame(minHeight: 50)
                             .frame(width: UIScreen.main.bounds.width * 0.6)
                             .background(Color("AccentColor"))
@@ -102,7 +117,7 @@ struct Top2DiseasePredictionSwiftUIView: View {
             } // VStack
         }
     }
-
+    
     
     // 질환 정보 컴포넌트
     func diseaseRow(idx: Int, predicted: String, subject: String, discription: String) -> some View {
@@ -140,10 +155,33 @@ struct Top2DiseasePredictionSwiftUIView: View {
         .onTapGesture { // Intensity 클릭 시 idx 저장
             self.selectedDisease = idx
         } // onTapGesture
-
-    }
-}
-
-#Preview {
-    Top2DiseasePredictionSwiftUIView()
+        
+    } // diseaseRow()
+    
+    // 질환 예측 post api
+    func postDiseasePrediction(){
+        let authService = AuthService(apiPath: "/api/v1/ai/predict")
+        authService.postRequest(resultType: Disease2Result.self) { response in
+            print("----------------")
+            print(response)
+            switch response {
+            case .success(let data):
+                DispatchQueue.main.async {
+                    print("POST 요청 성공: \(response)")
+                    self.predictions[0] = (data.result?.predicted_1, data.result?.where_2_go_1, data.result?.description1)
+                    self.predictions[1] = (data.result?.predicted_2, data.result?.where_2_go_2, data.result?.description2)
+                    self.username = data.result!.username
+                    print(data.result!)
+                    
+                    self.isLoading = false // 로딩 상태 false
+                }
+                
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    print("POST 요청 실패: \(error.localizedDescription)")
+                    self.isLoading = false
+                }
+            }
+        }
+    } // postDisease()
 }

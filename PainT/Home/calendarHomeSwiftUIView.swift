@@ -4,7 +4,7 @@
 //
 //  Created by 최승희 on 4/29/24.
 //
-// 홈 페이지
+// 캘린더만 있는 페이지(사용 안 함)
 
 import SwiftUI
 
@@ -89,22 +89,6 @@ struct ModalView: View {
         } // ScrollView
     }
 }
-
-//struct CalendarView: View {
-//    @Binding var selectedDate: Date
-//
-//    var body: some View {
-//        Text("Calendar for \(selectedDate, formatter: dateFormatter)")
-//            .font(.headline)
-//            .padding()
-//    }
-//
-//    private var dateFormatter: DateFormatter {
-//            let formatter = DateFormatter()
-//            formatter.dateStyle = .long
-//            return formatter
-//        }
-//}
 
 #Preview {
     homeSwiftUIView()
