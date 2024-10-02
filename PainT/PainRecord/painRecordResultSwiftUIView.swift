@@ -47,7 +47,7 @@ struct painRecordResultSwiftUIView: View {
             Spacer()
             
             // 상위 문구
-            Text("\(username) 님의\n기록이 완성되었습니다")
+            Text("\(username) 님의 \(location) \n통증 기록이 완성되었습니다")
                 .multilineTextAlignment(.center)
                 .foregroundStyle(.white)
                 .font(.system(size: 24))
