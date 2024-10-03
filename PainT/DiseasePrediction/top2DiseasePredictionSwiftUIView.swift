@@ -183,5 +183,5 @@ struct Top2DiseasePredictionSwiftUIView: View {
                 }
             }
         }
-    } // postDisease()
+    } // postDiseasePrediction()
 }

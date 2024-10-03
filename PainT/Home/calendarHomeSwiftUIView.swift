@@ -89,7 +89,3 @@ struct ModalView: View {
         } // ScrollView
     }
 }
-
-#Preview {
-    homeSwiftUIView()
-}

@@ -46,6 +46,7 @@
 		D07A5D242C71C82E00603446 /* RoundedCornerStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07A5D232C71C82E00603446 /* RoundedCornerStyle.swift */; };
 		D07A5D272C71D2C400603446 /* guideSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07A5D262C71D2C400603446 /* guideSwiftUIView.swift */; };
 		D07EC5DC2BED0F98006E74DE /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07EC5DB2BED0F98006E74DE /* ColorExtension.swift */; };
+		D089DC2C2CADDE9A00C613F7 /* PainRecordResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089DC2B2CADDE9A00C613F7 /* PainRecordResult.swift */; };
 		D08B06FE2CAD8725009CB365 /* Disease2Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08B06FD2CAD8725009CB365 /* Disease2Result.swift */; };
 		D099C73E2C6271E000EA53BB /* top2DiseasePredictionSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D099C73D2C6271E000EA53BB /* top2DiseasePredictionSwiftUIView.swift */; };
 		D099C7412C62825B00EA53BB /* diseaseSurveySwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D099C7402C62825B00EA53BB /* diseaseSurveySwiftUIView.swift */; };
@@ -110,6 +111,7 @@
 		D07A5D232C71C82E00603446 /* RoundedCornerStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerStyle.swift; sourceTree = "<group>"; };
 		D07A5D262C71D2C400603446 /* guideSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = guideSwiftUIView.swift; sourceTree = "<group>"; };
 		D07EC5DB2BED0F98006E74DE /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		D089DC2B2CADDE9A00C613F7 /* PainRecordResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PainRecordResult.swift; sourceTree = "<group>"; };
 		D08B06FD2CAD8725009CB365 /* Disease2Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Disease2Result.swift; sourceTree = "<group>"; };
 		D099C73D2C6271E000EA53BB /* top2DiseasePredictionSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = top2DiseasePredictionSwiftUIView.swift; sourceTree = "<group>"; };
 		D099C7402C62825B00EA53BB /* diseaseSurveySwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = diseaseSurveySwiftUIView.swift; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 				D03C36C32BF627320028E759 /* UserDefaults.swift */,
 				D0CE7A742BFF2A7D00E3B025 /* DiseaseResult.swift */,
 				D08B06FD2CAD8725009CB365 /* Disease2Result.swift */,
+				D089DC2B2CADDE9A00C613F7 /* PainRecordResult.swift */,
 				D0B9867B2C0629DA0040FF37 /* GenericResponse.swift */,
 			);
 			path = Data;
@@ -451,6 +454,7 @@
 				D04214B62CA6D643008B6F28 /* TabSelection.swift in Sources */,
 				081EB58D2BE275960097E960 /* findPasswordSwiftUIView.swift in Sources */,
 				D0CE7A752BFF2A7D00E3B025 /* DiseaseResult.swift in Sources */,
+				D089DC2C2CADDE9A00C613F7 /* PainRecordResult.swift in Sources */,
 				D02FB3702BDF4427009B4875 /* tabSwiftUIView.swift in Sources */,
 				D0ECC0422C7A027600E8A482 /* tem_painRecordUnitySwiftUIView.swift in Sources */,
 				D02FB37B2BE01789009B4875 /* painRecordUnitySwiftUIView.swift in Sources */,
