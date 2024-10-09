@@ -41,7 +41,9 @@ struct guideSwiftUIView: View {
             if let player = player {
                 VideoPlayer(player: player)
                     .frame(width: UIScreen.main.bounds.width * 0.86, height: UIScreen.main.bounds.width * 0.86)
-                    .padding(30)
+                    .padding(.horizontal, 30)
+                    .padding(.vertical, 15)
+//                    .padding(30)
             } else {
                 Text("Loading video...")
                     .frame(width: UIScreen.main.bounds.width * 0.86, height: UIScreen.main.bounds.width * 0.86)
@@ -79,6 +81,8 @@ struct guideSwiftUIView: View {
             .frame(width: 300)
             .background(Color(hex: 0xF0F0F0))
             .clipShape(RoundedRectangle(cornerRadius: 15))
+            
+            Spacer()
             
             // 아파요 버튼, 재생 버튼
             
@@ -128,10 +132,15 @@ struct guideSwiftUIView: View {
                             .clipShape(RoundedRectangle(cornerRadius: 15))
                         
                         // 재생 표시의 삼각형
-                        Image("triangle")
+                        Text("치유 달성 완료")
+                            .foregroundStyle(Color(.white))
+                            .fontWeight(.heavy)
                     } // ZStack
                 } // HStack
-                .padding(30)
+                .padding(.horizontal, 30)
+                .padding(.vertical, 15)
+            
+            Spacer()
             
             // 하단 버튼
             bottomButtonSwiftUIView(nextDestination: AnyView(lastGuideSwiftUIView()))
