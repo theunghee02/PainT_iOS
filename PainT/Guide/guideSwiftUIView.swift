@@ -15,12 +15,16 @@ struct guideSwiftUIView: View {
     var exerciseName: String = "Wall_Squats"
     var exercise2Name: String = "Seated_Hamstring_Stretch"
     
+    // 영상 관련
     @State private var player: AVPlayer?
     @State private var playerStatusObservation: NSKeyValueObservation?
     
     // 아파요 버튼 알림 여부
     @State private var painAlert = false
     @State private var navigateToNextPage = false
+    
+    // 치유 달성도
+    @Binding var percent: Int
     
     var body: some View {
         VStack(spacing: 0) {
@@ -124,18 +128,21 @@ struct guideSwiftUIView: View {
                     
                     Spacer()
                     
-                    // 재생 버튼
-                    ZStack {
-                        Rectangle()
-                            .frame(width: UIScreen.main.bounds.width * 0.5, height: 60)
-                            .foregroundColor(Color(hex: 0x919296))
-                            .clipShape(RoundedRectangle(cornerRadius: 15))
-                        
-                        // 재생 표시의 삼각형
-                        Text("치유 달성 완료")
-                            .foregroundStyle(Color(.white))
-                            .fontWeight(.heavy)
-                    } // ZStack
+                    // 치유 달성 완료 버튼
+                    Button(action: increasePercent) {
+                        ZStack {
+                            Rectangle()
+                                .frame(width: UIScreen.main.bounds.width * 0.5, height: 60)
+                                .foregroundColor(percent == 100 ? Color(hex: 0xF0F0F0) : Color(hex: 0x919296))
+                                .clipShape(RoundedRectangle(cornerRadius: 15))
+                            
+                            // title
+                            Text("치유 달성 완료")
+                                .foregroundStyle(Color(.white))
+                                .fontWeight(.heavy)
+                        } // ZStack
+                    } // Button
+                    .disabled(percent == 100)
                 } // HStack
                 .padding(.horizontal, 30)
                 .padding(.vertical, 15)
@@ -172,14 +179,16 @@ struct guideSwiftUIView: View {
             }
             
             self.player = player
-        }
+        } // .onAppear
         .onDisappear {
             // 관찰자 해제
             playerStatusObservation = nil
+        } // .onDisappear
+    } // body
+    
+    func increasePercent() {
+        if percent < 100 {
+            percent += 5 // 가이드 목록 개수 받아와서 계산해야 함
         }
     }
-}
-
-#Preview {
-    guideSwiftUIView()
-}
+} // guideSwiftUIView

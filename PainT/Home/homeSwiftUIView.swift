@@ -12,7 +12,8 @@ struct homeSwiftUIView: View {
     // 치유 가이드 리스트 api 데이터
     @State var diseaseName: String = "척추관 협착증"
     @State var count: String = "3"
-    @State var percent: CGFloat = 10
+//    @State var percent: CGFloat = 50
+    @State var percent: Int = 50
     @State var exercises: [String] = ["Wall_Squats", "Seated_Hamstring_Stretch"]
     @State var exerciseTimes: [String] = ["15sec", "15sec"]
     @State var totalTime: String = "30초"
@@ -104,7 +105,7 @@ struct homeSwiftUIView: View {
                                     // 퍼센트 바
                                     Rectangle()
                                         .fill(Color("AccentColor"))
-                                        .frame(width: geometry.size.width * (percent / 100), height: 10)
+                                        .frame(width: geometry.size.width * (CGFloat(percent) / 100), height: 10)
                                         .clipShape(RoundedRectangle(cornerRadius: 100))
                                 } // ZStack
                             } // GeometryReader
@@ -140,7 +141,7 @@ struct homeSwiftUIView: View {
                             Spacer()
                             
                             // [버튼] 추천 가이드 시작하기
-                            NavigationLink(destination: guideSwiftUIView()) {
+                            NavigationLink(destination: guideSwiftUIView(percent: $percent)) {
                                 Text("추천 가이드 시작하기")
                                     .fontWeight(.semibold)
                                     .foregroundColor(Color(hex: 0x252525)) // 글씨 색상
@@ -180,7 +181,7 @@ struct homeSwiftUIView: View {
             if isLast == true {
                 destination = AnyView(lastGuideSwiftUIView())
             } else {
-                destination = AnyView(guideSwiftUIView())
+                destination = AnyView(guideSwiftUIView(percent: $percent))
             }
             
             return NavigationLink(destination: destination) {
@@ -270,7 +271,7 @@ struct modalView: View {
                     }()
                     
                     // 통증 기록 리스트
-                    ForEach(0..<2) { _ in
+                    ForEach(0..<1) { _ in
                         // 전체 감싸는 wrapper
                         HStack(alignment: .top) {
                             // 시간
@@ -349,30 +350,12 @@ struct modalView: View {
                         } // HStack - wrapper
                         .padding([.horizontal,.bottom], 30)
                     } // ForEach
-                    
-                    // 추가하기
-                    HStack(alignment: .top, spacing: 0) {
-                        // 시간
-                        Text("\(timeFormatter.string(from: Date()))")
-                            .font(.system(size: 12))
-                            .padding(.trailing, 34)
-                            
-                        // 추가 버튼
-                        
-                        HStack {
-                            Image("plus-circle")
-                                .padding(.trailing, 10)
-                            Text("추가")
-                        } // HStack
-                    } // HStack
-                    .padding([.horizontal, .bottom], 30)
                 } // VStack
                 .frame(minWidth: geometry.size.width*0.7)
             } // GeometryReader
         } // ScrollView
         .onAppear() {
             getPainRecord()
-            updateIntensityColor()
         }
     } // body
     

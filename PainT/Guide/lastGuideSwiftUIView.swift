@@ -30,8 +30,8 @@ struct lastGuideSwiftUIView: View {
                 .padding(.bottom, 10)
             Text("\(exerciseName)")
                 .font(.system(size: 24))
-            VideoPlayer(player: AVPlayer(url: URL(string: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4")!))
-//            VideoPlayer(player: AVPlayer(url: URL(string: "http://chi-iu.com/videos/download/\(exerciseName).mp4")!))
+//            VideoPlayer(player: AVPlayer(url: URL(string: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4")!))
+            VideoPlayer(player: AVPlayer(url: URL(string: "http://chi-iu.com/videos/download/\(exerciseName).mp4")!))
                 .frame(width: UIScreen.main.bounds.width * 0.86, height: UIScreen.main.bounds.width * 0.86)
                 .padding(30)
             
@@ -104,22 +104,7 @@ struct lastGuideSwiftUIView: View {
             Spacer()
             
             // 하단 버튼
-            HStack(spacing: 0) {
-                NavigationLink(destination: guideSwiftUIView()) {
-                    Text("이전")
-                        .foregroundColor(Color(hex:0x252525))
-                        .frame(minHeight: 50)
-                        .frame(width: UIScreen.main.bounds.width * 0.4)
-                        .background(Color(hex: 0xD9D9D9))
-                }
-                NavigationLink(destination: tabSwiftUIView()) {
-                    Text("다음")
-                        .foregroundColor(Color(hex:0x252525))
-                        .frame(minHeight: 50)
-                        .frame(width: UIScreen.main.bounds.width * 0.6)
-                        .background(Color("AccentColor"))
-                }
-            } // HStack
+            bottomButtonSwiftUIView(nextDestination: AnyView(tabSwiftUIView()))
         } // VStack
     }
 }
