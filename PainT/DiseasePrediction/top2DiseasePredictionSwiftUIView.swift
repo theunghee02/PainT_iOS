@@ -54,9 +54,9 @@ struct Top2DiseasePredictionSwiftUIView: View {
                         
                         // 질환 2개
                         if isLoading {
-                            ProgressView()
+                            ProgressView("질환 예측 중")
                                 .progressViewStyle(CircularProgressViewStyle())
-                                .scaleEffect(3)
+//                                .scaleEffect(1)
                                 .padding(.top, 100)
                         } else {
                             VStack(spacing: 0) {
