@@ -19,7 +19,9 @@ struct homeSwiftUIView: View {
     @State var totalTime: String = "30초"
     
     // 캘린더용
+        // 오늘 날짜
     @State private var date = Date()
+        // 모달 띄우는 Bool 변수
     @State private var isModalPresented = false
     
     var body: some View {
@@ -39,6 +41,7 @@ struct homeSwiftUIView: View {
                         DatePicker(
                             "Start Date",
                             selection: $date,
+                            in: ...Date(),
                             displayedComponents: [.date]
                         )
                         .datePickerStyle(.graphical)
@@ -55,7 +58,7 @@ struct homeSwiftUIView: View {
                             .presentationDragIndicator(.visible)
                     }
                     
-                    // 구분선1
+                    // 구분선
                     Rectangle()
                         .foregroundStyle(Color(hex: 0xF0F0F0))
                         .frame(width: UIScreen.main.bounds.width, height: 2)
@@ -117,11 +120,6 @@ struct homeSwiftUIView: View {
                     } // VStack
                     .padding(.horizontal, 23)
                     .padding(.bottom, 20)
-                    
-                    //                // 구분선1
-                    //                Rectangle()
-                    //                    .foregroundStyle(Color(hex: 0xF0F0F0))
-                    //                    .frame(width: UIScreen.main.bounds.width, height: 2)
                     
                     // 추천 가이드 루틴
                     // 가이드 title
