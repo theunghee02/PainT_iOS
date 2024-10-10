@@ -19,16 +19,39 @@ struct myPageSwiftUIView: View {
                     .font(.system(size: 24))
                     .fontWeight(.bold)
                 List {
-                    Button("로그아웃") {
-                        let svc = UserDefaultsService()
-                        svc.deleteAccessToken()
-                        svc.deleteRefreshToken()
+                    VStack {
+                        // profile image
+                        HStack(alignment: .center) {
+                            Spacer()
+                            Image("profile")
+                                .resizable()
+                                .frame(width: 200, height: 200)
+                            Spacer()
+                        } // HStack
+                        .padding(.bottom, 15)
                         
-                        appRootManager.currentRoot = .authentication
-                        
-                    }
-                    .foregroundColor(.black)
+                        // username
+                        HStack(alignment: .center) {
+                            Spacer()
+                            Text("chii-u")
+                                .font(.system(size: 20))
+                                .fontWeight(.bold)
+                                .foregroundStyle(Color(hex: 0x252525))
+                            Spacer()
+                        } // HStack
+                    } // VStack
                     
+                    Section {
+                        Button("로그아웃") {
+                            let svc = UserDefaultsService()
+                            svc.deleteAccessToken()
+                            svc.deleteRefreshToken()
+                            
+                            appRootManager.currentRoot = .authentication
+                            
+                        }
+                        .foregroundColor(.black)
+                    } // Section
                 }
             } // VStack
             .navigationDestination(isPresented: $logoutNavigate) {
