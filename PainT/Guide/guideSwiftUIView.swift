@@ -25,6 +25,7 @@ struct guideSwiftUIView: View {
     
     // 치유 달성도
     @Binding var percent: Int
+    @Binding var exerciseCount: Int
     
     var body: some View {
         VStack(spacing: 0) {
@@ -188,7 +189,7 @@ struct guideSwiftUIView: View {
     
     func increasePercent() {
         if percent < 100 {
-            percent += 5 // 가이드 목록 개수 받아와서 계산해야 함
+            percent += 100/exerciseCount // 가이드 목록 개수 받아와서 계산해야 함
         }
     }
 } // guideSwiftUIView

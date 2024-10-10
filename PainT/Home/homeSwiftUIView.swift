@@ -12,9 +12,9 @@ struct homeSwiftUIView: View {
     // 치유 가이드 리스트 api 데이터
     @State var diseaseName: String = "척추관 협착증"
     @State var count: String = "3"
-//    @State var percent: CGFloat = 50
-    @State var percent: Int = 50
+    @State var percent: Int = 0
     @State var exercises: [String] = ["Wall_Squats", "Seated_Hamstring_Stretch"]
+    @State var exerciseCount: Int = 2
     @State var exerciseTimes: [String] = ["15sec", "15sec"]
     @State var totalTime: String = "30초"
     
@@ -139,7 +139,7 @@ struct homeSwiftUIView: View {
                             Spacer()
                             
                             // [버튼] 추천 가이드 시작하기
-                            NavigationLink(destination: guideSwiftUIView(percent: $percent)) {
+                            NavigationLink(destination: guideSwiftUIView(percent: $percent, exerciseCount: $exerciseCount)) {
                                 Text("추천 가이드 시작하기")
                                     .fontWeight(.semibold)
                                     .foregroundColor(Color(hex: 0x252525)) // 글씨 색상
@@ -179,7 +179,7 @@ struct homeSwiftUIView: View {
             if isLast == true {
                 destination = AnyView(lastGuideSwiftUIView())
             } else {
-                destination = AnyView(guideSwiftUIView(percent: $percent))
+                destination = AnyView(guideSwiftUIView(percent: $percent, exerciseCount: $exerciseCount))
             }
             
             return NavigationLink(destination: destination) {
