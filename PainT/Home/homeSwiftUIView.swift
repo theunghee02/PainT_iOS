@@ -19,9 +19,9 @@ struct homeSwiftUIView: View {
     @State var totalTime: String = "30초"
     
     // 캘린더용
-        // 오늘 날짜
+    // 오늘 날짜
     @State private var date = Date()
-        // 모달 띄우는 Bool 변수
+    // 모달 띄우는 Bool 변수
     @State private var isModalPresented = false
     
     var body: some View {
@@ -226,131 +226,128 @@ struct modalView: View {
     @State var feelings: [String?] = [""]
     @State var trigger: String?
     @State var painTimestamp: String?
-
+    
     var body: some View {
         ScrollView {
-            GeometryReader { geometry in
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("통증 기록")
-                        .font(.system(size: 24))
-                        .fontWeight(.semibold)
-                        .padding([.top,.leading], 30)
-                    
-                    // 날짜를 원하는 형식의 문자열로 변환
-                    let dateFormatter: DateFormatter = {
-                        let formatter = DateFormatter()
-                        formatter.dateFormat = "YYYY년 MM월 dd일"
-                        return formatter
-                    }()
-                    
-                    Text("\(dateFormatter.string(from: selectedDate))")
-                        .padding(.leading, 30)
-                        .padding(.bottom, 10)
-                    
-                    // 시간으로 변환
-                    // Step 1: String -> Date
-                    let string2DateFormatter: DateFormatter = {
-                        let dateFormatter = DateFormatter()
-                        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-                        dateFormatter.locale = Locale(identifier: "ko_KR")
-                        dateFormatter.timeZone = TimeZone.current
-                        return dateFormatter
-                    }()
-
-                    let painDate = string2DateFormatter.date(from: painTimestamp ?? "")
-                    
-                    
-                    let timeFormatter: DateFormatter = {
-                        let formatter = DateFormatter()
-                        formatter.dateFormat = "a h:mm"
-                        formatter.locale = Locale(identifier:"ko_KR")
-                        formatter.timeZone = TimeZone.current
-                        return formatter
-                    }()
-                    
-                    // 통증 기록 리스트
-                    ForEach(0..<1) { _ in
-                        // 전체 감싸는 wrapper
-                        HStack(alignment: .top) {
-                            // 시간
-                            Text("\(timeFormatter.string(from: painDate ?? Date()))")
-                                .font(.system(size: 12))
-                                .padding(.trailing, 13)
-                            
-                            // 통증 기록 요소
-                            VStack(alignment: .leading, spacing: 0) {
-                                // 통증유발행동(trigger), 통증 느낌(type)
-                                // 위치(location), 발생시간(pain_timestamp), 예측 질환, 통증 강도(intensity),
-                                HStack(alignment: .center) {
-                                    Text("\(location[0] ?? "") 통증")
-                                        .font(.system(size: 20))
-                                        .fontWeight(.semibold)
-                                        .foregroundStyle(Color(hex: 0x252525))
-                                    
-                                    Spacer()
-                                    
-                                    Text("고통 \(intensity)")
-                                        .foregroundStyle(Color(hex: 0x252525))
-                                        .padding(.horizontal ,10)
-                                        .padding(.vertical ,5)
-                                        .background(intensityColor)
-                                        .cornerRadius(20)
-                                }
-                                .padding([.top, .horizontal], 30)
-                                .padding(.bottom, 13)
+            VStack(alignment: .leading, spacing: 10) {
+                Text("통증 기록")
+                    .font(.system(size: 24))
+                    .fontWeight(.semibold)
+                    .padding([.top,.leading], 30)
+                
+                // 날짜를 원하는 형식의 문자열로 변환
+                let dateFormatter: DateFormatter = {
+                    let formatter = DateFormatter()
+                    formatter.dateFormat = "YYYY년 MM월 dd일"
+                    return formatter
+                }()
+                
+                Text("\(dateFormatter.string(from: selectedDate))")
+                    .padding(.leading, 30)
+                    .padding(.bottom, 10)
+                
+                // 시간으로 변환
+                // Step 1: String -> Date
+                let string2DateFormatter: DateFormatter = {
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+                    dateFormatter.locale = Locale(identifier: "ko_KR")
+                    dateFormatter.timeZone = TimeZone.current
+                    return dateFormatter
+                }()
+                
+                let painDate = string2DateFormatter.date(from: painTimestamp ?? "")
+                
+                
+                let timeFormatter: DateFormatter = {
+                    let formatter = DateFormatter()
+                    formatter.dateFormat = "a h:mm"
+                    formatter.locale = Locale(identifier:"ko_KR")
+                    formatter.timeZone = TimeZone.current
+                    return formatter
+                }()
+                
+                // 통증 기록 리스트
+                ForEach(0..<10) { _ in
+                    // 전체 감싸는 wrapper
+                    HStack(alignment: .top) {
+                        // 시간
+                        Text("\(timeFormatter.string(from: painDate ?? Date()))")
+                            .font(.system(size: 12))
+                            .padding(.trailing, 13)
+                        
+                        // 통증 기록 요소
+                        VStack(alignment: .leading, spacing: 0) {
+                            // 통증유발행동(trigger), 통증 느낌(type)
+                            // 위치(location), 발생시간(pain_timestamp), 예측 질환, 통증 강도(intensity),
+                            HStack(alignment: .center) {
+                                Text("\(location[0] ?? "") 통증")
+                                    .font(.system(size: 20))
+                                    .fontWeight(.semibold)
+                                    .foregroundStyle(Color(hex: 0x252525))
                                 
-                                VStack(alignment: .leading, spacing: 5) {
-                                    ForEach (0..<feelings.count, id: \.self) { idx in
-                                        Text("\(feelings[idx]!)")
-                                            .font(.system(size: 12))
-                                            .foregroundStyle(Color(hex: 0x252525))
-                                            .padding(.horizontal ,10)
-                                            .padding(.vertical ,5)
-                                            .background(Color(hex: 0xCDCDCD))
-                                            .cornerRadius(20)
-                                        
-                                        //                                    Text("다른 부위로 퍼지듯 아픔")
-                                        //                                        .font(.system(size: 12))
-                                        //                                        .foregroundStyle(Color(hex: 0x252525))
-                                        //                                        .padding(.horizontal ,10)
-                                        //                                        .padding(.vertical ,5)
-                                        //                                        .background(Color(hex: 0xCDCDCD))
-                                        //                                        .cornerRadius(20)
-                                    } // ForEach
-                                } // HStack
-                                .padding(.horizontal, 30)
-                                .padding(.bottom, 7)
-                                Text("\(trigger ?? "")")
-                                    .font(.system(size: 12))
+                                Spacer()
+                                
+                                Text("고통 \(intensity)")
                                     .foregroundStyle(Color(hex: 0x252525))
                                     .padding(.horizontal ,10)
                                     .padding(.vertical ,5)
-                                    .background(Color(hex: 0xCDCDCD))
+                                    .background(intensityColor)
                                     .cornerRadius(20)
-                                    .padding(.horizontal, 30)
-                                    .padding(.bottom, 20)
-                                
-                                HStack {
-                                    Image("wand")
-                                        .resizable()
-                                        .frame(width: 15, height: 15)
-                                        .padding(.trailing, 10)
-                                    Text("척추관 협착증 예상")
-                                        .font(.system(size: 16))
-                                        .fontWeight(.semibold)
-                                        .foregroundStyle(Color(hex: 0x555555))
-                                    Spacer()
-                                } // HStack
-                                .padding([.horizontal, .bottom], 30)
-                            } // VStack - (시간 제외한) 통증 기록 요소
-                            .background(Color(hex: 0xEBE9EE))
-                            .cornerRadius(30)
-                        } // HStack - wrapper
-                        .padding([.horizontal,.bottom], 30)
-                    } // ForEach
-                } // VStack
-                .frame(minWidth: geometry.size.width*0.7)
-            } // GeometryReader
+                            }
+                            .padding([.top, .horizontal], 30)
+                            .padding(.bottom, 13)
+                            
+                            VStack(alignment: .leading, spacing: 5) {
+                                ForEach (0..<feelings.count, id: \.self) { idx in
+                                    Text("\(feelings[idx]!)")
+                                        .font(.system(size: 12))
+                                        .foregroundStyle(Color(hex: 0x252525))
+                                        .padding(.horizontal ,10)
+                                        .padding(.vertical ,5)
+                                        .background(Color(hex: 0xCDCDCD))
+                                        .cornerRadius(20)
+                                    
+                                    //                                    Text("다른 부위로 퍼지듯 아픔")
+                                    //                                        .font(.system(size: 12))
+                                    //                                        .foregroundStyle(Color(hex: 0x252525))
+                                    //                                        .padding(.horizontal ,10)
+                                    //                                        .padding(.vertical ,5)
+                                    //                                        .background(Color(hex: 0xCDCDCD))
+                                    //                                        .cornerRadius(20)
+                                } // ForEach
+                            } // HStack
+                            .padding(.horizontal, 30)
+                            .padding(.bottom, 7)
+                            Text("\(trigger ?? "")")
+                                .font(.system(size: 12))
+                                .foregroundStyle(Color(hex: 0x252525))
+                                .padding(.horizontal ,10)
+                                .padding(.vertical ,5)
+                                .background(Color(hex: 0xCDCDCD))
+                                .cornerRadius(20)
+                                .padding(.horizontal, 30)
+                                .padding(.bottom, 20)
+                            
+                            HStack {
+                                Image("wand")
+                                    .resizable()
+                                    .frame(width: 15, height: 15)
+                                    .padding(.trailing, 10)
+                                Text("척추관 협착증 예상")
+                                    .font(.system(size: 16))
+                                    .fontWeight(.semibold)
+                                    .foregroundStyle(Color(hex: 0x555555))
+                                Spacer()
+                            } // HStack
+                            .padding([.horizontal, .bottom], 30)
+                        } // VStack - (시간 제외한) 통증 기록 요소
+                        .background(Color(hex: 0xEBE9EE))
+                        .cornerRadius(30)
+                    } // HStack - wrapper
+                    .padding([.horizontal,.bottom], 30)
+                } // ForEach
+            } // VStack
         } // ScrollView
         .onAppear() {
             getPainRecord()
