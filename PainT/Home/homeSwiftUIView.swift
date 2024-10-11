@@ -10,7 +10,8 @@ import SwiftUI
 
 struct homeSwiftUIView: View {
     // 치유 가이드 리스트 api 데이터
-    @State var diseaseName: String = "척추관 협착증"
+    @State var diseaseName: String = ""
+    
     @State var percent: Int = 0
     @State var exerciseNames: [String] = ["Wall_Squats","Seated_Hamstring_Stretch","Wall_Squats","Seated_Hamstring_Stretch","Seated_Hamstring_Stretch"]
     @State var exerciseCount: Int = 5
@@ -170,6 +171,9 @@ struct homeSwiftUIView: View {
                 }
             }
         } // NavigationStack
+        .onAppear() {
+            getDisease()
+        }
     } // body
     
     // Exercise Row
@@ -213,6 +217,23 @@ struct homeSwiftUIView: View {
         } // body
         return body
     } // exerciseRow()
+    
+    // 질환명 get api
+    func getDisease() {
+        let authService = AuthService(apiPath: "/api/v1/disease?username=chii-u")
+        authService.getRequest(resultType: getDiseaseResult.self) { response in
+            print("----------------")
+            print(response)
+            switch response {
+            case .success(let data):
+                print("GET 요청 성공: \(response)")
+                self.diseaseName = data.result?.disease ?? "척추관 협착증"
+                
+            case .failure(let error):
+                print("GET 요청 실패: \(error.localizedDescription)")
+            }
+        }
+    } // getDisease()
 } // homeSwiftUIView
 
 // 통증 기록 날짜 클릭시 뜨는 모달뷰
@@ -369,6 +390,27 @@ struct modalView: View {
         }
     } // body
     
+    // 통증 강도 색깔 결정
+    func updateIntensityColor(resultIdx: Int) {
+        switch intensity[resultIdx] {
+        case 0:
+            intensityColor[resultIdx] = Color(hex: 0xFFDC7C, alpha: 0.5)
+        case 2:
+            intensityColor[resultIdx] = Color(hex: 0xFAD36A, alpha: 0.5)
+        case 4:
+            intensityColor[resultIdx] = Color(hex: 0xFABE6C, alpha: 0.5)
+        case 6:
+            intensityColor[resultIdx] = Color(hex: 0xFBA946, alpha: 0.5)
+        case 8:
+            intensityColor[resultIdx] = Color(hex: 0xFA7343, alpha: 0.5)
+        case 10:
+            intensityColor[resultIdx] = Color(hex: 0xFF2F1D, alpha: 0.5)
+        default:
+            intensityColor[resultIdx] = Color(hex: 0xCDCDCD, alpha: 0.5)
+        }
+    } // updateIntensityColor()
+    
+    // -- api 연동
     // 날짜를 원하는 형식의 문자열로 변환
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -402,25 +444,5 @@ struct modalView: View {
             }
         }
     } // postDisease()
-    
-    // 통증 강도 색깔 결정
-    func updateIntensityColor(resultIdx: Int) {
-        switch intensity[resultIdx] {
-        case 0:
-            intensityColor[resultIdx] = Color(hex: 0xFFDC7C, alpha: 0.5)
-        case 2:
-            intensityColor[resultIdx] = Color(hex: 0xFAD36A, alpha: 0.5)
-        case 4:
-            intensityColor[resultIdx] = Color(hex: 0xFABE6C, alpha: 0.5)
-        case 6:
-            intensityColor[resultIdx] = Color(hex: 0xFBA946, alpha: 0.5)
-        case 8:
-            intensityColor[resultIdx] = Color(hex: 0xFA7343, alpha: 0.5)
-        case 10:
-            intensityColor[resultIdx] = Color(hex: 0xFF2F1D, alpha: 0.5)
-        default:
-            intensityColor[resultIdx] = Color(hex: 0xCDCDCD, alpha: 0.5)
-        }
-    }
 } // modalView
 

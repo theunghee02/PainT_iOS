@@ -59,11 +59,11 @@ class AuthService {
     }
     
     // get - 파라미터 X
-    public func getRequest(completion: @escaping (Result<Response, Error>) -> Void) {
+    public func getRequest<T: Decodable>(resultType: T.Type,completion: @escaping (Result<GenericResponse<T>, Error>) -> Void) {
         let headers: HTTPHeaders = [.authorization(bearerToken: tkSvc.getAccessToken()!)]
 
         AF.request(hostUrl+apiPath, method: .get, encoding: URLEncoding.default, headers: headers)
-            .responseDecodable(of: Response.self) { response in
+            .responseDecodable(of: GenericResponse<T>.self) { response in
                 
             switch response.result {
             case .success(let value):
@@ -81,7 +81,7 @@ class AuthService {
                     
                     //재귀 호출하면 문제 해결
                     
-                    self.getRequest(completion: completion)
+                    self.getRequest(resultType: resultType, completion: completion)
                     
                 } else {
                     completion(.success(value))
