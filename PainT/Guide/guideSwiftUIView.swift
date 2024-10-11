@@ -10,9 +10,8 @@ import SwiftUI
 import AVKit
 
 struct guideSwiftUIView: View {
-    @State var currentIdx: Int = 1
-//    var exerciseName: String = "Wall_Squats"
-//    var exercise2Name: String = "Seated_Hamstring_Stretch"
+    @Binding var currentIdx: Int
+    @State var nextIdx: Int = 1
     @State var exerciseNames: [String] = ["Wall_Squats","Seated_Hamstring_Stretch"]
     @Binding var exerciseCount: Int
     
@@ -30,16 +29,16 @@ struct guideSwiftUIView: View {
     var body: some View {
         VStack(spacing: 0) {
             // 아파요 버튼 후, 페이지 이동
-            NavigationLink(destination: lastGuideSwiftUIView(), isActive: $navigateToNextPage) {
+            NavigationLink(destination: guideSwiftUIView(currentIdx: $nextIdx, exerciseCount: $exerciseCount, percent: $percent), isActive: $navigateToNextPage) {
                 EmptyView()
             }
             
             // 횟수
-            Text("\(currentIdx) / \(exerciseCount)")
+            Text("\(currentIdx+1) / \(exerciseCount)")
                 .padding(.bottom, 10)
             
             // 운동 이름
-            Text("\(exerciseNames[currentIdx-1])")
+            Text("\(exerciseNames[currentIdx])")
                 .font(.system(size: 24))
             
             // 가이드 영상
@@ -57,7 +56,7 @@ struct guideSwiftUIView: View {
             
             // 다음 가이드
             HStack {
-                AsyncImage(url: URL(string: "http://chi-iu.com/videos/download/image/\(exerciseNames[currentIdx])")) { result in
+                AsyncImage(url: URL(string: "http://chi-iu.com/videos/download/image/\(exerciseNames[nextIdx])")) { result in
                     result
                         .resizable()
                         .scaledToFill()
@@ -75,7 +74,7 @@ struct guideSwiftUIView: View {
                         .foregroundStyle(Color("AccentColor"))
                     
                     // 운동 이름
-                    Text("\(exerciseNames[currentIdx])")
+                    Text("\(exerciseNames[nextIdx])")
                     //                        .font(.system(size: 18))
                         .fontWeight(.semibold)
                 } // VStack
@@ -151,11 +150,14 @@ struct guideSwiftUIView: View {
             Spacer()
             
             // 하단 버튼
-            bottomButtonSwiftUIView(nextDestination: AnyView(lastGuideSwiftUIView()))
+            bottomButtonSwiftUIView(nextDestination: AnyView(guideSwiftUIView(currentIdx: $currentIdx, exerciseCount: $exerciseCount, percent: $percent)))
         } // VStack
         .onAppear {
+            // nextIdx 할당
+            nextIdx = self.currentIdx + 1
+            
             // AVPlayer 초기화 및 URL 설정
-            let player = AVPlayer(url: URL(string: "http://chi-iu.com/videos/download/\(exerciseNames[currentIdx-1]).mp4")!)
+            let player = AVPlayer(url: URL(string: "http://chi-iu.com/videos/download/\(exerciseNames[currentIdx]).mp4")!)
             
             // AVPlayerItem의 status 속성 관찰
             playerStatusObservation = player.currentItem?.observe(\.status, options: [.new, .old]) { item, change in
