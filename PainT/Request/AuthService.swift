@@ -134,7 +134,7 @@ class AuthService {
     
     // post - 파라미터 O
     // sy-gwak edit => parameter -> encodable
-    public func postRequest<T:Decodable>(resultType: T.Type, parameters: Encodable,completion: @escaping (Result<GenericResponse<T>, Error>) -> Void) {
+    public func postRequest<T:Decodable>(resultType: T.Type, parameters: Encodable, completion: @escaping (Result<GenericResponse<T>, Error>) -> Void) {
         let headers: HTTPHeaders = [.authorization(bearerToken: tkSvc.getAccessToken()!)]
 
         AF.request(hostUrl+apiPath, method: .post, parameters: parameters , encoder: JSONParameterEncoder.default, headers: headers)

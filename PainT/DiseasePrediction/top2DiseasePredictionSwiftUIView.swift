@@ -56,7 +56,6 @@ struct Top2DiseasePredictionSwiftUIView: View {
                         if isLoading {
                             ProgressView("질환 예측 중")
                                 .progressViewStyle(CircularProgressViewStyle())
-//                                .scaleEffect(1)
                                 .padding(.top, 100)
                         } else {
                             VStack(spacing: 0) {
@@ -77,19 +76,23 @@ struct Top2DiseasePredictionSwiftUIView: View {
             } // GeometryReader
             
             // 하단 버튼
-            diseaseToHomeBtnView()
+            diseaseToHomeBtnView(parentView: Top2DiseasePredictionSwiftUIView())
         } // VStack
         .onAppear() {
             // post 메소드 호출하는 함수 호출
             postDiseasePrediction()
         }
     } // body
-        
+    
     
     // 하단 버튼(홈으로 가기 위한 커스텀마이징)
     struct diseaseToHomeBtnView: View {
+        // 이전으로 돌아가기 위한 변수
         @Environment(\.presentationMode) var presentationMode
+        // tab의 tag 설정
         @EnvironmentObject var tabSelection: TabSelection
+        // 부모
+        var parentView: Top2DiseasePredictionSwiftUIView
         
         var body: some View {
             VStack {
@@ -104,6 +107,7 @@ struct Top2DiseasePredictionSwiftUIView: View {
                             .background(Color(hex: 0xD9D9D9))
                     }
                     Button(action: {
+                        parentView.postDisease()
                         // 다음 탭으로 이동
                         self.tabSelection.selectedTab = 0
                     }) {
@@ -158,6 +162,7 @@ struct Top2DiseasePredictionSwiftUIView: View {
         
     } // diseaseRow()
     
+    // -- api 연동
     // 질환 예측 post api
     func postDiseasePrediction(){
         let authService = AuthService(apiPath: "/api/v1/ai/predict")
@@ -173,7 +178,8 @@ struct Top2DiseasePredictionSwiftUIView: View {
                     self.username = data.result!.username
                     print(data.result!)
                     
-                    self.isLoading = false // 로딩 상태 false
+                    // 로딩 상태 false
+                    self.isLoading = false
                 }
                 
             case .failure(let error):
@@ -184,4 +190,23 @@ struct Top2DiseasePredictionSwiftUIView: View {
             }
         }
     } // postDiseasePrediction()
+    
+    // 선택한 질환 post api
+    func postDisease() {
+        let authService = AuthService(apiPath: "/api/v1/disease")
+        let params = ["username":username, "disease":predictions[selectedDisease].predicted]
+        authService.postRequest(resultType: PostDiseaseResult.self, parameters: params) { response in
+            print("----------------")
+            print(response)
+            switch response {
+            case .success(let data):
+                print("Disease 저장 POST 요청 성공: \(response)")
+                
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    print("Disease 저장 POST 요청 실패: \(error.localizedDescription)")
+                }
+            }
+        }
+    }
 }
