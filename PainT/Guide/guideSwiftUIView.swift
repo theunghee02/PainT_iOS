@@ -10,10 +10,11 @@ import SwiftUI
 import AVKit
 
 struct guideSwiftUIView: View {
-    var currentCount: Int = 1
-    var totalCount: Int = 2
-    var exerciseName: String = "Wall_Squats"
-    var exercise2Name: String = "Seated_Hamstring_Stretch"
+    @State var currentIdx: Int = 1
+//    var exerciseName: String = "Wall_Squats"
+//    var exercise2Name: String = "Seated_Hamstring_Stretch"
+    @State var exerciseNames: [String] = ["Wall_Squats","Seated_Hamstring_Stretch"]
+    @Binding var exerciseCount: Int
     
     // 영상 관련
     @State private var player: AVPlayer?
@@ -25,7 +26,6 @@ struct guideSwiftUIView: View {
     
     // 치유 달성도
     @Binding var percent: Int
-    @Binding var exerciseCount: Int
     
     var body: some View {
         VStack(spacing: 0) {
@@ -35,11 +35,11 @@ struct guideSwiftUIView: View {
             }
             
             // 횟수
-            Text("\(currentCount) / \(totalCount)")
+            Text("\(currentIdx) / \(exerciseCount)")
                 .padding(.bottom, 10)
             
             // 운동 이름
-            Text("\(exerciseName)")
+            Text("\(exerciseNames[currentIdx-1])")
                 .font(.system(size: 24))
             
             // 가이드 영상
@@ -57,7 +57,7 @@ struct guideSwiftUIView: View {
             
             // 다음 가이드
             HStack {
-                AsyncImage(url: URL(string: "http://chi-iu.com/videos/download/image/\(exercise2Name)")) { result in
+                AsyncImage(url: URL(string: "http://chi-iu.com/videos/download/image/\(exerciseNames[currentIdx])")) { result in
                     result
                         .resizable()
                         .scaledToFill()
@@ -75,7 +75,7 @@ struct guideSwiftUIView: View {
                         .foregroundStyle(Color("AccentColor"))
                     
                     // 운동 이름
-                    Text("\(exercise2Name)")
+                    Text("\(exerciseNames[currentIdx])")
                     //                        .font(.system(size: 18))
                         .fontWeight(.semibold)
                 } // VStack
@@ -83,7 +83,7 @@ struct guideSwiftUIView: View {
                 
                 Spacer()
             } // HStack
-            .frame(width: 300)
+            .frame(width: UIScreen.main.bounds.width * 0.86)
             .background(Color(hex: 0xF0F0F0))
             .clipShape(RoundedRectangle(cornerRadius: 15))
             
@@ -155,7 +155,7 @@ struct guideSwiftUIView: View {
         } // VStack
         .onAppear {
             // AVPlayer 초기화 및 URL 설정
-            let player = AVPlayer(url: URL(string: "http://chi-iu.com/videos/download/\(exerciseName).mp4")!)
+            let player = AVPlayer(url: URL(string: "http://chi-iu.com/videos/download/\(exerciseNames[currentIdx-1]).mp4")!)
             
             // AVPlayerItem의 status 속성 관찰
             playerStatusObservation = player.currentItem?.observe(\.status, options: [.new, .old]) { item, change in
@@ -187,6 +187,7 @@ struct guideSwiftUIView: View {
         } // .onDisappear
     } // body
     
+    // 치유 달성도 올리기 함수
     func increasePercent() {
         if percent < 100 {
             percent += 100/exerciseCount // 가이드 목록 개수 받아와서 계산해야 함

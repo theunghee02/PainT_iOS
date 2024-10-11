@@ -139,7 +139,7 @@ struct homeSwiftUIView: View {
                             Spacer()
                             
                             // [버튼] 추천 가이드 시작하기
-                            NavigationLink(destination: guideSwiftUIView(percent: $percent, exerciseCount: $exerciseCount)) {
+                            NavigationLink(destination: guideSwiftUIView(exerciseCount: $exerciseCount, percent: $percent)) {
                                 Text("추천 가이드 시작하기")
                                     .fontWeight(.semibold)
                                     .foregroundColor(Color(hex: 0x252525)) // 글씨 색상
@@ -179,7 +179,7 @@ struct homeSwiftUIView: View {
             if isLast == true {
                 destination = AnyView(lastGuideSwiftUIView())
             } else {
-                destination = AnyView(guideSwiftUIView(percent: $percent, exerciseCount: $exerciseCount))
+                destination = AnyView(guideSwiftUIView(exerciseCount: $exerciseCount, percent: $percent))
             }
             
             return NavigationLink(destination: destination) {
