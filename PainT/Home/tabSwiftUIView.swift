@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct tabSwiftUIView: View {
-    @State var stack = NavigationPath()
     @EnvironmentObject var tabSelection: TabSelection
     
     var body: some View {

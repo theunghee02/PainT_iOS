@@ -9,9 +9,10 @@
 import SwiftUI
 
 struct homeSwiftUIView: View {
-    // 치유 가이드 리스트 api 데이터
+    // 질환명 get api 데이터
     @State var diseaseName: String = ""
     
+    // 치유 가이드 리스트 get api 데이터
     @State var percent: Int = 0
     @State var exerciseNames: [String] = ["Wall_Squats","Seated_Hamstring_Stretch","Wall_Squats","Seated_Hamstring_Stretch","Seated_Hamstring_Stretch"]
     @State var exerciseCount: Int = 5
@@ -141,7 +142,7 @@ struct homeSwiftUIView: View {
                             Spacer()
                             
                             // [버튼] 추천 가이드 시작하기
-                            NavigationLink(destination: guideSwiftUIView(currentIdx: $currentIdx, exerciseCount: $exerciseCount, percent: $percent)) {
+                            NavigationLink(destination: guideSwiftUIView(currentIdx: $currentIdx, exerciseNames: $exerciseNames, exerciseCount: $exerciseCount, percent: $percent)) {
                                 Text("추천 가이드 시작하기")
                                     .fontWeight(.semibold)
                                     .foregroundColor(Color(hex: 0x252525)) // 글씨 색상
@@ -155,7 +156,7 @@ struct homeSwiftUIView: View {
                         
                         // 루틴 리스트
                         ForEach(0..<exerciseCount, id: \.self) { idx in
-                            exerciseRow(exerciseName: exerciseNames[idx], exerciseTime: exerciseTimes[idx], isLast: idx == exerciseCount-1)
+                            exerciseRow(idx: idx, exerciseName: exerciseNames[idx], exerciseTime: exerciseTimes[idx], isLast: idx == exerciseCount-1)
                         }
                     } // VStack
                     .background(Color(red: 0.94, green: 0.94, blue: 0.94))
@@ -171,21 +172,21 @@ struct homeSwiftUIView: View {
                 }
             }
         } // NavigationStack
+        .navigationBarBackButtonHidden(true)
         .onAppear() {
             getDisease()
         }
     } // body
     
     // Exercise Row
-    func exerciseRow(exerciseName: String, exerciseTime: String, isLast: Bool) -> some View {
+    func exerciseRow(idx: Int, exerciseName: String, exerciseTime: String, isLast: Bool) -> some View {
         var body: some View {
+            // 도착 화면
             let destination: AnyView
+            // 가이드 리스트 중 idx
+            @State var idx: Int = idx
             
-            if isLast == true {
-                destination = AnyView(lastGuideSwiftUIView())
-            } else {
-                destination = AnyView(guideSwiftUIView(currentIdx: $currentIdx, exerciseCount: $exerciseCount, percent: $percent))
-            }
+            destination = AnyView(guideSwiftUIView(currentIdx: $idx, exerciseNames: $exerciseNames, exerciseCount: $exerciseCount, percent: $percent))
             
             return NavigationLink(destination: destination) {
                 HStack {

@@ -4,15 +4,16 @@
 //
 //  Created by 최승희 on 8/18/24.
 //
-// 첫 번째 가이드 화면
+// 가이드 화면
 
 import SwiftUI
 import AVKit
 
 struct guideSwiftUIView: View {
+    // 운동 관련
     @Binding var currentIdx: Int
     @State var nextIdx: Int = 1
-    @State var exerciseNames: [String] = ["Wall_Squats","Seated_Hamstring_Stretch"]
+    @Binding var exerciseNames: [String]
     @Binding var exerciseCount: Int
     
     // 영상 관련
@@ -29,7 +30,7 @@ struct guideSwiftUIView: View {
     var body: some View {
         VStack(spacing: 0) {
             // 아파요 버튼 후, 페이지 이동
-            NavigationLink(destination: guideSwiftUIView(currentIdx: $nextIdx, exerciseCount: $exerciseCount, percent: $percent), isActive: $navigateToNextPage) {
+            NavigationLink(destination: guideSwiftUIView(currentIdx: $nextIdx, exerciseNames: $exerciseNames, exerciseCount: $exerciseCount, percent: $percent), isActive: $navigateToNextPage) {
                 EmptyView()
             }
             
@@ -56,31 +57,38 @@ struct guideSwiftUIView: View {
             
             // 다음 가이드
             HStack {
-                AsyncImage(url: URL(string: "http://chi-iu.com/videos/download/image/\(exerciseNames[nextIdx])")) { result in
-                    result
-                        .resizable()
-                        .scaledToFill()
-                } placeholder: {
-                    ProgressView()
-                }
-                .frame(width: 70, height: 70)
-                .padding([.vertical, .leading], 15)
-                .padding(.trailing, 20)
-                
-                // Texts
-                VStack(alignment: .leading) {
-                    // Title
-                    Text("다음 가이드")
-                        .foregroundStyle(Color("AccentColor"))
+                // 마지막 가이드인지에 따라 다름
+                if currentIdx == exerciseCount-1 {
+                    Text("마지막 가이드입니다")
+                        .foregroundColor(Color(hex:0x252525))
+                        .fontWeight(.heavy)
+                        .padding(30)
+                } else {
+                    AsyncImage(url: URL(string: "http://chi-iu.com/videos/download/image/\(exerciseNames[nextIdx])")) { result in
+                        result
+                            .resizable()
+                            .scaledToFill()
+                    } placeholder: {
+                        ProgressView()
+                    }
+                    .frame(width: 70, height: 70)
+                    .padding([.vertical, .leading], 15)
+                    .padding(.trailing, 20)
                     
-                    // 운동 이름
-                    Text("\(exerciseNames[nextIdx])")
-                    //                        .font(.system(size: 18))
-                        .fontWeight(.semibold)
-                } // VStack
-                .padding(.vertical, 15)
-                
-                Spacer()
+                    // Texts
+                    VStack(alignment: .leading) {
+                        // Title
+                        Text("다음 가이드")
+                            .foregroundStyle(Color("AccentColor"))
+                        
+                        // 운동 이름
+                        Text("\(exerciseNames[nextIdx])")
+                            .fontWeight(.semibold)
+                    } // VStack
+                    .padding(.vertical, 15)
+                    
+                    Spacer()
+                }
             } // HStack
             .frame(width: UIScreen.main.bounds.width * 0.86)
             .background(Color(hex: 0xF0F0F0))
@@ -150,7 +158,7 @@ struct guideSwiftUIView: View {
             Spacer()
             
             // 하단 버튼
-            bottomButtonSwiftUIView(nextDestination: AnyView(guideSwiftUIView(currentIdx: $currentIdx, exerciseCount: $exerciseCount, percent: $percent)))
+            bottomButtonSwiftUIView(nextDestination: (currentIdx == exerciseCount-1 ? AnyView(homeSwiftUIView()) : AnyView(guideSwiftUIView(currentIdx: $nextIdx, exerciseNames: $exerciseNames, exerciseCount: $exerciseCount, percent: $percent))))
         } // VStack
         .onAppear {
             // nextIdx 할당

@@ -109,7 +109,7 @@ struct Top2DiseasePredictionSwiftUIView: View {
                     }
                     Button(action: {
                         parentView.postSelectedDisease()
-                        // 다음 탭으로 이동
+                        // 홈으로 이동
                         self.tabSelection.selectedTab = 0
                     }) {
                         Text("치유하러 가기")
@@ -118,10 +118,10 @@ struct Top2DiseasePredictionSwiftUIView: View {
                             .frame(width: UIScreen.main.bounds.width * 0.6)
                             .background(Color("AccentColor"))
                     }
-                }
+                } // HStack
             } // VStack
-        }
-    }
+        } // body
+    } // diseaseToHomeBtnView
     
     
     // 질환 정보 컴포넌트
