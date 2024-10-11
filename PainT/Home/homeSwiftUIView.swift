@@ -216,62 +216,84 @@ struct homeSwiftUIView: View {
 
 // 통증 기록 날짜 클릭시 뜨는 모달뷰
 struct modalView: View {
+    // 선택된 날짜
     @Binding var selectedDate: Date
-    @State var intensityColor: Color = Color(hex: 0xCDCDCD)
     
-    // modalView api 데이터
-    @State var username: String?
-    @State var location: [String?] = [""]
-    @State var intensity: Int = 0
-    @State var feelings: [String?] = [""]
-    @State var trigger: String?
-    @State var painTimestamp: String?
+    // modalView get api 데이터
+    @State var result: [PainRecordResult]?
+    @State var resultCount: Int = 0
+    @State var location: [[String?]] = [[""]]
+    @State var intensity: [Int] = [0]
+    @State var feelings: [[String?]] = [[""]]
+    @State var trigger: [String?] = [""]
+    @State var painTimestamp: [String?] = [""]
+        // 테스트(위 동일 내용 코드)
+//    @State var resultCount: Int = 5
+//    @State var location: [[String?]] = [["허리"],["무릎"],["무릎"],["무릎"],["허리"]]
+//    @State var intensity: [Int] = [0,2,4,6,8]
+//    @State var feelings: [[String?]] = [["날카로운 느낌", "누르는 듯한 느낌"],
+//                                        ["칼로 벤 것처럼 아픔", "타는 듯한 느낌", "둔한 느낌"],
+//                                        ["날카로운 느낌", "누르는 듯한 느낌"],
+//                                        ["칼로 벤 것처럼 아픔", "타는 듯한 느낌", "둔한 느낌"],
+//                                        ["칼로 벤 것처럼 아픔", "타는 듯한 느낌", "둔한 느낌"]]
+//    @State var trigger: [String?] = ["오래 서 있으면 통증이 시작됨", "장시간 걸을 때", "앉아 있다가 일어날 때", "침대에서 일어나려 할 때", "계단을 내려갈 때"]
+//    @State var painTimestamp: [String?] = ["","","","",""]
+    
+    // 강도 색깔
+    @State var intensityColor: [Color] = [Color(hex: 0xCDCDCD)]
+//    @State var intensityColor: [Color] = [Color(hex: 0xCDCDCD),Color(hex: 0xCDCDCD),Color(hex: 0xCDCDCD),Color(hex: 0xCDCDCD),Color(hex: 0xCDCDCD)]
     
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 10) {
-                Text("통증 기록")
-                    .font(.system(size: 24))
-                    .fontWeight(.semibold)
-                    .padding([.top,.leading], 30)
-                
-                // 날짜를 원하는 형식의 문자열로 변환
-                let dateFormatter: DateFormatter = {
-                    let formatter = DateFormatter()
-                    formatter.dateFormat = "YYYY년 MM월 dd일"
-                    return formatter
-                }()
-                
-                Text("\(dateFormatter.string(from: selectedDate))")
-                    .padding(.leading, 30)
-                    .padding(.bottom, 10)
-                
-                // 시간으로 변환
-                // Step 1: String -> Date
-                let string2DateFormatter: DateFormatter = {
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-                    dateFormatter.locale = Locale(identifier: "ko_KR")
-                    dateFormatter.timeZone = TimeZone.current
-                    return dateFormatter
-                }()
-                
-                let painDate = string2DateFormatter.date(from: painTimestamp ?? "")
-                
-                
-                let timeFormatter: DateFormatter = {
-                    let formatter = DateFormatter()
-                    formatter.dateFormat = "a h:mm"
-                    formatter.locale = Locale(identifier:"ko_KR")
-                    formatter.timeZone = TimeZone.current
-                    return formatter
-                }()
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text("통증 기록")
+                            .font(.system(size: 24))
+                            .fontWeight(.semibold)
+                            .padding([.top,.leading], 30)
+                        
+                        // 날짜를 원하는 형식의 문자열로 변환
+                        let dateFormatter: DateFormatter = {
+                            let formatter = DateFormatter()
+                            formatter.dateFormat = "YYYY년 MM월 dd일"
+                            return formatter
+                        }()
+                        
+                        Text("\(dateFormatter.string(from: selectedDate))")
+                            .padding(.leading, 30)
+                            .padding(.bottom, 10)
+                    } // VStack - 제목, 날짜
+                    
+                    Spacer()
+                } // HStack
                 
                 // 통증 기록 리스트
-                ForEach(0..<10) { _ in
+                ForEach(0..<resultCount) { resultIdx in
                     // 전체 감싸는 wrapper
                     HStack(alignment: .top) {
                         // 시간
+                            // 시간으로 변환
+                        let string2DateFormatter: DateFormatter = {
+                            let dateFormatter = DateFormatter()
+                            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+                            dateFormatter.locale = Locale(identifier: "ko_KR")
+                            dateFormatter.timeZone = TimeZone.current
+                            return dateFormatter
+                        }()
+                        
+                        let painDate = string2DateFormatter.date(from: painTimestamp[resultIdx] ?? "")
+                        
+                        
+                        let timeFormatter: DateFormatter = {
+                            let formatter = DateFormatter()
+                            formatter.dateFormat = "a h:mm"
+                            formatter.locale = Locale(identifier:"ko_KR")
+                            formatter.timeZone = TimeZone.current
+                            return formatter
+                        }()
+                        
+                            // 시간 Text
                         Text("\(timeFormatter.string(from: painDate ?? Date()))")
                             .font(.system(size: 12))
                             .padding(.trailing, 13)
@@ -281,45 +303,37 @@ struct modalView: View {
                             // 통증유발행동(trigger), 통증 느낌(type)
                             // 위치(location), 발생시간(pain_timestamp), 예측 질환, 통증 강도(intensity),
                             HStack(alignment: .center) {
-                                Text("\(location[0] ?? "") 통증")
+                                Text("\(location[resultIdx][0] ?? "") 통증")
                                     .font(.system(size: 20))
                                     .fontWeight(.semibold)
                                     .foregroundStyle(Color(hex: 0x252525))
                                 
                                 Spacer()
                                 
-                                Text("고통 \(intensity)")
+                                Text("고통 \(intensity[resultIdx])")
                                     .foregroundStyle(Color(hex: 0x252525))
                                     .padding(.horizontal ,10)
                                     .padding(.vertical ,5)
-                                    .background(intensityColor)
+                                    .background(intensityColor[resultIdx])
                                     .cornerRadius(20)
                             }
                             .padding([.top, .horizontal], 30)
                             .padding(.bottom, 13)
                             
                             VStack(alignment: .leading, spacing: 5) {
-                                ForEach (0..<feelings.count, id: \.self) { idx in
-                                    Text("\(feelings[idx]!)")
+                                ForEach (0..<feelings[resultIdx].count, id: \.self) { idx in
+                                    Text("\(feelings[resultIdx][idx]!)")
                                         .font(.system(size: 12))
                                         .foregroundStyle(Color(hex: 0x252525))
                                         .padding(.horizontal ,10)
                                         .padding(.vertical ,5)
                                         .background(Color(hex: 0xCDCDCD))
                                         .cornerRadius(20)
-                                    
-                                    //                                    Text("다른 부위로 퍼지듯 아픔")
-                                    //                                        .font(.system(size: 12))
-                                    //                                        .foregroundStyle(Color(hex: 0x252525))
-                                    //                                        .padding(.horizontal ,10)
-                                    //                                        .padding(.vertical ,5)
-                                    //                                        .background(Color(hex: 0xCDCDCD))
-                                    //                                        .cornerRadius(20)
                                 } // ForEach
                             } // HStack
                             .padding(.horizontal, 30)
                             .padding(.bottom, 7)
-                            Text("\(trigger ?? "")")
+                            Text("\(trigger[resultIdx] ?? "")")
                                 .font(.system(size: 12))
                                 .foregroundStyle(Color(hex: 0x252525))
                                 .padding(.horizontal ,10)
@@ -370,14 +384,18 @@ struct modalView: View {
             switch response {
             case .success(let data):
                 print("GET 요청 성공: \(response)")
-                self.location = data.result?[0].location ?? [""]
-                self.intensity = data.result?[0].intensity ?? 0
-                self.feelings = data.result?[0].type ?? [""]
-                self.trigger = data.result?[0].trigger ?? ""
-                self.painTimestamp = data.result?[0].painTimestamp ?? ""
-                
-                // intensity에 따른 배경 색(intensityColor) 변경
-                updateIntensityColor()
+                self.result = data.result
+                self.resultCount = self.result?.count ?? 0
+                for idx in 0..<resultCount {
+                    self.location[idx] = data.result?[idx].location ?? [""]
+                    self.intensity[idx] = data.result?[idx].intensity ?? 0
+                    self.feelings[idx] = data.result?[idx].type ?? [""]
+                    self.trigger[idx] = data.result?[idx].trigger ?? ""
+                    self.painTimestamp[idx] = data.result?[idx].painTimestamp ?? ""
+                    
+                    // intensity에 따른 배경 색(intensityColor) 변경
+                    updateIntensityColor(resultIdx: idx)
+                }
             case .failure(let error):
                 print("GET 요청 실패: \(error.localizedDescription)")
             }
@@ -385,22 +403,22 @@ struct modalView: View {
     } // postDisease()
     
     // 통증 강도 색깔 결정
-    func updateIntensityColor() {
-        switch intensity {
+    func updateIntensityColor(resultIdx: Int) {
+        switch intensity[resultIdx] {
         case 0:
-            intensityColor = Color(hex: 0xFFDC7C, alpha: 0.5)
+            intensityColor[resultIdx] = Color(hex: 0xFFDC7C, alpha: 0.5)
         case 2:
-            intensityColor = Color(hex: 0xFAD36A, alpha: 0.5)
+            intensityColor[resultIdx] = Color(hex: 0xFAD36A, alpha: 0.5)
         case 4:
-            intensityColor = Color(hex: 0xFABE6C, alpha: 0.5)
+            intensityColor[resultIdx] = Color(hex: 0xFABE6C, alpha: 0.5)
         case 6:
-            intensityColor = Color(hex: 0xFBA946, alpha: 0.5)
+            intensityColor[resultIdx] = Color(hex: 0xFBA946, alpha: 0.5)
         case 8:
-            intensityColor = Color(hex: 0xFA7343, alpha: 0.5)
+            intensityColor[resultIdx] = Color(hex: 0xFA7343, alpha: 0.5)
         case 10:
-            intensityColor = Color(hex: 0xFF2F1D, alpha: 0.5)
+            intensityColor[resultIdx] = Color(hex: 0xFF2F1D, alpha: 0.5)
         default:
-            intensityColor = Color(hex: 0xCDCDCD, alpha: 0.5)
+            intensityColor[resultIdx] = Color(hex: 0xCDCDCD, alpha: 0.5)
         }
     }
 } // modalView
