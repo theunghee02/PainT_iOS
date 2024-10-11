@@ -361,23 +361,22 @@ struct modalView: View {
                                 .foregroundStyle(Color(hex: 0x252525))
                                 .padding(.horizontal ,10)
                                 .padding(.vertical ,5)
-                                .background(Color(hex: 0xCDCDCD))
+                                .background(Color(hex: 0x04DC88, alpha: 0.2))
                                 .cornerRadius(20)
-                                .padding(.horizontal, 30)
-                                .padding(.bottom, 20)
+                                .padding([.horizontal,.bottom], 30)
                             
-                            HStack {
-                                Image("wand")
-                                    .resizable()
-                                    .frame(width: 15, height: 15)
-                                    .padding(.trailing, 10)
-                                Text("척추관 협착증 예상")
-                                    .font(.system(size: 16))
-                                    .fontWeight(.semibold)
-                                    .foregroundStyle(Color(hex: 0x555555))
-                                Spacer()
-                            } // HStack
-                            .padding([.horizontal, .bottom], 30)
+//                            HStack {
+//                                Image("wand")
+//                                    .resizable()
+//                                    .frame(width: 15, height: 15)
+//                                    .padding(.trailing, 10)
+//                                Text("척추관 협착증 예상")
+//                                    .font(.system(size: 16))
+//                                    .fontWeight(.semibold)
+//                                    .foregroundStyle(Color(hex: 0x555555))
+//                                Spacer()
+//                            } // HStack
+//                            .padding([.horizontal, .bottom], 30)
                         } // VStack - (시간 제외한) 통증 기록 요소
                         .background(Color(hex: 0xEBE9EE))
                         .cornerRadius(30)
@@ -444,6 +443,6 @@ struct modalView: View {
                 print("GET 요청 실패: \(error.localizedDescription)")
             }
         }
-    } // postDisease()
+    } // getPainRecord()
 } // modalView
 
