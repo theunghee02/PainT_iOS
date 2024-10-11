@@ -17,9 +17,10 @@ struct Top2DiseasePredictionSwiftUIView: View {
     // api에서 불러온 데이터
     // 질환 정보 배열
     @State var predictions: [(predicted: String?, subject: String?, description: String?)] = [("","",""),("","","")]
-    @State var username: String = ""
+    @State var username: String = "chii-u"
     
     @State var selectedDisease: Int = 0
+    @State var selectedDiseaseName: String = "무릎 관절염"
     
     var body: some View {
         VStack(spacing: 0) {
@@ -157,8 +158,9 @@ struct Top2DiseasePredictionSwiftUIView: View {
                 .stroke(idx == selectedDisease ? Color(hex: 0x04DC88) : Color.clear, lineWidth: 2)
         )
         .padding(.bottom, 30)
-        .onTapGesture { // Intensity 클릭 시 idx 저장
+        .onTapGesture { // disease 클릭 시 idx 저장
             self.selectedDisease = idx
+            self.selectedDiseaseName = predicted
         } // onTapGesture
         
     } // diseaseRow()
@@ -195,7 +197,7 @@ struct Top2DiseasePredictionSwiftUIView: View {
     // 선택한 질환 post api
     func postSelectedDisease() {
         let authService = AuthService(apiPath: "/api/v1/disease")
-        let params = ["username":username, "disease":predictions[selectedDisease].predicted]
+        let params = PostDiseaseResponse(username: self.username, disease: self.selectedDiseaseName ?? "무릎 관절염")
         print(params)
         authService.postRequest(resultType: PostDiseaseResult.self, parameters: params) { response in
             print("----------------")

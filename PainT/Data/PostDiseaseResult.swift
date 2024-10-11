@@ -10,3 +10,8 @@ import Foundation
 struct PostDiseaseResult: Decodable {
     let message: String?
 }
+
+struct PostDiseaseResponse: Encodable {
+    let username : String
+    let disease : String
+}
