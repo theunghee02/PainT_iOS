@@ -14,10 +14,15 @@ struct homeSwiftUIView: View {
     
     // 치유 가이드 리스트 get api 데이터
     @State var percent: Int = 0
-    @State var exerciseNames: [String] = ["Wall_Squats","Seated_Hamstring_Stretch","Wall_Squats","Seated_Hamstring_Stretch","Seated_Hamstring_Stretch"]
-    @State var exerciseCount: Int = 5
-    @State var exerciseTimes: [String] = ["15sec", "15sec", "15sec", "15sec", "15sec"]
-    @State var totalTime: String = "1분 15초"
+//    @State var exerciseNames: [String] = ["Wall_Squats","Seated_Hamstring_Stretch","Wall_Squats","Seated_Hamstring_Stretch","Seated_Hamstring_Stretch"]
+//    @State var exerciseCount: Int = 5
+//    @State var exerciseTimes: [String] = ["15sec", "15sec", "15sec", "15sec", "15sec"]
+//    @State var totalTime: String = "1분 15초"
+        // 위와 동일 코드
+    @State var exerciseNames: [String] = [""]
+    @State var exerciseCount: Int = 0
+    @State var exerciseTimes: [String] = [""]
+    @State var totalTime: String = ""
     
     @State var currentIdx: Int = 0
     
@@ -175,6 +180,7 @@ struct homeSwiftUIView: View {
         .navigationBarBackButtonHidden(true)
         .onAppear() {
             getDisease()
+            getGuideList()
         }
     } // body
     
@@ -219,6 +225,7 @@ struct homeSwiftUIView: View {
         return body
     } // exerciseRow()
     
+    // -- api 연동
     // 질환명 get api
     func getDisease() {
         let authService = AuthService(apiPath: "/api/v1/disease?username=chii-u")
@@ -235,6 +242,33 @@ struct homeSwiftUIView: View {
             }
         }
     } // getDisease()
+    
+    // 가이드 리스트 get api 연동
+    func getGuideList(){
+        let authService = AuthService(apiPath: "/api/v1/home/exercise/chii-u/\(diseaseName)")
+        authService.getRequest(resultType: getGuideResult.self) { response in
+            print("----------------")
+            print(response)
+            switch response {
+            case .success(let data):
+                print("GET 요청 성공: \(response)")
+// 예시             self.location[0] = data.result?[0].location ?? [""]
+                
+                self.exerciseNames = ["Bird Dog Exercise","Child Pose","Knee to Chest Stretch","Standing Back Extension"]
+                self.exerciseCount = 4
+                self.exerciseTimes = ["10sec", "10sec", "10sec", "15sec"]
+                self.totalTime = "45초"
+                    
+            case .failure(let error):
+                print("GET 요청 실패: \(error.localizedDescription)")
+                
+                self.exerciseNames = ["Bird Dog Exercise","Child Pose","Knee to Chest Stretch","Standing Back Extension"]
+                self.exerciseCount = 4
+                self.exerciseTimes = ["10sec", "10sec", "10sec", "15sec"]
+                self.totalTime = "45초"
+            }
+        }
+    } // getPainRecord()
 } // homeSwiftUIView
 
 // 통증 기록 날짜 클릭시 뜨는 모달뷰
@@ -420,7 +454,7 @@ struct modalView: View {
     
     // 통증 기록 get api 연동
     func getPainRecord(){
-        let authService = AuthService(apiPath: "/home/chii-u/date?painDate=\(dateFormatter.string(from: selectedDate))")
+        let authService = AuthService(apiPath: "/api/v1/home/chii-u/date?painDate=\(dateFormatter.string(from: selectedDate))")
         authService.getRequest() { response in
             print("----------------")
             print(response)
