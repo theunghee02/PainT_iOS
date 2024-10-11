@@ -107,7 +107,7 @@ struct Top2DiseasePredictionSwiftUIView: View {
                             .background(Color(hex: 0xD9D9D9))
                     }
                     Button(action: {
-                        parentView.postDisease()
+                        parentView.postSelectedDisease()
                         // 다음 탭으로 이동
                         self.tabSelection.selectedTab = 0
                     }) {
@@ -135,6 +135,7 @@ struct Top2DiseasePredictionSwiftUIView: View {
                 Text(subject)
                     .fontWeight(.semibold)
                     .foregroundStyle(Color("AccentColor"))
+                    .lineLimit(2)
             } // HStack
             .padding(.horizontal, 30)
             .padding(.top, 20)
@@ -192,9 +193,10 @@ struct Top2DiseasePredictionSwiftUIView: View {
     } // postDiseasePrediction()
     
     // 선택한 질환 post api
-    func postDisease() {
+    func postSelectedDisease() {
         let authService = AuthService(apiPath: "/api/v1/disease")
         let params = ["username":username, "disease":predictions[selectedDisease].predicted]
+        print(params)
         authService.postRequest(resultType: PostDiseaseResult.self, parameters: params) { response in
             print("----------------")
             print(response)
