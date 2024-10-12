@@ -8,6 +8,7 @@
 import Foundation
 
 struct PainRecordResult: Decodable {
+    let id: String?
     let username: String!
     let location: [String?]
     let trigger: String?
