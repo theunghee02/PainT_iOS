@@ -13,3 +13,6 @@ Paint의 iOS native 개발 repository입니다.
    - stat : 통증 통계
    - unityInterlock : iOS와 Unity 연동
 5. hotfix : 발생한 버그를 수정하는 브랜치
+
+# 앱 소개 영상
+https://www.youtube.com/watch?v=3klDCtNzOYk 
